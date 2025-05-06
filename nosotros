@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conoce la historia, filosofía y equipo detrás de Habitta. Descubre por qué co-creamos espacios con alma en Colombia.">
+    <meta name="keywords" content="Habitta nosotros, diseño interior Colombia, equipo Habitta, filosofía diseño, historia Habitta">
+    <title>Nosotros | Habitta: Diseño con Alma y Propósito</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .heading-font {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero-overlay {
+            background: rgba(0, 0, 0, 0.3);
+            background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.2) 100%);
+        }
+        
+        .text-olive {
+            color: #6b8e23;
+        }
+        
+        .bg-olive {
+            background-color: #6b8e23;
+        }
+        
+        .border-olive {
+            border-color: #6b8e23;
+        }
+        
+        .hover-bg-olive:hover {
+            background-color: #5a7a1e;
+        }
+        
+        .text-terracota {
+            color: #e2725b;
+        }
+        
+        .bg-terracota {
+            background-color: #e2725b;
+        }
+        
+        .hover-bg-terracota:hover {
+            background-color: #d1624b;
+        }
+        
+        .text-taupe {
+            color: #b8a99a;
+        }
+        
+        .bg-taupe {
+            background-color: #b8a99a;
+        }
+        
+        .team-card:hover .team-overlay {
+            opacity: 1;
+        }
+        
+        .team-overlay {
+            transition: all 0.3s ease;
+            background: rgba(107, 142, 35, 0.9);
+        }
+        
+        .timeline-item:not(:last-child):after {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 32px;
+            height: calc(100% - 32px);
+            width: 2px;
+            background-color: #6b8e23;
+        }
+        
+        .menu-open {
+            transform: translateX(0);
+        }
+        
+        .menu-closed {
+            transform: translateX(100%);
+        }
+        
+        .transition-slow {
+            transition: all 0.5s ease;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 z-50 bg-white w-full h-full menu-closed transition-slow">
+        <div class="container mx-auto px-6 py-8">
+            <div class="flex justify-between items-center mb-12">
+                <img src="https://via.placeholder.com/150x50?text=Habitta" alt="Habitta Logo" class="h-10">
+                <button id="closeMenu" class="text-gray-800 text-2xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <nav class="flex flex-col space-y-6">
+                <a href="index.html" class="text-gray-800 text-xl font-medium">Inicio</a>
+                <a href="nosotros.html" class="text-olive text-xl font-medium">Nosotros</a>
+                <a href="servicios.html" class="text-gray-800 text-xl font-medium">Servicios</a>
+                <a href="proyectos.html" class="text-gray-800 text-xl font-medium">Proyectos</a>
+                <a href="blog.html" class="text-gray-800 text-xl font-medium">Blog</a>
+                <a href="contacto.html" class="text-gray-800 text-xl font-medium">Contacto</a>
+            </nav>
+            <div class="mt-12">
+                <a href="contacto.html" class="inline-block bg-olive text-white px-6 py-3 rounded-full font-medium hover-bg-olive">Contacto</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-40 bg-white shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="flex items-center">
+                    <img src="https://via.placeholder.com/150x50?text=Habitta" alt="Habitta Logo" class="h-10">
+                </a>
+                
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-800 hover:text-olive transition">Inicio</a>
+                    <a href="nosotros.html" class="text-olive font-medium">Nosotros</a>
+                    <a href="servicios.html" class="text-gray-800 hover:text-olive transition">Servicios</a>
+                    <a href="proyectos.html" class="text-gray-800 hover:text-olive transition">Proyectos</a>
+                    <a href="blog.html" class="text-gray-800 hover:text-olive transition">Blog</a>
+                    <a href="contacto.html" class="text-gray-800 hover:text-olive transition">Contacto</a>
+                </nav>
+                
+                <div class="hidden md:block">
+                    <a href="contacto.html" class="bg-olive text-white px-6 py-2 rounded-full font-medium hover-bg-olive transition">Contacto</a>
+                </div>
+                
+                <button id="openMenu" class="md:hidden text-gray-800 text-xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative h-96 flex items-center">
+        <div class="absolute inset-0 hero-overlay z-10"></div>
+        <img src="https://images.unsplash.com/photo-1600566752227-378f5d0b9064?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80" 
+             alt="Equipo Habitta trabajando" 
+             class="absolute inset-0 w-full h-full object-cover">
+        
+        <div class="container mx-auto px-6 relative z-20 text-center">
+            <h1 class="heading-font text-4xl md:text-5xl font-bold text-white mb-4">
+                Nuestra Historia y Filosofía
+            </h1>
+            <p class="text-xl text-white max-w-2xl mx-auto">
+                Conoce el corazón y la mente detrás de cada espacio que co-creamos
+            </p>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="py-16 md:py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12">
+                    <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+                        De una Necesidad Personal a una Pasión Colectiva
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-6">
+                        Habitta nació de nuestra propia frustración al buscar soluciones para nuestro espacio. Como muchos de ustedes, nos encontramos con ofertas que priorizaban lo estético sobre lo funcional, o viceversa, pero ninguna que entendiera que un espacio debe vibrar con quienes lo habitan.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-8">
+                        Decidimos crear lo que no encontramos: un enfoque holístico donde diseño, funcionalidad y significado personal convergen en cada proyecto, sin importar su escala o presupuesto.
+                    </p>
+                    <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-olive">
+                        <p class="text-gray-800 italic mb-4">
+                            "Nuestro mayor aprendizaje fue entender que no diseñamos espacios, diseñamos experiencias de vida. Cada rincón cuenta una historia y nuestra misión es que sea la tuya."
+                        </p>
+                        <p class="text-olive font-medium">- Fundadores de Habitta</p>
+                    </div>
+                </div>
+                <div class="lg:w-1/2">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" 
+                             alt="Fundadores de Habitta" 
+                             class="w-full rounded-lg shadow-xl">
+                        <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-lg hidden md:block">
+                            <div class="flex items-center">
+                                <div class="bg-olive text-white p-3 rounded-full mr-4">
+                                    <i class="fas fa-home text-xl"></i>
+                                </div>
+                                <p class="text-gray-800 font-medium">
+                                    "Desde 2015 transformando<br>espacios en Colombia"
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="py-16 md:py-24">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Nuestro Camino
+                </h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Los hitos que han marcado nuestra evolución como equipo y como marca
+                </p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <!-- Timeline Item 1 -->
+                <div class="relative timeline-item pl-16 pb-12">
+                    <div class="absolute left-0 top-0 flex items-center justify-center w-12 h-12 rounded-full bg-olive text-white">
+                        2015
+                    </div>
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-2">
+                        Nacimiento de una Idea
+                    </h3>
+                    <p class="text-gray-600">
+                        Frustrados por no encontrar soluciones adecuadas para su propio apartamento, los fundadores deciden crear un enfoque diferente para el diseño de espacios.
+                    </p>
+                </div>
+                
+                <!-- Timeline Item 2 -->
+                <div class="relative timeline-item pl-16 pb-12">
+                    <div class="absolute left-0 top-0 flex items-center justify-center w-12 h-12 rounded-full bg-olive text-white">
+                        2016
+                    </div>
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-2">
+                        Primeros Proyectos
+                    </h3>
+                    <p class="text-gray-600">
+                        Comienzan a trabajar con amigos y familiares, desarrollando el método de co-creación que hoy es nuestra marca distintiva.
+                    </p>
+                </div>
+                
+                <!-- Timeline Item 3 -->
+                <div class="relative timeline-item pl-16 pb-12">
+                    <div class="absolute left-0 top-0 flex items-center justify-center w-12 h-12 rounded-full bg-olive text-white">
+                        2018
+                    </div>
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-2">
+                        Formalización como Habitta
+                    </h3>
+                    <p class="text-gray-600">
+                        El equipo se consolida y adopta el nombre Habitta, fusionando las palabras "hábitat" y "vita" (vida en latín), reflejando nuestra filosofía.
+                    </p>
+                </div>
+                
+                <!-- Timeline Item 4 -->
+                <div class="relative timeline-item pl-16 pb-12">
+                    <div class="absolute left-0 top-0 flex items-center justify-center w-12 h-12 rounded-full bg-olive text-white">
+                        2020
+                    </div>
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-2">
+                        Expansión de Servicios
+                    </h3>
+                    <p class="text-gray-600">
+                        Ampliamos nuestro alcance para incluir proyectos comerciales y obra nueva, siempre manteniendo nuestro enfoque en espacios con alma.
+                    </p>
+                </div>
+                
+                <!-- Timeline Item 5 -->
+                <div class="relative pl-16">
+                    <div class="absolute left-0 top-0 flex items-center justify-center w-12 h-12 rounded-full bg-olive text-white">
+                        2023
+                    </div>
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-2">
+                        Más de 150 Espacios Transformados
+                    </h3>
+                    <p class="text-gray-600">
+                        Hoy seguimos creciendo, pero nunca perdemos de vista nuestra esencia: cada proyecto es único, como las personas para quienes lo creamos.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section class="py-16 md:py-24 bg-olive text-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold mb-4">
+                    Nuestra Filosofía
+                </h2>
+                <p class="text-xl max-w-3xl mx-auto">
+                    Los principios que guían cada decisión que tomamos en Habitta
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Principle 1 -->
+                <div class="bg-white bg-opacity-10 p-8 rounded-xl">
+                    <div class="bg-white text-olive p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-heart text-2xl"></i>
+                    </div>
+                    <h3 class="heading-font text-xl font-bold mb-3 text-center">
+                        Espacios con Alma
+                    </h3>
+                    <p class="text-center">
+                        Creemos que los espacios deben tener personalidad y significado, reflejando la esencia de quienes los habitan, no solo seguir tendencias.
+                    </p>
+                </div>
+                
+                <!-- Principle 2 -->
+                <div class="bg-white bg-opacity-10 p-8 rounded-xl">
+                    <div class="bg-white text-olive p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-hands-helping text-2xl"></i>
+                    </div>
+                    <h3 class="heading-font text-xl font-bold mb-3 text-center">
+                        Co-creación Auténtica
+                    </h3>
+                    <p class="text-center">
+                        No imponemos estilos, colaboramos contigo para materializar tu visión. Tu participación es clave en cada etapa del proceso.
+                    </p>
+                </div>
+                
+                <!-- Principle 3 -->
+                <div class="bg-white bg-opacity-10 p-8 rounded-xl">
+                    <div class="bg-white text-olive p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-balance-scale-right text-2xl"></i>
+                    </div>
+                    <h3 class="heading-font text-xl font-bold mb-3 text-center">
+                        Equilibrio Consciente
+                    </h3>
+                    <p class="text-center">
+                        Buscamos el punto perfecto entre estética, funcionalidad, presupuesto y sostenibilidad, sin sacrificar lo esencial.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-16 md:py-24">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Conoce Nuestro Equipo
+                </h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Profesionales apasionados que hacen posible cada proyecto Habitta
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Team Member 1 -->
+                <div class="team-card relative rounded-xl overflow-hidden shadow-md">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
+                         alt="María Fernanda López" 
+                         class="w-full h-80 object-cover">
+                    <div class="team-overlay absolute inset-0 flex items-end justify-center opacity-0 p-6">
+                        <div class="text-center text-white">
+                            <p class="mb-4">
+                                Arquitecta con especialización en diseño bioclimático. Lidera nuestro enfoque de espacios sostenibles y con propósito.
+                            </p>
+                            <div class="flex justify-center space-x-4">
+                                <a href="#" class="text-white hover:text-terracota transition">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="text-white hover:text-terracota transition">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4">
+                        <h3 class="heading-font text-xl font-bold text-gray-800">María Fernanda López</h3>
+                        <p class="text-taupe">Directora de Diseño</p>
+                    </div>
+                </div>
+                
+                <!-- Team Member 2 -->
+                <div class="team-card relative rounded-xl overflow-hidden shadow-md">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=776&q=80" 
+                         alt="Carlos Andrés Ramírez" 
+                         class="w-full h-80 object-cover">
+                    <div class="team-overlay absolute inset-0 flex items-end justify-center opacity-0 p-6">
+                        <div class="text-center text-white">
+                            <p class="mb-4">
+                                Ingeniero civil y co-fundador. Especialista en ejecución de proyectos con atención meticulosa a los detalles constructivos.
+                            </p>
+                            <div class="flex justify-center space-x-4">
+                                <a href="#" class="text-white hover:text-terracota transition">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="text-white hover:text-terracota transition">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4">
+                        <h3 class="heading-font text-xl font-bold text-gray-800">Carlos Andrés Ramírez</h3>
+                        <p class="text-taupe">Director de Construcción</p>
+                    </div>
+                </div>
+                
+                <!-- Team Member 3 -->
+                <div class="team-card relative rounded-xl overflow-hidden shadow-md">
+                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
+                         alt="Laura Gómez" 
+                         class="w-full h-80 object-cover">
+                    <div class="team-overlay absolute inset-0 flex items-end justify-center opacity-0 p-6">
+                        <div class="text-center text-white">
+                            <p class="mb-4">
+                                Diseñadora de interiores con enfoque en experiencia de usuario. Transforma necesidades en soluciones espaciales funcionales.
+                            </p>
+                            <div class="flex justify-center space-x-4">
+                                <a href="#" class="text-white hover:text-terracota transition">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="text-white hover:text-terracota transition">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4">
+                        <h3 class="heading-font text-xl font-bold text-gray-800">Laura Gómez</h3>
+                        <p class="text-taupe">Diseñadora Senior</p>
+                    </div>
+                </div>
+                
+                <!-- Team Member 4 -->
+                <div class="team-card relative rounded-xl overflow-hidden shadow-md">
+                    <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" 
+                         alt="Juan David Torres" 
+                         class="w-full h-80 object-cover">
+                    <div class="team-overlay absolute inset-0 flex items-end justify-center opacity-0 p-6">
+                        <div class="text-center text-white">
+                            <p class="mb-4">
+                                Maestro de obras con 15 años de experiencia. Garantiza la calidad artesanal en cada detalle de ejecución.
+                            </p>
+                            <div class="flex justify-center space-x-4">
+                                <a href="#" class="text-white hover:text-terracota transition">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4">
+                        <h3 class="heading-font text-xl font-bold text-gray-800">Juan David Torres</h3>
+                        <p class="text-taupe">Jefe de Obra</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <p class="text-lg text-gray-600 mb-6 max-w-2xl mx-auto">
+                    Además de nuestro equipo central, trabajamos con una red de especialistas y artesanos locales que comparten nuestra filosofía y estándares de calidad.
+                </p>
+                <a href="contacto.html" class="inline-block bg-olive text-white px-6 py-3 rounded-full font-medium hover-bg-olive transition">
+                    Únete a Nuestro Equipo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 md:py-24 bg-gray-50">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+                ¿Listo para Co-crear Tu Espacio con Alma?
+            </h2>
+            <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                Cuéntanos sobre tu proyecto y descubre cómo podemos transformar tus ideas en realidad.
+            </p>
+            <a href="contacto.html" class="inline-block bg-terracota text-white px-8 py-3 rounded-full font-medium hover-bg-terracota transition">
+                Agenda una Consulta
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div>
+                    <img src="https://via.placeholder.com/150x50?text=Habitta" alt="Habitta Logo" class="h-10 mb-6">
+                    <p class="text-gray-400 mb-4">
+                        Co-creamos espacios con alma, fusionando estética, funcionalidad y tu propósito vital.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-pinterest-p"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="heading-font text-lg font-bold mb-6">Servicios</h3>
+                    <ul class="space-y-3">
+                        <li><a href="servicios.html" class="text-gray-400 hover:text-white transition">Diseño Interior</a></li>
+                        <li><a href="servicios.html" class="text-gray-400 hover:text-white transition">Remodelación</a></li>
+                        <li><a href="servicios.html" class="text-gray-400 hover:text-white transition">Construcción</a></li>
+                        <li><a href="servicios.html" class="text-gray-400 hover:text-white transition">Acabados</a></li>
+                        <li><a href="servicios.html" class="text-gray-400 hover:text-white transition">Proyectos VIS</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="heading-font text-lg font-bold mb-6">Empresa</h3>
+                    <ul class="space-y-3">
+                        <li><a href="nosotros.html" class="text-gray-400 hover:text-white transition">Nosotros</a></li>
+                        <li><a href="proyectos.html" class="text-gray-400 hover:text-white transition">Proyectos</a></li>
+                        <li><a href="blog.html" class="text-gray-400 hover:text-white transition">Blog</a></li>
+                        <li><a href="testimonios.html" class="text-gray-400 hover:text-white transition">Testimonios</a></li>
+                        <li><a href="contacto.html" class="text-gray-400 hover:text-white transition">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="heading-font text-lg font-bold mb-6">Contacto</h3>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-olive"></i>
+                            <span>Calle 123 #45-67, Bogotá, Colombia</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-3 text-olive"></i>
+                            <a href="tel:+573001234567" class="hover:text-white transition">+57 300 123 4567</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-olive"></i>
+                            <a href="mailto:hola@habitta.co" class="hover:text-white transition">hola@habitta.co</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-clock mr-3 text-olive"></i>
+                            <span>Lun-Vie: 9am - 6pm</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm mb-4 md:mb-0">
+                    &copy; 2023 Habitta. Todos los derechos reservados.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-500 hover:text-white text-sm transition">Política de Privacidad</a>
+                    <a href="#" class="text-gray-500 hover:text-white text-sm transition">Términos y Condiciones</a>
+                    <a href="#" class="text-gray-500 hover:text-white text-sm transition">Mapa del Sitio</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        const openMenu = document.getElementById('openMenu');
+        const closeMenu = document.getElementById('closeMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        openMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('menu-closed');
+            mobileMenu.classList.add('menu-open');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('menu-open');
+            mobileMenu.classList.add('menu-closed');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (mobileMenu.classList.contains('menu-open')) {
+                        mobileMenu.classList.remove('menu-open');
+                        mobileMenu.classList.add('menu-closed');
+                        document.body.style.overflow = 'auto';
+                    }
+                }
+            });
+        });
+        
+        // Add shadow to header on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-lg');
+            } else {
+                header.classList.remove('shadow-lg');
+            }
+        });
+    </script>
+</body>
+</html>
