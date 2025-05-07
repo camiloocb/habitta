@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Servicio experto de diseño interior y arquitectura funcional en Colombia por Habitta. Co-creamos planos y conceptos para espacios con alma, funcionales y estéticos.">
+    <meta name="keywords" content="Diseño interior Colombia, arquitectura funcional Colombia, planificación de espacios, diseño de apartamentos Bogotá, diseño de oficinas Medellín, consultoría diseño interior, planos arquitectónicos, interiorismo funcional, conceptualización de espacios, diseño con propósito, Habitta diseño">
+    <title>Diseño Interior y Arquitectura Funcional: Creamos la Esencia de Tu Espacio en Colombia | Habitta</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .heading-font {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero-overlay {
+            background: rgba(0, 0, 0, 0.3);
+            background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.2) 100%);
+        }
+        
+        .text-olive {
+            color: #6b8e23;
+        }
+        
+        .bg-olive {
+            background-color: #6b8e23;
+        }
+        
+        .border-olive {
+            border-color: #6b8e23;
+        }
+        
+        .hover-bg-olive:hover {
+            background-color: #5a7a1e;
+        }
+        
+        .text-terracota {
+            color: #e2725b;
+        }
+        
+        .bg-terracota {
+            background-color: #e2725b;
+        }
+        
+        .hover-bg-terracota:hover {
+            background-color: #d1624b;
+        }
+        
+        .text-taupe {
+            color: #b8a99a;
+        }
+        
+        .bg-taupe {
+            background-color: #b8a99a;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-card {
+            transition: all 0.3s ease;
+        }
+        
+        .menu-open {
+            transform: translateX(0);
+        }
+        
+        .menu-closed {
+            transform: translateX(100%);
+        }
+        
+        .transition-slow {
+            transition: all 0.5s ease;
+        }
+        
+        .process-step {
+            position: relative;
+            padding-left: 3rem;
+        }
+        
+        .process-step:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background-color: #6b8e23;
+        }
+        
+        .process-step:after {
+            content: "";
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #6b8e23;
+        }
+        
+        .project-card {
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 z-50 bg-white w-full h-full menu-closed transition-slow">
+        <div class="container mx-auto px-6 py-8">
+            <div class="flex justify-between items-center mb-12">
+                <img src="https://via.placeholder.com/150x50?text=Habitta" alt="Habitta Logo" class="h-10">
+                <button id="closeMenu" class="text-gray-800 text-2xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <nav class="flex flex-col space-y-6">
+                <a href="index.html" class="text-gray-800 text-xl font-medium">Inicio</a>
+                <a href="nosotros.html" class="text-gray-800 text-xl font-medium">Nosotros</a>
+                <a href="servicios.html" class="text-olive text-xl font-medium">Servicios</a>
+                <a href="proyectos.html" class="text-gray-800 text-xl font-medium">Proyectos</a>
+                <a href="blog.html" class="text-gray-800 text-xl font-medium">Blog</a>
+                <a href="contacto.html" class="text-gray-800 text-xl font-medium">Contacto</a>
+            </nav>
+            <div class="mt-12">
+                <a href="contacto.html" class="inline-block bg-olive text-white px-6 py-3 rounded-full font-medium hover-bg-olive">Contacto</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-40 bg-white shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="flex items-center">
+                    <img src="https://via.placeholder.com/150x50?text=Habitta" alt="Habitta Logo" class="h-10">
+                </a>
+                
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-800 hover:text-olive transition">Inicio</a>
+                    <a href="nosotros.html" class="text-gray-800 hover:text-olive transition">Nosotros</a>
+                    <a href="servicios.html" class="text-olive font-medium">Servicios</a>
+                    <a href="proyectos.html" class="text-gray-800 hover:text-olive transition">Proyectos</a>
+                    <a href="blog.html" class="text-gray-800 hover:text-olive transition">Blog</a>
+                    <a href="contacto.html" class="text-gray-800 hover:text-olive transition">Contacto</a>
+                </nav>
+                
+                <div class="hidden md:block">
+                    <a href="contacto.html" class="bg-olive text-white px-6 py-2 rounded-full font-medium hover-bg-olive transition">Contacto</a>
+                </div>
+                
+                <button id="openMenu" class="md:hidden text-gray-800 text-xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative h-auto md:h-screen flex items-center">
+        <div class="absolute inset-0 hero-overlay z-10"></div>
+        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1700&q=80" 
+             alt="Diseño Interior y Arquitectura Funcional" 
+             class="absolute inset-0 w-full h-full object-cover">
+        
+        <div class="container mx-auto px-6 relative z-20 py-32 md:py-0">
+            <div class="max-w-2xl">
+                <h1 class="heading-font text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+                    Diseño Interior y Arquitectura Funcional
+                </h1>
+                <p class="text-xl md:text-2xl text-white mb-8">
+                    Creamos la esencia de tu espacio en Colombia, fusionando tus sueños con nuestra experticia para diseñar un plan maestro que combine funcionalidad, estética y propósito.
+                </p>
+                <a href="#contacto" class="inline-block bg-olive text-white px-8 py-3 rounded-full font-medium hover-bg-olive transition text-lg">
+                    Solicita tu Consulta de Diseño
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="py-16 md:py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Más que Planos: Diseñamos Bienestar, Funcionalidad y Valor para Tu Espacio
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Nuestro servicio de diseño interior y arquitectura funcional va más allá de la estética, creando espacios que mejoran tu calidad de vida y se adaptan perfectamente a tus necesidades.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Benefit 1 -->
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition">
+                    <div class="bg-olive text-white p-3 rounded-full w-14 h-14 flex items-center justify-center mb-6">
+                        <i class="fas fa-ruler-combined text-2xl"></i>
+                    </div>
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">Optimización Inteligente del Espacio</h3>
+                    <p class="text-gray-600">
+                        Cada centímetro cuenta. Diseñamos distribuciones que maximizan el potencial de tu espacio, eliminando áreas muertas y creando flujos naturales de movimiento.
+                    </p>
+                </div>
+                
+                <!-- Benefit 2 -->
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition">
+                    <div class="bg-terracota text-white p-3 rounded-full w-14 h-14 flex items-center justify-center mb-6">
+                        <i class="fas fa-home text-2xl"></i>
+                    </div>
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">Funcionalidad a la Medida de Tu Vida</h3>
+                    <p class="text-gray-600">
+                        Entendemos tus rutinas y hábitos para crear espacios que funcionen para ti, no al revés. Desde cocinas ergonómicas hasta áreas de trabajo productivas.
+                    </p>
+                </div>
+                
+                <!-- Benefit 3 -->
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition">
+                    <div class="bg-taupe text-white p-3 rounded-full w-14 h-14 flex items-center justify-center mb-6">
+                        <i class="fas fa-palette text-2xl"></i>
+                    </div>
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">Estética que Refleja Tu Identidad</h3>
+                    <p class="text-gray-600">
+                        Capturamos tu esencia en cada detalle. Seleccionamos colores, texturas y materiales que cuentan tu historia y crean ambientes que te representan.
+                    </p>
+                </div>
+                
+                <!-- Benefit 4 -->
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition">
+                    <div class="bg-olive text-white p-3 rounded-full w-14 h-14 flex items-center justify-center mb-6">
+                        <i class="fas fa-clock text-2xl"></i>
+                    </div>
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">Ahorro de Tiempo y Dinero</h3>
+                    <p class="text-gray-600">
+                        Un diseño bien planificado evita costosos errores y cambios durante la ejecución. Tomamos decisiones informadas que optimizan tu inversión.
+                    </p>
+                </div>
+                
+                <!-- Benefit 5 -->
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition">
+                    <div class="bg-terracota text-white p-3 rounded-full w-14 h-14 flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-line text-2xl"></i>
+                    </div>
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">Incremento del Valor de Tu Propiedad</h3>
+                    <p class="text-gray-600">
+                        Un diseño profesional no solo mejora tu vida diaria, sino que también aumenta el valor comercial de tu espacio, sea residencial o comercial.
+                    </p>
+                </div>
+                
+                <!-- Benefit 6 -->
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition">
+                    <div class="bg-taupe text-white p-3 rounded-full w-14 h-14 flex items-center justify-center mb-6">
+                        <i class="fas fa-lightbulb text-2xl"></i>
+                    </div>
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">Soluciones Innovadoras</h3>
+                    <p class="text-gray-600">
+                        Aplicamos las últimas tendencias en diseño y arquitectura para resolver desafíos espaciales con creatividad y eficiencia, siempre manteniendo la practicidad.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="py-16 md:py-24">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    De Tu Visión a la Realidad Tangible: Un Viaje de Diseño Colaborativo
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Nuestra metodología garantiza que cada etapa del proceso de diseño esté alineada con tus necesidades, presupuesto y estilo de vida.
+                </p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <!-- Step 1 -->
+                <div class="process-step mb-12 pl-8">
+                    <h3 class="heading-font text-2xl font-bold text-gray-800 mb-4">1. Consulta Profunda y Definición de Alcance</h3>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <p class="text-gray-600 mb-4">
+                            Comenzamos con sesiones de escucha activa donde exploramos tus necesidades, estilo de vida, gustos estéticos y presupuesto. Utilizamos herramientas especializadas para capturar toda la información relevante.
+                        </p>
+                        <ul class="list-disc pl-5 text-gray-600 space-y-2">
+                            <li>Análisis de necesidades y hábitos</li>
+                            <li>Definición de objetivos y prioridades</li>
+                            <li>Evaluación del espacio existente (mediciones y fotos)</li>
+                            <li>Establecimiento de presupuesto y cronograma</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="process-step mb-12 pl-8">
+                    <h3 class="heading-font text-2xl font-bold text-gray-800 mb-4">2. Conceptualización y Desarrollo Creativo</h3>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <p class="text-gray-600 mb-4">
+                            Transformamos tus ideas en conceptos tangibles. Creamos moodboards, esquemas de distribución y paletas de color que reflejan la esencia de tu proyecto.
+                        </p>
+                        <ul class="list-disc pl-5 text-gray-600 space-y-2">
+                            <li>Creación de moodboards conceptuales</li>
+                            <li>Propuestas iniciales de distribución espacial</li>
+                            <li>Selección de paletas de color y materiales</li>
+                            <li>Primeras aproximaciones estilísticas</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="process-step mb-12 pl-8">
+                    <h3 class="heading-font text-2xl font-bold text-gray-800 mb-4">3. Diseño Técnico y Planimetría Detallada</h3>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <p class="text-gray-600 mb-4">
+                            Desarrollamos la documentación técnica completa que servirá como guía para la ejecución. Cada detalle está cuidadosamente considerado y especificado.
+                        </p>
+                        <ul class="list-disc pl-5 text-gray-600 space-y-2">
+                            <li>Planos arquitectónicos detallados (plantas, alzados, cortes)</li>
+                            <li>Diagramas de iluminación y electricidad</li>
+                            <li>Especificaciones de mobiliario a medida</li>
+                            <li>Documentación de acabados y materiales</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Step 4 -->
+                <div class="process-step mb-12 pl-8">
+                    <h3 class="heading-font text-2xl font-bold text-gray-800 mb-4">4. Selección Estratégica de Acabados y Mobiliario</h3>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <p class="text-gray-600 mb-4">
+                            Guiamos la selección de cada elemento para asegurar cohesión estética y funcional. Consideramos durabilidad, mantenimiento y relación calidad-precio.
+                        </p>
+                        <ul class="list-disc pl-5 text-gray-600 space-y-2">
+                            <li>Asesoría en selección de materiales y acabados</li>
+                            <li>Recomendaciones de mobiliario y decoración</li>
+                            <li>Coordinación de proveedores y presupuestos</li>
+                            <li>Plan de implementación por fases</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Step 5 -->
+                <div class="process-step mb-12 pl-8">
+                    <h3 class="heading-font text-2xl font-bold text-gray-800 mb-4">5. Visualización Avanzada (Renders 3D)</h3>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <p class="text-gray-600 mb-4">
+                            Creamos representaciones fotorrealistas que te permiten "caminar" por tu espacio antes de que exista, facilitando la toma de decisiones y ajustes.
+                        </p>
+                        <ul class="list-disc pl-5 text-gray-600 space-y-2">
+                            <li>Renders 3D de alta calidad de los espacios clave</li>
+                            <li>Recorridos virtuales interactivos (opcional)</li>
+                            <li>Visualización de alternativas de diseño</li>
+                            <li>Herramientas para validar decisiones</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Step 6 -->
+                <div class="process-step pl-8">
+                    <h3 class="heading-font text-2xl font-bold text-gray-800 mb-4">6. Entrega de Proyecto y Siguientes Pasos</h3>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <p class="text-gray-600 mb-4">
+                            Entregamos un paquete completo de diseño listo para implementar, con opción de acompañamiento durante la ejecución si lo deseas.
+                        </p>
+                        <ul class="list-disc pl-5 text-gray-600 space-y-2">
+                            <li>Entrega de documentación técnica completa</li>
+                            <li>Sesiones de revisión y ajustes finales</li>
+                            <li>Recomendaciones para implementación por fases</li>
+                            <li>Opciones de supervisión durante la ejecución</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Applications Section -->
+    <section class="py-16 md:py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Soluciones de Diseño a la Medida: Residencial, Comercial y Corporativo
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Adaptamos nuestro enfoque de diseño a cada tipo de espacio, manteniendo siempre nuestro compromiso con la funcionalidad, estética y propósito.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Residential -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md">
+                    <div class="relative h-64">
+                        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                             alt="Diseño Interior Residencial" 
+                             class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <h3 class="heading-font text-2xl font-bold text-white">Diseño Interior Residencial</h3>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <p class="text-gray-600 mb-6">
+                            Transformamos apartamentos, casas y proyectos VIS en hogares que son verdaderos refugios personales. Cada espacio está diseñado para reflejar la personalidad de sus habitantes mientras optimiza la funcionalidad para la vida diaria.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-olive mr-2"></i>
+                                <span class="text-gray-700">Apartamentos y casas</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-olive mr-2"></i>
+                                <span class="text-gray-700">Proyectos VIS</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-olive mr-2"></i>
+                                <span class="text-gray-700">Remodelaciones</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-olive mr-2"></i>
+                                <span class="text-gray-700">Ampliaciones</span>
+                            </div>
+                        </div>
+                        <a href="proyectos-residenciales.html" class="inline-block border border-olive text-olive px-6 py-2 rounded-full font-medium hover:bg-olive hover:text-white transition">
+                            Ver Proyectos Residenciales
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Commercial -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md">
+                    <div class="relative h-64">
+                        <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                             alt="Diseño de Espacios Comerciales y Oficinas" 
+                             class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <h3 class="heading-font text-2xl font-bold text-white">Diseño de Espacios Comerciales y Oficinas</h3>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <p class="text-gray-600 mb-6">
+                            Creamos ambientes comerciales y corporativos que optimizan la productividad, reflejan la identidad de marca y mejoran la experiencia de clientes y empleados. Desde locales comerciales hasta grandes oficinas, diseñamos espacios que generan impacto.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-olive mr-2"></i>
+                                <span class="text-gray-700">Oficinas corporativas</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-olive mr-2"></i>
+                                <span class="text-gray-700">Locales comerciales</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-olive mr-2"></i>
+                                <span class="text-gray-700">Consultorios</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-olive mr-2"></i>
+                                <span class="text-gray-700">Espacios coworking</span>
+                            </div>
+                        </div>
+                        <a href="proyectos-comerciales.html" class="inline-block border border-olive text-olive px-6 py-2 rounded-full font-medium hover:bg-olive hover:text-white transition">
+                            Ver Proyectos Comerciales
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Gallery -->
+    <section class="py-16 md:py-24">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Inspírate: Ve Cómo el Diseño Inteligente Transforma Espacios
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Algunos de nuestros proyectos donde el diseño interior y la arquitectura funcional fueron protagonistas.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Project 1 -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-md">
+                    <div class="relative h-64">
+                        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                             alt="Apartamento Moderno en Bogotá" 
+                             class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                        <div class="absolute bottom-0 left-0 p-4">
+                            <span class="bg-olive text-white text-xs px-2 py-1 rounded-full">Residencial</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="heading-font text-xl font-bold text-gray-800 mb-2">Apartamento Moderno en Bogotá</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Rediseño completo de un apartamento de 85m² para una pareja joven, optimizando el espacio y creando ambientes multifuncionales.
+                        </p>
+                        <a href="proyecto-apartamento-bogota.html" class="text-olive font-medium hover:underline">Ver proyecto completo →</a>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-md">
+                    <div class="relative h-64">
+                        <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                             alt="Oficinas Corporativas en Medellín" 
+                             class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                        <div class="absolute bottom-0 left-0 p-4">
+                            <span class="bg-terracota text-white text-xs px-2 py-1 rounded-full">Comercial</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="heading-font text-xl font-bold text-gray-800 mb-2">Oficinas Corporativas en Medellín</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Diseño de 300m² para una empresa tecnológica, creando espacios colaborativos que reflejan su cultura innovadora.
+                        </p>
+                        <a href="proyecto-oficinas-medellin.html" class="text-olive font-medium hover:underline">Ver proyecto completo →</a>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-md">
+                    <div class="relative h-64">
+                        <img src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                             alt="Remodelación de Cocina Integral" 
+                             class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                        <div class="absolute bottom-0 left-0 p-4">
+                            <span class="bg-taupe text-white text-xs px-2 py-1 rounded-full">Residencial</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="heading-font text-xl font-bold text-gray-800 mb-2">Remodelación de Cocina Integral</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Transformación completa de una cocina en Bogotá, optimizando el espacio para una familia que ama cocinar y compartir.
+                        </p>
+                        <a href="proyecto-cocina-bogota.html" class="text-olive font-medium hover:underline">Ver proyecto completo →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="proyectos.html" class="inline-block bg-olive text-white px-8 py-3 rounded-full font-medium hover-bg-olive transition">
+                    Ver Más Proyectos de Diseño
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 md:py-24 bg-gray-900 text-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold mb-4">
+                    Lo Que Dicen Nuestros Clientes
+                </h2>
+                <p class="text-lg text-gray-300 max-w-3xl mx-auto">
+                    Experiencias reales de clientes que han transformado sus espacios con nuestro servicio de diseño.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Testimonial 1 -->
+                <div class="bg-gray-800 p-8 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="text-olive text-2xl mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic mb-6">
+                        "Habitta entendió perfectamente lo que necesitábamos para nuestro apartamento. Su enfoque en la funcionalidad hizo que cada centímetro fuera útil, y el resultado estético superó todas nuestras expectativas. Ahora tenemos un hogar que realmente refleja nuestra personalidad."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="bg-gray-700 rounded-full w-12 h-12 flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-gray-400"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">María Fernanda G.</h4>
+                            <p class="text-gray-400 text-sm">Apartamento en Bogotá</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-gray-800 p-8 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="text-olive text-2xl mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic mb-6">
+                        "Contratamos a Habitta para el diseño de nuestras nuevas oficinas. Su capacidad para traducir nuestra cultura corporativa en un espacio físico fue impresionante. Los empleados están encantados con los espacios colaborativos y la iluminación natural que incorporaron en el diseño."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="bg-gray-700 rounded-full w-12 h-12 flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-gray-400"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Carlos Andrés R.</h4>
+                            <p class="text-gray-400 text-sm">Oficinas en Medellín</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 md:py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Todo lo que Necesitas Saber Antes de Empezar Tu Proyecto de Diseño
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Respuestas a las preguntas más comunes sobre nuestro servicio de diseño interior y arquitectura funcional.
+                </p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <!-- FAQ 1 -->
+                <div class="mb-8">
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">¿Cuánto cuesta un proyecto de diseño interior con Habitta?</h3>
+                    <p class="text-gray-600">
+                        Los costos varían según la complejidad del proyecto, los metros cuadrados y los servicios específicos requeridos. Ofrecemos diferentes paquetes adaptados a diversas necesidades y presupuestos. Durante la consulta inicial, analizamos tus requerimientos y te presentamos opciones claras con sus respectivos costos.
+                    </p>
+                </div>
+                
+                <!-- FAQ 2 -->
+                <div class="mb-8">
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">¿Qué incluye exactamente la entrega de planos y diseño?</h3>
+                    <p class="text-gray-600">
+                        Nuestra entrega típica incluye: planos arquitectónicos detallados (plantas, alzados, cortes), planos de iluminación y electricidad, especificaciones de materiales y acabados, moodboards conceptuales, renders 3D de espacios clave, y en algunos casos, lista de mobiliario recomendado. Todo documentado en formato físico y digital.
+                    </p>
+                </div>
+                
+                <!-- FAQ 3 -->
+                <div class="mb-8">
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">¿Pueden trabajar con un presupuesto limitado para el diseño?</h3>
+                    <p class="text-gray-600">
+                        ¡Absolutamente! Uno de nuestros principios es el diseño consciente del presupuesto. Podemos priorizar elementos clave, sugerir alternativas económicas sin sacrificar calidad, y diseñar por fases de implementación. La creatividad florece con limitaciones, y sabemos cómo maximizar tu inversión.
+                    </p>
+                </div>
+                
+                <!-- FAQ 4 -->
+                <div class="mb-8">
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">¿Cómo se diferencia el diseño interior de la decoración?</h3>
+                    <p class="text-gray-600">
+                        Mientras la decoración se enfoca en aspectos superficiales como colores y mobiliario, el diseño interior que practicamos en Habitta va mucho más allá: replanteamos distribuciones, optimizamos flujos, resolvemos problemas funcionales, y creamos espacios desde su estructura básica. La decoración es solo una parte del proceso integral de diseño.
+                    </p>
+                </div>
+                
+                <!-- FAQ 5 -->
+                <div class="mb-8">
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">¿Qué pasa si quiero hacer cambios durante el proceso de diseño?</h3>
+                    <p class="text-gray-600">
+                        Los cambios son normales y esperados en un proceso creativo colaborativo. Incluimos un número determinado de revisiones en nuestros paquetes, y para cambios mayores después de ciertas etapas, evaluamos el impacto en tiempo y costos. Nuestra metodología flexible permite ajustes sin comprometer la calidad del resultado final.
+                    </p>
+                </div>
+                
+                <!-- FAQ 6 -->
+                <div>
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">¿Ofrecen servicio de ejecución después del diseño?</h3>
+                    <p class="text-gray-600">
+                        Sí, podemos acompañarte en la implementación del diseño a través de nuestros servicios de remodelación o construcción. Sin embargo, el proyecto de diseño también puede ser ejecutado por otros profesionales si lo prefieres. En cualquier caso, nos aseguramos de que la documentación sea clara y completa para una correcta ejecución.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contacto" class="py-16 md:py-24 bg-olive text-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold mb-6">
+                    ¿Listo para Dar el Primer Paso Hacia el Espacio que Sueñas?
+                </h2>
+                <p class="text-xl mb-8 max-w-3xl mx-auto">
+                    Iniciemos la conversación sobre tu proyecto de diseño. Cuéntanos tus ideas y te guiaremos en el proceso para hacerlas realidad.
+                </p>
+                
+                <div class="bg-white rounded-xl p-8 text-left max-w-2xl mx-auto">
+                    <h3 class="heading-font text-2xl font-bold text-gray-800 mb-6 text-center">
+                        Solicita tu Consulta de Diseño
+                    </h3>
+                    <form class="space-y-4">
+                        <div>
+                            <label for="name" class="block text-gray-700 mb-2">Nombre completo</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-olive focus:border-olive">
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-gray-700 mb-2">Correo electrónico</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-olive focus:border-olive">
+                        </div>
+                        
+                        <div>
+                            <label for="phone" class="block text-gray-700 mb-2">Teléfono</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-olive focus:border-olive">
+                        </div>
+                        
+                        <div>
+                            <label for="project-type" class="block text-gray-700 mb-2">Tipo de proyecto</label>
+                            <select id="project-type" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-olive focus:border-olive">
+                                <option value="">Selecciona una opción</option>
+                                <option value="residencial">Residencial (Apartamento/Casa)</option>
+                                <option value="comercial">Comercial (Oficina/Local)</option>
+                                <option value="vis">Proyecto VIS</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="size" class="block text-gray-700 mb-2">Tamaño aproximado (m²)</label>
+                            <input type="text" id="size" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-olive focus:border-olive">
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-gray-700 mb-2">¿Qué esperas lograr con el diseño de tu espacio?</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-olive focus:border-olive"></textarea>
+                        </div>
+                        
+                        <div class="pt-2">
+                            <button type="submit" class="w-full bg-olive text-white px-6 py-3 rounded-full font-medium hover-bg-olive border-2 border-white transition">
+                                Enviar Solicitud
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <p class="text-white mt-8 text-lg">
+                    ¿Prefieres hablar directamente? Llámanos al <a href="tel:+573001234567" class="font-bold underline">+57 300 123 4567</a> o escríbenos a <a href="mailto:diseno@habitta.co" class="font-bold underline">diseno@habitta.co</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div>
+                    <img src="https://via.placeholder.com/150x50?text=Habitta" alt="Habitta Logo" class="h-10 mb-6">
+                    <p class="text-gray-400 mb-4">
+                        Co-creamos espacios con alma, fusionando estética, funcionalidad y tu propósito vital.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-pinterest-p"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="heading-font text-lg font-bold mb-6">Servicios</h3>
+                    <ul class="space-y-3">
+                        <li><a href="servicio-diseno.html" class="text-gray-400 hover:text-white transition">Diseño Interior</a></li>
+                        <li><a href="servicio-remodelacion.html" class="text-gray-400 hover:text-white transition">Remodelación</a></li>
+                        <li><a href="servicio-construccion.html" class="text-gray-400 hover:text-white transition">Construcción</a></li>
+                        <li><a href="servicio-acabados.html" class="text-gray-400 hover:text-white transition">Acabados</a></li>
+                        <li><a href="servicios.html" class="text-gray-400 hover:text-white transition">Proyectos VIS</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="heading-font text-lg font-bold mb-6">Empresa</h3>
+                    <ul class="space-y-3">
+                        <li><a href="nosotros.html" class="text-gray-400 hover:text-white transition">Nosotros</a></li>
+                        <li><a href="proyectos.html" class="text-gray-400 hover:text-white transition">Proyectos</a></li>
+                        <li><a href="blog.html" class="text-gray-400 hover:text-white transition">Blog</a></li>
+                        <li><a href="testimonios.html" class="text-gray-400 hover:text-white transition">Testimonios</a></li>
+                        <li><a href="contacto.html" class="text-gray-400 hover:text-white transition">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="heading-font text-lg font-bold mb-6">Contacto</h3>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-olive"></i>
+                            <span>Calle 123 #45-67, Bogotá, Colombia</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-3 text-olive"></i>
+                            <a href="tel:+573001234567" class="hover:text-white transition">+57 300 123 4567</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-olive"></i>
+                            <a href="mailto:hola@habitta.co" class="hover:text-white transition">hola@habitta.co</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-clock mr-3 text-olive"></i>
+                            <span>Lun-Vie: 9am - 6pm</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm mb-4 md:mb-0">
+                    &copy; 2023 Habitta. Todos los derechos reservados.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-500 hover:text-white text-sm transition">Política de Privacidad</a>
+                    <a href="#" class="text-gray-500 hover:text-white text-sm transition">Términos y Condiciones</a>
+                    <a href="#" class="text-gray-500 hover:text-white text-sm transition">Mapa del Sitio</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        const openMenu = document.getElementById('openMenu');
+        const closeMenu = document.getElementById('closeMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        openMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('menu-closed');
+            mobileMenu.classList.add('menu-open');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('menu-open');
+            mobileMenu.classList.add('menu-closed');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (mobileMenu.classList.contains('menu-open')) {
+                        mobileMenu.classList.remove('menu-open');
+                        mobileMenu.classList.add('menu-closed');
+                        document.body.style.overflow = 'auto';
+                    }
+                }
+            });
+        });
+        
+        // Add shadow to header on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-lg');
+            } else {
+                header.classList.remove('shadow-lg');
+            }
+        });
+    </script>
+</body>
+</html>
