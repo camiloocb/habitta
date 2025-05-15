@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Servicio de remodelación y adecuación de Habitta en Colombia. Transforma tu espacio con diseño, funcionalidad y a tu medida. Remodelaciones integrales, cocinas, baños y más.">
+    <meta name="keywords" content="Remodelación apartamentos Colombia, adecuación oficinas Bogotá, reforma cocinas, renovación baños Medellín, remodelar casa, remodelación integral vivienda, adecuación locales comerciales, remodelación con estilo, transformar espacios">
+    <title>Remodelación y Adecuación: Dale Nueva Vida a Tu Espacio con Habitta</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .heading-font {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero-overlay {
+            background: rgba(0, 0, 0, 0.3);
+            background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.2) 100%);
+        }
+        
+        .text-olive {
+            color: #6b8e23;
+        }
+        
+        .bg-olive {
+            background-color: #6b8e23;
+        }
+        
+        .border-olive {
+            border-color: #6b8e23;
+        }
+        
+        .hover-bg-olive:hover {
+            background-color: #5a7a1e;
+        }
+        
+        .text-terracota {
+            color: #e2725b;
+        }
+        
+        .bg-terracota {
+            background-color: #e2725b;
+        }
+        
+        .hover-bg-terracota:hover {
+            background-color: #d1624b;
+        }
+        
+        .text-taupe {
+            color: #b8a99a;
+        }
+        
+        .bg-taupe {
+            background-color: #b8a99a;
+        }
+        
+        .process-step:hover .step-icon {
+            transform: scale(1.1);
+            background-color: #6b8e23;
+            color: white;
+        }
+        
+        .step-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-item:not(:last-child):after {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 32px;
+            height: calc(100% - 32px);
+            width: 2px;
+            background-color: #6b8e23;
+        }
+        
+        .menu-open {
+            transform: translateX(0);
+        }
+        
+        .menu-closed {
+            transform: translateX(100%);
+        }
+        
+        .transition-slow {
+            transition: all 0.5s ease;
+        }
+        
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        
+        .project-overlay {
+            transition: all 0.3s ease;
+            background: rgba(107, 142, 35, 0.9);
+        }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .accordion-content.active {
+            max-height: 500px;
+        }
+        
+        .before-after-container {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+        
+        .before-image, .after-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .after-image {
+            width: 50%;
+        }
+        
+        .slider-handle {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: white;
+            cursor: ew-resize;
+            transform: translateX(-50%);
+        }
+        
+        .slider-handle::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: white;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+        
+        .slider-handle::before {
+            content: '↔';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            color: #6b8e23;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 z-50 bg-white w-full h-full menu-closed transition-slow">
+        <div class="container mx-auto px-6 py-8">
+            <div class="flex justify-between items-center mb-12">
+                <img src="https://via.placeholder.com/150x50?text=Habitta" alt="Habitta Logo" class="h-10">
+                <button id="closeMenu" class="text-gray-800 text-2xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <nav class="flex flex-col space-y-6">
+                <a href="index.html" class="text-gray-800 text-xl font-medium">Inicio</a>
+                <a href="nosotros.html" class="text-gray-800 text-xl font-medium">Nosotros</a>
+                <a href="servicios.html" class="text-olive text-xl font-medium">Servicios</a>
+                <a href="proyectos.html" class="text-gray-800 text-xl font-medium">Proyectos</a>
+                <a href="blog.html" class="text-gray-800 text-xl font-medium">Blog</a>
+                <a href="contacto.html" class="text-gray-800 text-xl font-medium">Contacto</a>
+            </nav>
+            <div class="mt-12">
+                <a href="contacto.html" class="inline-block bg-olive text-white px-6 py-3 rounded-full font-medium hover-bg-olive">Contacto</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-40 bg-white shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="flex items-center">
+                    <img src="https://via.placeholder.com/150x50?text=Habitta" alt="Habitta Logo" class="h-10">
+                </a>
+                
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-800 hover:text-olive transition">Inicio</a>
+                    <a href="nosotros.html" class="text-gray-800 hover:text-olive transition">Nosotros</a>
+                    <a href="servicios.html" class="text-olive font-medium">Servicios</a>
+                    <a href="proyectos.html" class="text-gray-800 hover:text-olive transition">Proyectos</a>
+                    <a href="blog.html" class="text-gray-800 hover:text-olive transition">Blog</a>
+                    <a href="contacto.html" class="text-gray-800 hover:text-olive transition">Contacto</a>
+                </nav>
+                
+                <div class="hidden md:block">
+                    <a href="contacto.html" class="bg-olive text-white px-6 py-2 rounded-full font-medium hover-bg-olive transition">Contacto</a>
+                </div>
+                
+                <button id="openMenu" class="md:hidden text-gray-800 text-xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative h-96 flex items-center">
+        <div class="absolute inset-0 hero-overlay z-10"></div>
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" 
+             alt="Proceso de remodelación" 
+             class="absolute inset-0 w-full h-full object-cover">
+        
+        <div class="container mx-auto px-6 relative z-20">
+            <h1 class="heading-font text-4xl md:text-5xl font-bold text-white mb-4">
+                Remodelación y Adecuación
+            </h1>
+            <p class="text-xl text-white max-w-2xl">
+                Dale nueva vida a tu espacio: transformamos hogares y oficinas con diseño, funcionalidad y propósito. Más que un cambio estético, creamos ambientes que mejoran tu calidad de vida.
+            </p>
+        </div>
+    </section>
+
+    <!-- Services Scope Section -->
+    <section class="py-16 md:py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Soluciones a la Medida: Desde una Reforma Integral hasta el Detalle que Marca la Diferencia
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Adaptamos nuestro servicio a tus necesidades específicas, ya sea que busques una transformación completa o renovar áreas clave de tu espacio.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Service 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-start">
+                        <div class="bg-olive text-white p-4 rounded-full w-16 h-16 flex items-center justify-center mr-6">
+                            <i class="fas fa-home text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">
+                                Remodelación Integral de Viviendas
+                            </h3>
+                            <p class="text-gray-600">
+                                Transformación completa de apartamentos y casas. Reconfiguramos espacios, actualizamos instalaciones y creamos ambientes que se adaptan a tu estilo de vida.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-start">
+                        <div class="bg-olive text-white p-4 rounded-full w-16 h-16 flex items-center justify-center mr-6">
+                            <i class="fas fa-utensils text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">
+                                Remodelación de Cocinas y Baños
+                            </h3>
+                            <p class="text-gray-600">
+                                Renovación de las áreas más importantes del hogar. Combinamos diseño, funcionalidad y tecnología para crear espacios que hacen tu vida más fácil y placentera.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-start">
+                        <div class="bg-olive text-white p-4 rounded-full w-16 h-16 flex items-center justify-center mr-6">
+                            <i class="fas fa-building text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">
+                                Adecuación de Oficinas y Locales Comerciales
+                            </h3>
+                            <p class="text-gray-600">
+                                Diseñamos espacios de trabajo que impulsan la productividad y reflejan la identidad de tu marca. Desde pequeñas oficinas hasta locales comerciales completos.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-start">
+                        <div class="bg-olive text-white p-4 rounded-full w-16 h-16 flex items-center justify-center mr-6">
+                            <i class="fas fa-expand text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">
+                                Optimización de Espacios Pequeños
+                            </h3>
+                            <p class="text-gray-600">
+                                Soluciones inteligentes para apartamentos pequeños y VIS. Maximizamos cada centímetro con muebles multifuncionales, almacenamiento integrado y diseño estratégico.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="py-16 md:py-24">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Más que una Reforma: Invierte en Tu Bienestar, Calidad de Vida y en el Valor de Tu Propiedad
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Remodelar con Habitta no solo transforma tu espacio, sino que también aporta beneficios tangibles a tu vida diaria y a tu patrimonio.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Benefit 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-md text-center">
+                    <div class="bg-olive text-white p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-vector-square text-2xl"></i>
+                    </div>
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">
+                        Espacios Más Funcionales
+                    </h3>
+                    <p class="text-gray-600">
+                        Rediseñamos la distribución para que cada área cumpla un propósito claro y se adapte perfectamente a tus rutinas y necesidades.
+                    </p>
+                </div>
+                
+                <!-- Benefit 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-md text-center">
+                    <div class="bg-olive text-white p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-paint-brush text-2xl"></i>
+                    </div>
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">
+                        Diseño Personalizado
+                    </h3>
+                    <p class="text-gray-600">
+                        Creamos ambientes que reflejan tu personalidad o la identidad de tu negocio, con atención a cada detalle estético y funcional.
+                    </p>
+                </div>
+                
+                <!-- Benefit 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-md text-center">
+                    <div class="bg-olive text-white p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-lightbulb text-2xl"></i>
+                    </div>
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">
+                        Optimización de Luz Natural
+                    </h3>
+                    <p class="text-gray-600">
+                        Mejoramos la iluminación natural y artificial para crear ambientes más saludables, acogedores y energéticamente eficientes.
+                    </p>
+                </div>
+                
+                <!-- Benefit 4 -->
+                <div class="bg-white p-8 rounded-lg shadow-md text-center">
+                    <div class="bg-olive text-white p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-chart-line text-2xl"></i>
+                    </div>
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">
+                        Aumento del Valor de la Propiedad
+                    </h3>
+                    <p class="text-gray-600">
+                        Una remodelación bien planificada puede incrementar significativamente el valor comercial de tu inmueble.
+                    </p>
+                </div>
+                
+                <!-- Benefit 5 -->
+                <div class="bg-white p-8 rounded-lg shadow-md text-center">
+                    <div class="bg-olive text-white p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-clock text-2xl"></i>
+                    </div>
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">
+                        Ahorro de Tiempo y Estrés
+                    </h3>
+                    <p class="text-gray-600">
+                        Nos encargamos de todo el proceso, desde los permisos hasta la selección de materiales, para que tú solo disfrutes del resultado.
+                    </p>
+                </div>
+                
+                <!-- Benefit 6 -->
+                <div class="bg-white p-8 rounded-lg shadow-md text-center">
+                    <div class="bg-olive text-white p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-leaf text-2xl"></i>
+                    </div>
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">
+                        Materiales Sostenibles
+                    </h3>
+                    <p class="text-gray-600">
+                        Ofrecemos opciones eco-amigables que reducen el impacto ambiental sin sacrificar calidad ni diseño.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="py-16 md:py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Tu Proyecto en Buenas Manos: Un Proceso Paso a Paso Diseñado para Tu Tranquilidad
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Nuestra metodología garantiza que cada remodelación sea un éxito, cumpliendo con tus expectativas de calidad, tiempo y presupuesto.
+                </p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <!-- Process Step 1 -->
+                <div class="relative process-step pl-16 pb-12">
+                    <div class="absolute left-0 top-0 flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 text-olive step-icon">
+                        <i class="fas fa-comments text-xl"></i>
+                    </div>
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-2">
+                        1. Escucha Activa y Definición del Proyecto
+                    </h3>
+                    <p class="text-gray-600">
+                        Sesiones detalladas para entender tus necesidades, estilo de vida, gustos y presupuesto. Definimos juntos el alcance del proyecto y establecemos expectativas claras.
+                    </p>
+                </div>
+                
+                <!-- Process Step 2 -->
+                <div class="relative process-step pl-16 pb-12">
+                    <div class="absolute left-0 top-0 flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 text-olive step-icon">
+                        <i class="fas fa-pencil-ruler text-xl"></i>
+                    </div>
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-2">
+                        2. Diseño y Planificación Detallada
+                    </h3>
+                    <p class="text-gray-600">
+                        Desarrollo de planos técnicos, selección de materiales y creación de renders 3D que te permitirán visualizar el resultado final antes de comenzar la obra.
+                    </p>
+                </div>
+                
+                <!-- Process Step 3 -->
+                <div class="relative process-step pl-16 pb-12">
+                    <div class="absolute left-0 top-0 flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 text-olive step-icon">
+                        <i class="fas fa-file-invoice-dollar text-xl"></i>
+                    </div>
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-2">
+                        3. Presupuesto Transparente y Adaptado
+                    </h3>
+                    <p class="text-gray-600">
+                        Presentación de un presupuesto detallado y sin sorpresas. Trabajamos contigo para optimizar recursos sin comprometer la calidad del proyecto.
+                    </p>
+                </div>
+                
+                <!-- Process Step 4 -->
+                <div class="relative process-step pl-16 pb-12">
+                    <div class="absolute left-0 top-0 flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 text-olive step-icon">
+                        <i class="fas fa-tasks text-xl"></i>
+                    </div>
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-2">
+                        4. Gestión Eficiente del Proyecto
+                    </h3>
+                    <p class="text-gray-600">
+                        Coordinamos todos los aspectos de la remodelación: permisos, compra de materiales, contratación de especialistas y cronograma de trabajo.
+                    </p>
+                </div>
+                
+                <!-- Process Step 5 -->
+                <div class="relative process-step pl-16 pb-12">
+                    <div class="absolute left-0 top-0 flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 text-olive step-icon">
+                        <i class="fas fa-hammer text-xl"></i>
+                    </div>
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-2">
+                        5. Ejecución con Calidad y Atención al Detalle
+                    </h3>
+                    <p class="text-gray-600">
+                        Nuestro equipo de obra calificado lleva a cabo la remodelación con los más altos estándares de calidad. Te mantenemos informado en cada etapa.
+                    </p>
+                </div>
+                
+                <!-- Process Step 6 -->
+                <div class="relative pl-16">
+                    <div class="absolute left-0 top-0 flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 text-olive step-icon">
+                        <i class="fas fa-home text-xl"></i>
+                    </div>
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-2">
+                        6. Entrega y Satisfacción del Cliente
+                    </h3>
+                    <p class="text-gray-600">
+                        Revisión final conjunta y entrega de garantías. Nos aseguramos de que cada detalle cumpla con tus expectativas antes de dar por concluido el proyecto.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before & After Section -->
+    <section class="py-16 md:py-24">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    La Transformación es Posible: Inspírate con Nuestros Proyectos
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Descubre cómo hemos transformado espacios similares al tuyo en ambientes completamente renovados y llenos de vida.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Project 1 -->
+                <div>
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-4">Remodelación de Cocina Integral</h3>
+                    <div class="before-after-container rounded-lg overflow-hidden shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1600566332599-64e8e813c9e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" 
+                             alt="Cocina antes" 
+                             class="before-image">
+                        <img src="https://images.unsplash.com/photo-1600585152225-14cd673c97f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" 
+                             alt="Cocina después" 
+                             class="after-image">
+                        <div class="slider-handle"></div>
+                    </div>
+                    <p class="mt-4 text-gray-600">Transformación completa de cocina obsoleta en espacio moderno y funcional con isla central y electrodomésticos de última generación.</p>
+                </div>
+                
+                <!-- Project 2 -->
+                <div>
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-4">Adecuación de Oficina Corporativa</h3>
+                    <div class="before-after-container rounded-lg overflow-hidden shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1738&q=80" 
+                             alt="Oficina antes" 
+                             class="before-image">
+                        <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" 
+                             alt="Oficina después" 
+                             class="after-image">
+                        <div class="slider-handle"></div>
+                    </div>
+                    <p class="mt-4 text-gray-600">Renovación de espacio corporativo para fomentar la colaboración y el bienestar laboral, con áreas de trabajo flexibles y lounge.</p>
+                </div>
+                
+                <!-- Project 3 -->
+                <div>
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-4">Remodelación de Apartamento Pequeño</h3>
+                    <div class="before-after-container rounded-lg overflow-hidden shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" 
+                             alt="Apartamento antes" 
+                             class="before-image">
+                        <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" 
+                             alt="Apartamento después" 
+                             class="after-image">
+                        <div class="slider-handle"></div>
+                    </div>
+                    <p class="mt-4 text-gray-600">Optimización de espacio en apartamento de 50m² con soluciones de almacenamiento integrado y distribución inteligente.</p>
+                </div>
+                
+                <!-- Project 4 -->
+                <div>
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-4">Renovación de Baño Principal</h3>
+                    <div class="before-after-container rounded-lg overflow-hidden shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1564540583246-934409427776?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1742&q=80" 
+                             alt="Baño antes" 
+                             class="before-image">
+                        <img src="https://images.unsplash.com/photo-1600566338805-d355b39f3618?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" 
+                             alt="Baño después" 
+                             class="after-image">
+                        <div class="slider-handle"></div>
+                    </div>
+                    <p class="mt-4 text-gray-600">Transformación de baño anticuado en spa moderno con ducha a ras de piso, iluminación LED y materiales de alta gama.</p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="proyectos.html" class="inline-block bg-olive text-white px-8 py-3 rounded-full font-medium hover-bg-olive transition">
+                    Ver Más Proyectos de Remodelación
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 md:py-24 bg-olive text-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold mb-4">
+                    Sus Voces, Nuestra Mejor Carta de Presentación
+                </h2>
+                <p class="text-xl max-w-3xl mx-auto">
+                    Lo que nuestros clientes dicen sobre su experiencia de remodelación con Habitta
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Testimonial 1 -->
+                <div class="bg-white bg-opacity-10 p-8 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="text-white text-2xl mr-2">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <div class="flex-1">
+                            <p class="italic">
+                                "Remodelamos nuestra cocina con Habitta y el resultado superó todas nuestras expectativas. El proceso fue transparente, sin sorpresas, y el equipo respetó nuestro presupuesto. Ahora tenemos un espacio que hace que cocinar sea un placer."
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=776&q=80" 
+                             alt="Cliente satisfecho" 
+                             class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <p class="font-medium">Ana María Restrepo</p>
+                            <p class="text-sm opacity-80">Remodelación de Cocina, Bogotá</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-white bg-opacity-10 p-8 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="text-white text-2xl mr-2">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <div class="flex-1">
+                            <p class="italic">
+                                "Necesitábamos modernizar nuestras oficinas para adaptarnos al trabajo híbrido. Habitta entendió perfectamente nuestras necesidades y creó un espacio flexible que fomenta la colaboración. La gestión del proyecto fue impecable, con mínimas interrupciones a nuestras operaciones."
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
+                             alt="Cliente satisfecho" 
+                             class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <p class="font-medium">Carlos Andrés Gómez</p>
+                            <p class="text-sm opacity-80">Adecuación de Oficinas, Medellín</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-white bg-opacity-10 p-8 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="text-white text-2xl mr-2">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <div class="flex-1">
+                            <p class="italic">
+                                "Compré un apartamento VIS pequeño y Habitta lo transformó completamente. Con soluciones inteligentes de almacenamiento y una distribución optimizada, ahora parece mucho más amplio. El equipo fue muy respetuoso con mi presupuesto limitado."
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <img src="https://images.unsplash.com/photo-1554727242-741c14fa561c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
+                             alt="Cliente satisfecho" 
+                             class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <p class="font-medium">Laura Torres</p>
+                            <p class="text-sm opacity-80">Remodelación de Apartamento VIS, Cali</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 4 -->
+                <div class="bg-white bg-opacity-10 p-8 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="text-white text-2xl mr-2">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <div class="flex-1">
+                            <p class="italic">
+                                "La remodelación de nuestro baño principal fue una experiencia excelente. Habitta nos guió en la selección de materiales que combinaban durabilidad con diseño. El proyecto terminó exactamente en el tiempo estimado y ahora tenemos un baño que parece de hotel 5 estrellas."
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=776&q=80" 
+                             alt="Cliente satisfecho" 
+                             class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <p class="font-medium">Juan Pablo Rodríguez</p>
+                            <p class="text-sm opacity-80">Renovación de Baño, Barranquilla</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 md:py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Resuelve Tus Dudas: Lo que Necesitas Saber Antes de Empezar tu Remodelación
+                </h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Respuestas a las preguntas más frecuentes sobre nuestros servicios de remodelación
+                </p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <!-- FAQ Item 1 -->
+                <div class="mb-6 border-b border-gray-200 pb-6">
+                    <button class="accordion-toggle flex justify-between items-center w-full text-left">
+                        <h3 class="heading-font text-xl font-bold text-gray-800">
+                            ¿Cuánto tiempo suele durar una remodelación con Habitta?
+                        </h3>
+                        <i class="fas fa-chevron-down text-olive transition-transform transform"></i>
+                    </button>
+                    <div class="accordion-content mt-4">
+                        <p class="text-gray-600">
+                            El tiempo varía según el alcance del proyecto. Una remodelación de cocina o baño puede tomar entre 3-6 semanas, mientras que una remodelación integral de vivienda puede durar de 2 a 4 meses. Durante la consulta inicial, evaluamos tu proyecto y te proporcionamos un cronograma estimado detallado.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="mb-6 border-b border-gray-200 pb-6">
+                    <button class="accordion-toggle flex justify-between items-center w-full text-left">
+                        <h3 class="heading-font text-xl font-bold text-gray-800">
+                            ¿Cómo se manejan los imprevistos o cambios durante la obra?
+                        </h3>
+                        <i class="fas fa-chevron-down text-olive transition-transform transform"></i>
+                    </button>
+                    <div class="accordion-content mt-4">
+                        <p class="text-gray-600">
+                            Nuestro equipo está preparado para manejar imprevistos de manera profesional. Si encontramos alguna situación no prevista (como daños estructurales ocultos), te lo comunicamos inmediatamente junto con opciones de solución. Para cambios solicitados por el cliente, evaluamos el impacto en tiempo y costo antes de proceder.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="mb-6 border-b border-gray-200 pb-6">
+                    <button class="accordion-toggle flex justify-between items-center w-full text-left">
+                        <h3 class="heading-font text-xl font-bold text-gray-800">
+                            ¿Puedo seguir utilizando parte de mi propiedad durante la remodelación?
+                        </h3>
+                        <i class="fas fa-chevron-down text-olive transition-transform transform"></i>
+                    </button>
+                    <div class="accordion-content mt-4">
+                        <p class="text-gray-600">
+                            En muchos casos sí, especialmente en remodelaciones por áreas. Planificamos el trabajo por etapas para minimizar las molestias. En remodelaciones integrales, recomendamos buscar alojamiento temporal. Para negocios, desarrollamos planes que permitan continuar operando durante la obra.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="mb-6 border-b border-gray-200 pb-6">
+                    <button class="accordion-toggle flex justify-between items-center w-full text-left">
+                        <h3 class="heading-font text-xl font-bold text-gray-800">
+                            ¿Qué tipo de garantía ofrecen sobre los trabajos de remodelación?
+                        </h3>
+                        <i class="fas fa-chevron-down text-olive transition-transform transform"></i>
+                    </button>
+                    <div class="accordion-content mt-4">
+                        <p class="text-gray-600">
+                            Ofrecemos garantía de 1 año por defectos de mano de obra y materiales. Para instalaciones eléctricas y de fontanería, la garantía es de 2 años. Todos los materiales tienen sus propias garantías del fabricante que te haremos llegar. Documentamos todo en un contrato claro.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 5 -->
+                <div class="mb-6 border-b border-gray-200 pb-6">
+                    <button class="accordion-toggle flex justify-between items-center w-full text-left">
+                        <h3 class="heading-font text-xl font-bold text-gray-800">
+                            ¿Cómo me ayudan a seleccionar materiales y acabados que se ajusten a mi presupuesto?
+                        </h3>
+                        <i class="fas fa-chevron-down text-olive transition-transform transform"></i>
+                    </button>
+                    <div class="accordion-content mt-4">
+                        <p class="text-gray-600">
+                            Te guiamos en showrooms y proveedores confiables donde podrás ver y comparar opciones. Conocemos el mercado y te recomendamos materiales que ofrecen el mejor equilibrio entre calidad, durabilidad y precio. Siempre respetamos tu presupuesto y priorizamos las áreas de mayor impacto.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 6 -->
+                <div class="mb-6 border-b border-gray-200 pb-6">
+                    <button class="accordion-toggle flex justify-between items-center w-full text-left">
+                        <h3 class="heading-font text-xl font-bold text-gray-800">
+                            ¿Qué permisos se necesitan para una remodelación en Bogotá/Medellín/Cali?
+                        </h3>
+                        <i class="fas fa-chevron-down text-olive transition-transform transform"></i>
+                    </button>
+                    <div class="accordion-content mt-4">
+                        <p class="text-gray-600">
+                            Los requisitos varían según el municipio y el tipo de remodelación. Para cambios estructurales o modificaciones en instalaciones, generalmente se requieren permisos. Nos encargamos de toda la gestión de permisos y trámites ante las autoridades competentes, asegurando que tu proyecto cumpla con todas las normativas.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 7 -->
+                <div class="mb-6">
+                    <button class="accordion-toggle flex justify-between items-center w-full text-left">
+                        <h3 class="heading-font text-xl font-bold text-gray-800">
+                            ¿Cuál es el primer paso para iniciar un proyecto de remodelación con ustedes?
+                        </h3>
+                        <i class="fas fa-chevron-down text-olive transition-transform transform"></i>
+                    </button>
+                    <div class="accordion-content mt-4">
+                        <p class="text-gray-600">
+                            El primer paso es agendar una consulta gratuita (presencial o virtual) donde discutiremos tus ideas, necesidades y presupuesto. Luego realizamos un diagnóstico del espacio y te presentamos una propuesta preliminar con alcance, cronograma y costos estimados. Solo cuando estés completamente satisfecho con la propuesta, firmamos el contrato y comenzamos el proyecto.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 md:py-24 bg-terracota text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="heading-font text-3xl md:text-4xl font-bold mb-6">
+                ¿Listo para Redescubrir el Potencial de Tu Espacio?
+            </h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">
+                Imagina tu hogar u oficina renovados: ¡Hagámoslo realidad juntos! Agenda una consulta gratuita para discutir tu proyecto de remodelación.
+            </p>
+            
+            <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-8 text-left text-gray-800">
+                <h3 class="heading-font text-xl font-bold mb-6">
+                    Solicita tu Consulta de Remodelación Gratuita
+                </h3>
+                <form>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-gray-700 text-sm font-medium mb-2">Nombre completo</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-olive focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700 text-sm font-medium mb-2">Correo electrónico</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-olive focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-gray-700 text-sm font-medium mb-2">Teléfono</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-olive focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="property-type" class="block text-gray-700 text-sm font-medium mb-2">Tipo de propiedad</label>
+                            <select id="property-type" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-olive focus:border-transparent">
+                                <option value="">Selecciona una opción</option>
+                                <option value="apartment">Apartamento</option>
+                                <option value="house">Casa</option>
+                                <option value="office">Oficina</option>
+                                <option value="commercial">Local Comercial</option>
+                                <option value="other">Otro</option>
+                            </select>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="areas" class="block text-gray-700 text-sm font-medium mb-2">¿Qué áreas deseas remodelar? (puedes seleccionar varias)</label>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="kitchen" class="mr-2">
+                                    <label for="kitchen" class="text-sm">Cocina</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="bathroom" class="mr-2">
+                                    <label for="bathroom" class="text-sm">Baño(s)</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="living" class="mr-2">
+                                    <label for="living" class="text-sm">Sala/Comedor</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="bedroom" class="mr-2">
+                                    <label for="bedroom" class="text-sm">Habitaciones</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="integral" class="mr-2">
+                                    <label for="integral" class="text-sm">Remodelación Integral</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="office-space" class="mr-2">
+                                    <label for="office-space" class="text-sm">Espacio de Oficina</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="other-area" class="mr-2">
+                                    <label for="other-area" class="text-sm">Otro</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="budget" class="block text-gray-700 text-sm font-medium mb-2">Presupuesto estimado</label>
+                            <select id="budget" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-olive focus:border-transparent">
+                                <option value="">Selecciona un rango</option>
+                                <option value="5-10">$5 - $10 millones COP</option>
+                                <option value="10-20">$10 - $20 millones COP</option>
+                                <option value="20-50">$20 - $50 millones COP</option>
+                                <option value="50-100">$50 - $100 millones COP</option>
+                                <option value="100+">Más de $100 millones COP</option>
+                                <option value="unsure">No estoy seguro</option>
+                            </select>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="message" class="block text-gray-700 text-sm font-medium mb-2">Cuéntanos sobre tu proyecto y lo que deseas lograr</label>
+                            <textarea id="message" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-olive focus:border-transparent"></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full mt-6 bg-olive text-white px-6 py-3 rounded-lg font-medium hover-bg-olive transition">
+                        Enviar Solicitud de Consulta
+                    </button>
+                </form>
+            </div>
+            
+            <div class="mt-12 flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8">
+                <div class="flex items-center">
+                    <i class="fas fa-phone-alt text-xl mr-3"></i>
+                    <a href="tel:+573001234567" class="text-white hover:underline">+57 300 123 4567</a>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-envelope text-xl mr-3"></i>
+                    <a href="mailto:remodelaciones@habitta.co" class="text-white hover:underline">remodelaciones@habitta.co</a>
+                </div>
+                <div class="flex items-center">
+                    <i class="fab fa-whatsapp text-xl mr-3"></i>
+                    <a href="https://wa.me/573001234567" class="text-white hover:underline">Escríbenos por WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div>
+                    <img src="https://via.placeholder.com/150x50?text=Habitta" alt="Habitta Logo" class="h-10 mb-6">
+                    <p class="text-gray-400 mb-4">
+                        Co-creamos espacios con alma, fusionando estética, funcionalidad y tu propósito vital.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-pinterest-p"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="heading-font text-lg font-bold mb-6">Servicios</h3>
+                    <ul class="space-y-3">
+                        <li><a href="servicio-diseno.html" class="text-gray-400 hover:text-white transition">Diseño Interior</a></li>
+                        <li><a href="servicio-remodelacion.html" class="text-olive hover:text-white transition">Remodelación</a></li>
+                        <li><a href="servicios.html" class="text-gray-400 hover:text-white transition">Construcción</a></li>
+                        <li><a href="servicios.html" class="text-gray-400 hover:text-white transition">Acabados</a></li>
+                        <li><a href="servicios.html" class="text-gray-400 hover:text-white transition">Proyectos VIS</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="heading-font text-lg font-bold mb-6">Empresa</h3>
+                    <ul class="space-y-3">
+                        <li><a href="nosotros.html" class="text-gray-400 hover:text-white transition">Nosotros</a></li>
+                        <li><a href="proyectos.html" class="text-gray-400 hover:text-white transition">Proyectos</a></li>
+                        <li><a href="blog.html" class="text-gray-400 hover:text-white transition">Blog</a></li>
+                        <li><a href="testimonios.html" class="text-gray-400 hover:text-white transition">Testimonios</a></li>
+                        <li><a href="contacto.html" class="text-gray-400 hover:text-white transition">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="heading-font text-lg font-bold mb-6">Contacto</h3>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-olive"></i>
+                            <span>Calle 123 #45-67, Bogotá, Colombia</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-3 text-olive"></i>
+                            <a href="tel:+573001234567" class="hover:text-white transition">+57 300 123 4567</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-olive"></i>
+                            <a href="mailto:hola@habitta.co" class="hover:text-white transition">hola@habitta.co</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-clock mr-3 text-olive"></i>
+                            <span>Lun-Vie: 9am - 6pm</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm mb-4 md:mb-0">
+                    &copy; 2023 Habitta. Todos los derechos reservados.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-500 hover:text-white text-sm transition">Política de Privacidad</a>
+                    <a href="#" class="text-gray-500 hover:text-white text-sm transition">Términos y Condiciones</a>
+                    <a href="#" class="text-gray-500 hover:text-white text-sm transition">Mapa del Sitio</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        const openMenu = document.getElementById('openMenu');
+        const closeMenu = document.getElementById('closeMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        openMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('menu-closed');
+            mobileMenu.classList.add('menu-open');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('menu-open');
+            mobileMenu.classList.add('menu-closed');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // FAQ Accordion
+        const accordionToggles = document.querySelectorAll('.accordion-toggle');
+        
+        accordionToggles.forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                const icon = this.querySelector('i');
+                
+                content.classList.toggle('active');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+        
+        // Add shadow to header on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-lg');
+            } else {
+                header.classList.remove('shadow-lg');
+            }
+        });
+        
+        // Before & After Slider
+        const beforeAfterContainers = document.querySelectorAll('.before-after-container');
+        
+        beforeAfterContainers.forEach(container => {
+            const afterImage = container.querySelector('.after-image');
+            const sliderHandle = container.querySelector('.slider-handle');
+            let isDragging = false;
+            
+            function updateSliderPosition(clientX) {
+                const rect = container.getBoundingClientRect();
+                let position = (clientX - rect.left) / rect.width;
+                
+                // Limit position between 0 and 1
+                position = Math.max(0, Math.min(1, position));
+                
+                afterImage.style.width = `${position * 100}%`;
+                sliderHandle.style.left = `${position * 100}%`;
+            }
+            
+            sliderHandle.addEventListener('mousedown', () => {
+                isDragging = true;
+            });
+            
+            window.addEventListener('mousemove', (e) => {
+                if (isDragging) {
+                    updateSliderPosition(e.clientX);
+                }
+            });
+            
+            window.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+            
+            // Touch support
+            sliderHandle.addEventListener('touchstart', () => {
+                isDragging = true;
+            });
+            
+            window.addEventListener('touchmove', (e) => {
+                if (isDragging) {
+                    updateSliderPosition(e.touches[0].clientX);
+                }
+            });
+            
+            window.addEventListener('touchend', () => {
+                isDragging = false;
+            });
+            
+            // Click/tap anywhere on the container to move the slider
+            container.addEventListener('click', (e) => {
+                const rect = container.getBoundingClientRect();
+                updateSliderPosition(e.clientX);
+            });
+            
+            // Initialize slider position
+            updateSliderPosition(container.getBoundingClientRect().left + container.getBoundingClientRect().width / 2);
+        });
+    </script>
+</body>
+</html>
