@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explora la galería de proyectos de Habitta. Filtra por servicio, estilo, ubicación y tipo de inmueble en Colombia. Encuentra inspiración para tu espacio.">
+    <meta name="keywords" content="Portafolio Habitta, proyectos diseño interior Colombia, proyectos remodelación apartamentos, ver trabajos Habitta, galería construcción Colombia, proyectos VIS Habitta">
+    <title>Portafolio Habitta: Inspírate con Nuestros Espacios con Alma</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .heading-font {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .text-olive {
+            color: #6b8e23;
+        }
+        
+        .bg-olive {
+            background-color: #6b8e23;
+        }
+        
+        .border-olive {
+            border-color: #6b8e23;
+        }
+        
+        .hover-bg-olive:hover {
+            background-color: #5a7a1e;
+        }
+        
+        .text-terracota {
+            color: #e2725b;
+        }
+        
+        .bg-terracota {
+            background-color: #e2725b;
+        }
+        
+        .hover-bg-terracota:hover {
+            background-color: #d1624b;
+        }
+        
+        .project-card {
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .project-overlay {
+            background: rgba(0, 0, 0, 0.6);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        
+        .filter-section {
+            transition: all 0.3s ease;
+        }
+        
+        .filter-checkbox:checked + .filter-label {
+            background-color: #6b8e23;
+            color: white;
+        }
+        
+        .menu-open {
+            transform: translateX(0);
+        }
+        
+        .menu-closed {
+            transform: translateX(100%);
+        }
+        
+        .transition-slow {
+            transition: all 0.5s ease;
+        }
+        
+        .loading-spinner {
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .lazy {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .lazy.loaded {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 z-50 bg-white w-full h-full menu-closed transition-slow">
+        <div class="container mx-auto px-6 py-8">
+            <div class="flex justify-between items-center mb-12">
+                <img src="https://via.placeholder.com/150x50?text=Habitta" alt="Habitta Logo" class="h-10">
+                <button id="closeMenu" class="text-gray-800 text-2xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <nav class="flex flex-col space-y-6">
+                <a href="index.html" class="text-gray-800 text-xl font-medium">Inicio</a>
+                <a href="nosotros.html" class="text-gray-800 text-xl font-medium">Nosotros</a>
+                <a href="servicios.html" class="text-gray-800 text-xl font-medium">Servicios</a>
+                <a href="proyectos.html" class="text-olive text-xl font-medium">Proyectos</a>
+                <a href="blog.html" class="text-gray-800 text-xl font-medium">Blog</a>
+                <a href="contacto.html" class="text-gray-800 text-xl font-medium">Contacto</a>
+            </nav>
+            <div class="mt-12">
+                <a href="contacto.html" class="inline-block bg-olive text-white px-6 py-3 rounded-full font-medium hover-bg-olive">Contacto</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-40 bg-white shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="flex items-center">
+                    <img src="https://via.placeholder.com/150x50?text=Habitta" alt="Habitta Logo" class="h-10">
+                </a>
+                
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-800 hover:text-olive transition">Inicio</a>
+                    <a href="nosotros.html" class="text-gray-800 hover:text-olive transition">Nosotros</a>
+                    <a href="servicios.html" class="text-gray-800 hover:text-olive transition">Servicios</a>
+                    <a href="proyectos.html" class="text-olive font-medium">Proyectos</a>
+                    <a href="blog.html" class="text-gray-800 hover:text-olive transition">Blog</a>
+                    <a href="contacto.html" class="text-gray-800 hover:text-olive transition">Contacto</a>
+                </nav>
+                
+                <div class="hidden md:block">
+                    <a href="contacto.html" class="bg-olive text-white px-6 py-2 rounded-full font-medium hover-bg-olive transition">Contacto</a>
+                </div>
+                
+                <button id="openMenu" class="md:hidden text-gray-800 text-xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative h-64 md:h-96 flex items-center">
+        <div class="absolute inset-0 bg-black bg-opacity-30 z-10"></div>
+        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80"
+             alt="Galería de proyectos Habitta"
+             class="absolute inset-0 w-full h-full object-cover lazy"
+             loading="lazy">
+        
+        <div class="container mx-auto px-6 relative z-20 text-center">
+            <h1 class="heading-font text-3xl md:text-5xl font-bold text-white mb-4">
+                Nuestros Proyectos: Transformaciones con Alma por Habitta
+            </h1>
+            <p class="text-lg md:text-xl text-white max-w-2xl mx-auto">
+                Descubre la materialización de nuestra filosofía en cada espacio. Utiliza los filtros para encontrar proyectos que te inspiren y se ajusten a tu búsqueda.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+        <!-- Filter Section -->
+        <div class="mb-12">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="heading-font text-2xl md:text-3xl font-bold text-gray-800">
+                    Filtra Tu Inspiración
+                </h2>
+                <button id="toggleFilters" class="md:hidden bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-lg flex items-center">
+                    <i class="fas fa-filter mr-2"></i> Filtros
+                </button>
+            </div>
+            
+            <!-- Filter Panel -->
+            <div id="filterPanel" class="filter-section bg-gray-50 p-6 rounded-lg">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <!-- City Filter -->
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">Ciudad/Departamento</label>
+                        <select id="cityFilter" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-olive focus:border-transparent">
+                            <option value="">Todas</option>
+                            <option value="bogota">Bogotá</option>
+                            <option value="medellin">Medellín</option>
+                            <option value="cali">Cali</option>
+                            <option value="barranquilla">Barranquilla</option>
+                            <option value="cundinamarca">Cundinamarca</option>
+                            <option value="antioquia">Antioquia</option>
+                            <option value="valle">Valle del Cauca</option>
+                            <option value="atlantico">Atlántico</option>
+                        </select>
+                    </div>
+                    
+                    <!-- District Filter (hidden by default) -->
+                    <div id="districtFilterContainer" class="hidden">
+                        <label class="block text-gray-700 font-medium mb-2">Localidad</label>
+                        <select id="districtFilter" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-olive focus:border-transparent">
+                            <option value="">Todas</option>
+                            <option value="usaquen">Usaquén</option>
+                            <option value="chapinero">Chapinero</option>
+                            <option value="suba">Suba</option>
+                            <option value="barrios unidos">Barrios Unidos</option>
+                            <option value="teusaquillo">Teusaquillo</option>
+                            <option value="fontibon">Fontibón</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Property Type Filter -->
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">Tipo de Inmueble</label>
+                        <select id="propertyTypeFilter" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-olive focus:border-transparent">
+                            <option value="">Todos</option>
+                            <option value="apartamento">Apartamento</option>
+                            <option value="casa">Casa</option>
+                            <option value="oficina">Oficina</option>
+                            <option value="local">Local Comercial</option>
+                            <option value="consultorio">Consultorio</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Service Type Filter -->
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">Tipo de Servicio</label>
+                        <select id="serviceTypeFilter" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-olive focus:border-transparent">
+                            <option value="">Todos</option>
+                            <option value="diseno">Diseño Interior Completo</option>
+                            <option value="remodelacion">Remodelación Integral</option>
+                            <option value="adecuacion">Adecuación de Cocina</option>
+                            <option value="acabados">Acabados para VIS</option>
+                            <option value="construccion">Construcción Obra Nueva</option>
+                            <option value="obra-gris">Acabados Obra Gris</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Style Filter (Checkboxes) -->
+                <div class="mt-6">
+                    <label class="block text-gray-700 font-medium mb-2">Estilo de Diseño</label>
+                    <div class="flex flex-wrap gap-2">
+                        <input type="checkbox" id="industrial" class="hidden filter-checkbox" value="industrial">
+                        <label for="industrial" class="filter-label bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-full cursor-pointer transition">
+                            Industrial
+                        </label>
+                        
+                        <input type="checkbox" id="contemporaneo" class="hidden filter-checkbox" value="contemporaneo">
+                        <label for="contemporaneo" class="filter-label bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-full cursor-pointer transition">
+                            Contemporáneo
+                        </label>
+                        
+                        <input type="checkbox" id="minimalista" class="hidden filter-checkbox" value="minimalista">
+                        <label for="minimalista" class="filter-label bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-full cursor-pointer transition">
+                            Minimalista
+                        </label>
+                        
+                        <input type="checkbox" id="nordico" class="hidden filter-checkbox" value="nordico">
+                        <label for="nordico" class="filter-label bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-full cursor-pointer transition">
+                            Nórdico
+                        </label>
+                        
+                        <input type="checkbox" id="calido" class="hidden filter-checkbox" value="calido">
+                        <label for="calido" class="filter-label bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-full cursor-pointer transition">
+                            Cálido y Acogedor
+                        </label>
+                        
+                        <input type="checkbox" id="boho" class="hidden filter-checkbox" value="boho">
+                        <label for="boho" class="filter-label bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-full cursor-pointer transition">
+                            Boho Chic
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Project Type Filter -->
+                <div class="mt-6">
+                    <label class="block text-gray-700 font-medium mb-2">Tipo de Proyecto</label>
+                    <div class="flex flex-wrap gap-2">
+                        <input type="checkbox" id="vis" class="hidden filter-checkbox" value="vis">
+                        <label for="vis" class="filter-label bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-full cursor-pointer transition">
+                            Vivienda VIS
+                        </label>
+                        
+                        <input type="checkbox" id="vip" class="hidden filter-checkbox" value="vip">
+                        <label for="vip" class="filter-label bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-full cursor-pointer transition">
+                            Vivienda VIP/No VIS
+                        </label>
+                        
+                        <input type="checkbox" id="sobre-planos" class="hidden filter-checkbox" value="sobre-planos">
+                        <label for="sobre-planos" class="filter-label bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-full cursor-pointer transition">
+                            Sobre Planos
+                        </label>
+                        
+                        <input type="checkbox" id="obra-gris" class="hidden filter-checkbox" value="obra-gris">
+                        <label for="obra-gris" class="filter-label bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-full cursor-pointer transition">
+                            Obra Gris
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Filter Actions -->
+                <div class="mt-8 flex justify-between">
+                    <button id="resetFilters" class="text-gray-600 hover:text-olive transition flex items-center">
+                        <i class="fas fa-undo mr-2"></i> Limpiar Todos los Filtros
+                    </button>
+                    <button id="applyFilters" class="bg-olive text-white px-6 py-2 rounded-full font-medium hover-bg-olive transition">
+                        Aplicar Filtros
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Projects Grid -->
+        <div class="mb-12">
+            <div id="loadingIndicator" class="hidden text-center py-12">
+                <div class="inline-block loading-spinner border-4 border-gray-300 border-t-olive rounded-full w-12 h-12 mb-4"></div>
+                <p class="text-gray-600">Cargando proyectos...</p>
+            </div>
+            
+            <div id="noResults" class="hidden text-center py-12">
+                <i class="fas fa-search text-4xl text-gray-400 mb-4"></i>
+                <h3 class="heading-font text-xl font-bold text-gray-800 mb-2">No se encontraron proyectos</h3>
+                <p class="text-gray-600 mb-6">Intenta ajustar tus filtros de búsqueda</p>
+                <button id="resetFiltersNoResults" class="bg-olive text-white px-6 py-2 rounded-full font-medium hover-bg-olive transition">
+                    Limpiar Filtros
+                </button>
+            </div>
+            
+            <div id="projectsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <a href="proyecto-detalle.html" class="project-card block rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80"
+                             alt="Apartamento industrial en Chapinero"
+                             class="w-full h-64 object-cover lazy"
+                             loading="lazy">
+                        <div class="project-overlay absolute inset-0 flex items-center justify-center">
+                            <span class="text-white font-medium">Ver Proyecto</span>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-white">
+                        <h3 class="heading-font text-xl font-bold text-gray-800 mb-1">Apartamento Industrial - Chapinero</h3>
+                        <p class="text-gray-600 text-sm mb-2">Remodelación Integral</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">Bogotá</span>
+                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">Industrial</span>
+                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">VIP</span>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Project 2 -->
+                <a href="proyecto-detalle.html" class="project-card block rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80"
+                             alt="Casa contemporánea en Chía"
+                             class="w-full h-64 object-cover lazy"
+                             loading="lazy">
+                        <div class="project-overlay absolute inset-0 flex items-center justify-center">
+                            <span class="text-white font-medium">Ver Proyecto</span>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-white">
+                        <h3 class="heading-font text-xl font-bold text-gray-800 mb-1">Casa Contemporánea - Chía</h3>
+                        <p class="text-gray-600 text-sm mb-2">Construcción Obra Nueva</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">Cundinamarca</span>
+                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">Contemporáneo</span>
+                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">VIP</span>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Project 3 -->
+                <a href="proyecto-detalle.html" class="project-card block rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80"
+                             alt="Oficina minimalista en El Poblado"
+                             class="w-full h-64 object-cover lazy"
+                             loading="lazy">
+                        <div class="project-overlay absolute inset-0 flex items-center justify-center">
+                            <span class="text-white font-medium">Ver Proyecto</span>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-white">
+                        <h3 class="heading-font text-xl font-bold text-gray-800 mb-1">Oficina Minimalista - El Poblado</h3>
+                        <p class="text-gray-600 text-sm mb-2">Diseño Interior Completo</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">Medellín</span>
+                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">Minimalista</span>
+                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">Sobre Planos</span>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Project 4 -->
+                <a href="proyecto-detalle.html" class="project-card block rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80"
+                             alt="Apartamento VIS en Suba"
+                             class="w-full h-64 object-cover lazy"
+                             loading="lazy">
+                        <div class="project-overlay absolute inset-0 flex items-center justify-center">
+                            <span class="text-white font-medium">Ver Proyecto</span>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-white">
+                        <h3 class="heading-font text-xl font-bold text-gray-800 mb-1">Apartamento VIS - Suba</h3>
+                        <p class="text-gray-600 text-sm mb-2">Acabados para VIS</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">Bogotá</span>
+                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">Contemporáneo</span>
+                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">VIS</span>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Project 5 -->
+                <a href="proyecto-detalle.html" class="project-card block rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80"
+                             alt="Local comercial en Barranquilla"
+                             class="w-full h-64 object-cover lazy"
+                             loading="lazy">
+                        <div class="project-overlay absolute inset-0 flex items-center justify-center">
+                            <span class="text-white font-medium">Ver Proyecto</span>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-white">
+                        <h3 class="heading-font text-xl font-bold text-gray-800 mb-1">Local Comercial - Barranquilla</h3>
+                        <p class="text-gray-600 text-sm mb-2">Adecuación Comercial</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">Barranquilla</span>
+                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">Industrial</span>
+                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">Obra Gris</span>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Project 6 -->
+                <a href="proyecto-detalle.html" class="project-card block rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80"
+                             alt="Consultorio cálido en Usaquén"
+                             class="w-full h-64 object-cover lazy"
+                             loading="lazy">
+                        <div class="project-overlay absolute inset-0 flex items-center justify-center">
+                            <span class="text-white font-medium">Ver Proyecto</span>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-white">
+                        <h3 class="heading-font text-xl font-bold text-gray-800 mb-1">Consultorio Cálido - Usaquén</h3>
+                        <p class="text-gray-600 text-sm mb-2">Diseño Interior Completo</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">Bogotá</span>
+                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">Cálido y Acogedor</span>
+                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">VIP</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Load More Button -->
+            <div class="text-center mt-12">
+                <button id="loadMore" class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-6 py-3 rounded-full font-medium transition">
+                    Cargar Más Proyectos
+                </button>
+            </div>
+        </div>
+        
+        <!-- CTA Section -->
+        <div class="bg-gray-50 rounded-lg p-8 md:p-12 text-center">
+            <h3 class="heading-font text-2xl md:text-3xl font-bold text-gray-800 mb-4">
+                ¿No encuentras un proyecto como el que tienes en mente?
+            </h3>
+            <p class="text-gray-600 mb-6 max-w-2xl mx-auto">
+                Cada espacio es único y merece una solución personalizada. Cuéntanos tu visión y co-creemos juntos un espacio con alma.
+            </p>
+            <a href="contacto.html" class="inline-block bg-olive text-white px-8 py-3 rounded-full font-medium hover-bg-olive transition">
+                Hablemos de Tu Idea
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div>
+                    <img src="https://via.placeholder.com/150x50?text=Habitta" alt="Habitta Logo" class="h-10 mb-6">
+                    <p class="text-gray-400 mb-4">
+                        Co-creamos espacios con alma, fusionando estética, funcionalidad y tu propósito vital.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-pinterest-p"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="heading-font text-lg font-bold mb-6">Servicios</h3>
+                    <ul class="space-y-3">
+                        <li><a href="servicio-diseno.html" class="text-gray-400 hover:text-white transition">Diseño Interior</a></li>
+                        <li><a href="servicio-remodelacion.html" class="text-gray-400 hover:text-white transition">Remodelación</a></li>
+                        <li><a href="servicio-construccion.html" class="text-olive hover:text-white transition">Construcción</a></li>
+                        <li><a href="servicios.html" class="text-gray-400 hover:text-white transition">Acabados</a></li>
+                        <li><a href="servicios.html" class="text-gray-400 hover:text-white transition">Proyectos VIS</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="heading-font text-lg font-bold mb-6">Empresa</h3>
+                    <ul class="space-y-3">
+                        <li><a href="nosotros.html" class="text-gray-400 hover:text-white transition">Nosotros</a></li>
+                        <li><a href="proyectos.html" class="text-gray-400 hover:text-white transition">Proyectos</a></li>
+                        <li><a href="blog.html" class="text-gray-400 hover:text-white transition">Blog</a></li>
+                        <li><a href="testimonios.html" class="text-gray-400 hover:text-white transition">Testimonios</a></li>
+                        <li><a href="contacto.html" class="text-gray-400 hover:text-white transition">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="heading-font text-lg font-bold mb-6">Contacto</h3>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-olive"></i>
+                            <span>Calle 123 #45-67, Bogotá, Colombia</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-3 text-olive"></i>
+                            <a href="tel:+573001234567" class="hover:text-white transition">+57 300 123 4567</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-olive"></i>
+                            <a href="mailto:hola@habitta.co" class="hover:text-white transition">hola@habitta.co</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-clock mr-3 text-olive"></i>
+                            <span>Lun-Vie: 9am - 6pm</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm mb-4 md:mb-0">
+                    &copy; 2023 Habitta. Todos los derechos reservados.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-500 hover:text-white text-sm transition">Política de Privacidad</a>
+                    <a href="#" class="text-gray-500 hover:text-white text-sm transition">Términos y Condiciones</a>
+                    <a href="#" class="text-gray-500 hover:text-white text-sm transition">Mapa del Sitio</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        const openMenu = document.getElementById('openMenu');
+        const closeMenu = document.getElementById('closeMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        openMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('menu-closed');
+            mobileMenu.classList.add('menu-open');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('menu-open');
+            mobileMenu.classList.add('menu-closed');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Toggle filters on mobile
+        const toggleFilters = document.getElementById('toggleFilters');
+        const filterPanel = document.getElementById('filterPanel');
+        
+        toggleFilters.addEventListener('click', () => {
+            filterPanel.classList.toggle('hidden');
+        });
+        
+        // Show district filter only when Bogotá is selected
+        const cityFilter = document.getElementById('cityFilter');
+        const districtFilterContainer = document.getElementById('districtFilterContainer');
+        
+        cityFilter.addEventListener('change', function() {
+            if (this.value === 'bogota') {
+                districtFilterContainer.classList.remove('hidden');
+            } else {
+                districtFilterContainer.classList.add('hidden');
+                document.getElementById('districtFilter').value = '';
+            }
+        });
+        
+        // Filter functionality
+        const applyFilters = document.getElementById('applyFilters');
+        const resetFilters = document.getElementById('resetFilters');
+        const resetFiltersNoResults = document.getElementById('resetFiltersNoResults');
+        const projectsGrid = document.getElementById('projectsGrid');
+        const loadingIndicator = document.getElementById('loadingIndicator');
+        const noResults = document.getElementById('noResults');
+        
+        applyFilters.addEventListener('click', function() {
+            // Show loading indicator
+            projectsGrid.classList.add('hidden');
+            loadingIndicator.classList.remove('hidden');
+            
+            // Simulate API call/processing
+            setTimeout(function() {
+                loadingIndicator.classList.add('hidden');
+                
+                // In a real implementation, you would filter the projects here
+                // For this demo, we'll just show/hide the no results message randomly
+                const showNoResults = Math.random() > 0.7;
+                
+                if (showNoResults) {
+                    noResults.classList.remove('hidden');
+                } else {
+                    projectsGrid.classList.remove('hidden');
+                    noResults.classList.add('hidden');
+                }
+                
+                // On mobile, hide filters after applying
+                if (window.innerWidth < 768) {
+                    filterPanel.classList.add('hidden');
+                }
+            }, 800);
+        });
+        
+        resetFilters.addEventListener('click', function() {
+            // Reset all filters
+            document.getElementById('cityFilter').value = '';
+            document.getElementById('districtFilter').value = '';
+            document.getElementById('propertyTypeFilter').value = '';
+            document.getElementById('serviceTypeFilter').value = '';
+            
+            // Uncheck all checkboxes
+            document.querySelectorAll('.filter-checkbox').forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            
+            // Reset labels
+            document.querySelectorAll('.filter-label').forEach(label => {
+                label.classList.remove('bg-olive', 'text-white');
+                label.classList.add('bg-gray-100', 'text-gray-800');
+            });
+            
+            // Hide district filter
+            districtFilterContainer.classList.add('hidden');
+            
+            // Show all projects
+            projectsGrid.classList.remove('hidden');
+            noResults.classList.add('hidden');
+        });
+        
+        resetFiltersNoResults.addEventListener('click', function() {
+            resetFilters.click();
+        });
+        
+        // Style checkbox labels when checked
+        document.querySelectorAll('.filter-checkbox').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const label = document.querySelector(`label[for="${this.id}"]`);
+                if (this.checked) {
+                    label.classList.add('bg-olive', 'text-white');
+                    label.classList.remove('bg-gray-100', 'text-gray-800');
+                } else {
+                    label.classList.remove('bg-olive', 'text-white');
+                    label.classList.add('bg-gray-100', 'text-gray-800');
+                }
+            });
+        });
+        
+        // Lazy loading for images
+        document.addEventListener('DOMContentLoaded', function() {
+            const lazyImages = document.querySelectorAll('.lazy');
+            
+            const lazyLoad = function() {
+                lazyImages.forEach(img => {
+                    if (img.getBoundingClientRect().top <= window.innerHeight + 100 && 
+                        img.getBoundingClientRect().bottom >= -100 && 
+                        getComputedStyle(img).display !== 'none') {
+                        img.src = img.getAttribute('data-src') || img.src;
+                        img.classList.add('loaded');
+                    }
+                });
+            };
+            
+            // Initial load
+            lazyLoad();
+            
+            // Load on scroll
+            window.addEventListener('scroll', lazyLoad);
+            window.addEventListener('resize', lazyLoad);
+        });
+        
+        // Add shadow to header on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-lg');
+            } else {
+                header.classList.remove('shadow-lg');
+            }
+        });
+    </script>
+</body>
+</html>
