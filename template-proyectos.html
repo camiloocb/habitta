@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Descubre el proyecto de diseño interior 'Apartamento Minimalista con Alma' por Habitta en Bogotá Norte. Ve las fotos, conoce la historia y los detalles de esta transformación.">
+    <meta name="keywords" content="Apartamento Minimalista con Alma, apartamento Bogotá, diseño minimalista Bogotá, diseño interior Bogotá, remodelación apartamentos, Habitta Apartamento Minimalista">
+    <title>Apartamento Minimalista con Alma - Bogotá Norte - Diseño Interior por Habitta</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .heading-font {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero-overlay {
+            background: rgba(0, 0, 0, 0.3);
+            background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.2) 100%);
+        }
+        
+        .text-olive {
+            color: #6b8e23;
+        }
+        
+        .bg-olive {
+            background-color: #6b8e23;
+        }
+        
+        .border-olive {
+            border-color: #6b8e23;
+        }
+        
+        .hover-bg-olive:hover {
+            background-color: #5a7a1e;
+        }
+        
+        .text-terracota {
+            color: #e2725b;
+        }
+        
+        .bg-terracota {
+            background-color: #e2725b;
+        }
+        
+        .hover-bg-terracota:hover {
+            background-color: #d1624b;
+        }
+        
+        .text-taupe {
+            color: #b8a99a;
+        }
+        
+        .bg-taupe {
+            background-color: #b8a99a;
+        }
+        
+        .before-after-slider {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+        }
+        
+        .before-after-slider img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .before-image {
+            width: 50%;
+            z-index: 2;
+        }
+        
+        .slider-handle {
+            position: absolute;
+            width: 4px;
+            height: 100%;
+            background: white;
+            left: 50%;
+            z-index: 3;
+            cursor: ew-resize;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+        
+        .slider-handle::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            content: '\f337';
+            color: #6b8e23;
+            font-size: 16px;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            height: 300px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .lightbox.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+        
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+        
+        .lightbox-nav {
+            position: absolute;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 0 20px;
+        }
+        
+        .lightbox-nav button {
+            background: rgba(255,255,255,0.3);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .lightbox-nav button:hover {
+            background: rgba(255,255,255,0.5);
+        }
+        
+        .testimonial-quote {
+            position: relative;
+            padding-left: 60px;
+        }
+        
+        .testimonial-quote::before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-family: 'Playfair Display', serif;
+            font-size: 80px;
+            color: #6b8e23;
+            line-height: 1;
+        }
+        
+        .project-detail-label {
+            font-weight: 600;
+            color: #6b8e23;
+        }
+        
+        .project-detail-value {
+            margin-bottom: 12px;
+        }
+        
+        @media (max-width: 768px) {
+            .before-after-slider {
+                height: 300px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-detail-sidebar {
+                order: -1;
+                margin-bottom: 40px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 z-50 bg-white w-full h-full hidden transition-slow">
+        <div class="container mx-auto px-6 py-8">
+            <div class="flex justify-between items-center mb-12">
+                <img src="https://via.placeholder.com/150x50?text=Habitta" alt="Habitta Logo" class="h-10">
+                <button id="closeMenu" class="text-gray-800 text-2xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <nav class="flex flex-col space-y-6">
+                <a href="index.html" class="text-gray-800 text-xl font-medium">Inicio</a>
+                <a href="nosotros.html" class="text-gray-800 text-xl font-medium">Nosotros</a>
+                <a href="servicios.html" class="text-olive text-xl font-medium">Servicios</a>
+                <a href="proyectos.html" class="text-gray-800 text-xl font-medium">Proyectos</a>
+                <a href="blog.html" class="text-gray-800 text-xl font-medium">Blog</a>
+                <a href="contacto.html" class="text-gray-800 text-xl font-medium">Contacto</a>
+            </nav>
+            <div class="mt-12">
+                <a href="contacto.html" class="inline-block bg-olive text-white px-6 py-3 rounded-full font-medium hover-bg-olive">Contacto</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-40 bg-white shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="flex items-center">
+                    <img src="https://via.placeholder.com/150x50?text=Habitta" alt="Habitta Logo" class="h-10">
+                </a>
+                
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-800 hover:text-olive transition">Inicio</a>
+                    <a href="nosotros.html" class="text-gray-800 hover:text-olive transition">Nosotros</a>
+                    <a href="servicios.html" class="text-olive font-medium">Servicios</a>
+                    <a href="proyectos.html" class="text-gray-800 hover:text-olive transition">Proyectos</a>
+                    <a href="blog.html" class="text-gray-800 hover:text-olive transition">Blog</a>
+                    <a href="contacto.html" class="text-gray-800 hover:text-olive transition">Contacto</a>
+                </nav>
+                
+                <div class="hidden md:block">
+                    <a href="contacto.html" class="bg-olive text-white px-6 py-2 rounded-full font-medium hover-bg-olive transition">Contacto</a>
+                </div>
+                
+                <button id="openMenu" class="md:hidden text-gray-800 text-xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumbs -->
+    <div class="bg-gray-50 py-4">
+        <div class="container mx-auto px-6">
+            <div class="flex items-center text-sm text-gray-600">
+                <a href="index.html" class="hover:text-olive">Inicio</a>
+                <span class="mx-2">/</span>
+                <a href="proyectos.html" class="hover:text-olive">Galería de Proyectos</a>
+                <span class="mx-2">/</span>
+                <span class="text-olive">Apartamento Minimalista con Alma</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Hero -->
+    <section class="py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row gap-12">
+                <div class="md:w-2/3">
+                    <h1 class="heading-font text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                        Apartamento Minimalista con Alma - Bogotá Norte
+                    </h1>
+                    
+                    <div class="before-after-slider mb-8 rounded-lg overflow-hidden shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1616486334422-efc2b3b5b0e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" 
+                             alt="Sala del apartamento después de la remodelación" 
+                             class="before-image">
+                        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80" 
+                             alt="Sala del apartamento antes de la remodelación">
+                        <div class="slider-handle"></div>
+                    </div>
+                    
+                    <div class="flex justify-between items-center mb-8">
+                        <div>
+                            <span class="inline-block bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm mr-2">
+                                <i class="fas fa-map-marker-alt mr-1 text-olive"></i> Bogotá, Colombia
+                            </span>
+                            <span class="inline-block bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm mr-2">
+                                <i class="fas fa-calendar-alt mr-1 text-olive"></i> 2023
+                            </span>
+                            <span class="inline-block bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">
+                                <i class="fas fa-ruler-combined mr-1 text-olive"></i> 120 m²
+                            </span>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button class="bg-gray-100 text-gray-800 p-2 rounded-full hover:bg-gray-200 transition">
+                                <i class="fab fa-facebook-f"></i>
+                            </button>
+                            <button class="bg-gray-100 text-gray-800 p-2 rounded-full hover:bg-gray-200 transition">
+                                <i class="fab fa-twitter"></i>
+                            </button>
+                            <button class="bg-gray-100 text-gray-800 p-2 rounded-full hover:bg-gray-200 transition">
+                                <i class="fab fa-pinterest-p"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/3 project-detail-sidebar">
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md sticky top-24">
+                        <h3 class="heading-font text-xl font-bold text-gray-800 mb-4">
+                            Detalles del Proyecto
+                        </h3>
+                        
+                        <div class="mb-6">
+                            <div class="project-detail-label">Ubicación</div>
+                            <div class="project-detail-value">Bogotá Norte, Localidad de Usaquén</div>
+                            
+                            <div class="project-detail-label">Tipo de Inmueble</div>
+                            <div class="project-detail-value">Apartamento en edificio de los años 90</div>
+                            
+                            <div class="project-detail-label">Servicios Habitta</div>
+                            <div class="project-detail-value">
+                                <ul class="list-disc list-inside">
+                                    <li>Diseño interior integral</li>
+                                    <li>Remodelación estructural</li>
+                                    <li>Dirección de obra</li>
+                                    <li>Selección de mobiliario</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="project-detail-label">Estilo</div>
+                            <div class="project-detail-value">Minimalismo cálido con toques orgánicos</div>
+                            
+                            <div class="project-detail-label">Área</div>
+                            <div class="project-detail-value">120 m²</div>
+                            
+                            <div class="project-detail-label">Año</div>
+                            <div class="project-detail-value">2023</div>
+                            
+                            <div class="project-detail-label">Duración</div>
+                            <div class="project-detail-value">4 meses</div>
+                            
+                            <div class="project-detail-label">Características destacadas</div>
+                            <div class="project-detail-value">
+                                <ul class="list-disc list-inside">
+                                    <li>Cocina abierta con isla de mármol</li>
+                                    <li>Pisos de microcemento</li>
+                                    <li>Iluminación inteligente</li>
+                                    <li>Muebles a medida</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <a href="contacto.html" class="block w-full bg-olive text-white text-center px-6 py-3 rounded-lg font-medium hover-bg-olive transition mb-4">
+                            Cotizar un Proyecto Similar
+                        </a>
+                        <a href="proyectos.html" class="block w-full bg-white text-olive border border-olive text-center px-6 py-3 rounded-lg font-medium hover:bg-gray-50 transition">
+                            Ver Más Proyectos
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Story -->
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="heading-font text-3xl font-bold text-gray-800 mb-6">
+                    Un Espacio Transformado: La Historia del Apartamento Minimalista con Alma
+                </h2>
+                
+                <div class="mb-8">
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">El Desafío</h3>
+                    <p class="text-gray-600 mb-4">
+                        Nuestros clientes, una pareja joven profesional, adquirieron este apartamento en un edificio de los años 90 con una distribución obsoleta y espacios poco funcionales. Los principales problemas incluían una cocina cerrada y oscura, baños angostos, y una sala-comedor que no aprovechaba la magnífica luz natural disponible.
+                    </p>
+                    <p class="text-gray-600">
+                        Además, buscaban un espacio que fuera más que funcional: deseaban un hogar que transmitiera serenidad y calidez, pero manteniendo la limpieza visual del minimalismo que tanto amaban.
+                    </p>
+                </div>
+                
+                <div class="mb-8">
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">La Visión y el Propósito</h3>
+                    <p class="text-gray-600 mb-4">
+                        Durante nuestras primeras conversaciones, surgió el concepto de "minimalismo con alma". No queríamos un espacio frío y austero, sino un hogar que respirara calidez a través de texturas naturales, materiales orgánicos y una paleta de colores terrosos.
+                    </p>
+                    <p class="text-gray-600">
+                        El propósito era claro: crear un refugio urbano que promoviera el bienestar y la conexión, donde cada elemento estuviera cuidadosamente seleccionado para aportar tanto funcionalidad como significado.
+                    </p>
+                </div>
+                
+                <div class="mb-8">
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">Nuestro Enfoque</h3>
+                    <p class="text-gray-600 mb-4">
+                        Decidimos derribar muros no estructurales para crear un concepto de living abierto, donde la cocina, el comedor y la sala fluyeran armoniosamente. Introdujimos una isla de mármol que sirve tanto de espacio de preparación como de punto de encuentro informal.
+                    </p>
+                    <p class="text-gray-600 mb-4">
+                        Para el piso elegimos microcemento continuo que unifica visualmente los espacios, con calefacción radiante para mayor confort. Los tonos neutros de las paredes sirven de lienzo para piezas artesanales cuidadosamente seleccionadas que añaden carácter sin saturar.
+                    </p>
+                    <p class="text-gray-600">
+                        La iluminación fue diseñada en capas: general para funcionalidad, ambiental para atmósfera y puntual para destacar objetos significativos. Todo controlable desde el smartphone para adaptarse a cada momento del día.
+                    </p>
+                </div>
+                
+                <div class="mb-8">
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">El Resultado</h3>
+                    <p class="text-gray-600 mb-4">
+                        El apartamento se transformó en un oasis de tranquilidad en medio de la ciudad. La nueva distribución maximiza cada centímetro, creando flujos intuitivos y múltiples zonas de descanso. La luz natural ahora baña todos los espacios principales, realzando la belleza de los materiales naturales.
+                    </p>
+                    <p class="text-gray-600">
+                        Más allá de lo estético, logramos un espacio que verdaderamente refleja la personalidad de sus habitantes: sereno pero cálido, minimalista pero lleno de significado. Un hogar que no solo cumple con sus necesidades prácticas, sino que nutre su bienestar diario.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="py-12">
+        <div class="container mx-auto px-6">
+            <h2 class="heading-font text-3xl font-bold text-gray-800 mb-8 text-center">
+                Galería del Proyecto
+            </h2>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80" 
+                         alt="Sala de estar minimalista" 
+                         class="gallery-image" 
+                         data-index="0">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1616486334422-efc2b3b5b0e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" 
+                         alt="Cocina abierta con isla" 
+                         class="gallery-image" 
+                         data-index="1">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1616486334422-efc2b3b5b0e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" 
+                         alt="Dormitorio principal" 
+                         class="gallery-image" 
+                         data-index="2">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1616486334422-efc2b3b5b0e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" 
+                         alt="Baño principal" 
+                         class="gallery-image" 
+                         data-index="3">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1616486334422-efc2b3b5b0e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" 
+                         alt="Terraza con vista" 
+                         class="gallery-image" 
+                         data-index="4">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1616486334422-efc2b3b5b0e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" 
+                         alt="Detalle de iluminación" 
+                         class="gallery-image" 
+                         data-index="5">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before & After Section -->
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="heading-font text-3xl font-bold text-gray-800 mb-8 text-center">
+                La Transformación: Antes y Después
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-4 text-center">
+                        Antes
+                    </h3>
+                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80" 
+                         alt="Sala antes de la remodelación" 
+                         class="w-full h-auto rounded-lg shadow-md">
+                    <p class="text-gray-600 mt-2 text-center">Distribución cerrada y poco funcional</p>
+                </div>
+                <div>
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-4 text-center">
+                        Después
+                    </h3>
+                    <img src="https://images.unsplash.com/photo-1616486334422-efc2b3b5b0e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" 
+                         alt="Sala después de la remodelación" 
+                         class="w-full h-auto rounded-lg shadow-md">
+                    <p class="text-gray-600 mt-2 text-center">Espacio abierto y lleno de luz</p>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80" 
+                         alt="Cocina antes de la remodelación" 
+                         class="w-full h-auto rounded-lg shadow-md">
+                    <p class="text-gray-600 mt-2 text-center">Cocina oscura y aislada</p>
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1616486334422-efc2b3b5b0e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" 
+                         alt="Cocina después de la remodelación" 
+                         class="w-full h-auto rounded-lg shadow-md">
+                    <p class="text-gray-600 mt-2 text-center">Cocina integrada con isla de mármol</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="py-12">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto bg-gray-50 p-8 md:p-12 rounded-lg">
+                <h2 class="heading-font text-3xl font-bold text-gray-800 mb-8 text-center">
+                    Lo que Dice Nuestro Cliente
+                </h2>
+                
+                <div class="testimonial-quote mb-8">
+                    <p class="text-xl text-gray-600 italic mb-6">
+                        Trabajar con Habitta fue una experiencia transformadora no solo para nuestro apartamento, sino para nuestra forma de vivir. Lograron entender exactamente lo que buscábamos, incluso cuando nosotros no sabíamos cómo expresarlo. El proceso de co-creación fue fluido y transparente, y el resultado superó todas nuestras expectativas. Ahora tenemos un hogar que no solo es hermoso, sino que realmente nos representa y mejora nuestra calidad de vida diaria.
+                    </p>
+                    
+                    <div class="flex items-center">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=776&q=80" 
+                             alt="María Fernanda López" 
+                             class="w-16 h-16 rounded-full object-cover mr-4">
+                        <div>
+                            <p class="font-bold text-gray-800">María Fernanda López</p>
+                            <p class="text-gray-600">Propietaria del Apartamento Minimalista con Alma</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-12 bg-terracota text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="heading-font text-3xl font-bold mb-6">
+                ¿Inspirado por el Apartamento Minimalista con Alma?
+            </h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">
+                Si te gusta lo que ves y tienes un proyecto en mente, en Habitta estamos listos para escucharte y co-crear tu espacio ideal.
+            </p>
+            
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <a href="contacto.html" class="inline-block bg-white text-terracota px-8 py-3 rounded-lg font-medium hover-bg-terracota hover:text-white transition">
+                    Cotiza un Proyecto Similar
+                </a>
+                <a href="proyectos.html" class="inline-block border border-white text-white px-8 py-3 rounded-lg font-medium hover:bg-white hover:text-terracota transition">
+                    Ver Más Proyectos
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Navigation -->
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <a href="proyecto-anterior.html" class="flex items-center text-olive mb-4 md:mb-0">
+                    <i class="fas fa-arrow-left mr-2"></i>
+                    <span>Proyecto Anterior</span>
+                </a>
+                
+                <a href="proyectos.html" class="mb-4 md:mb-0">
+                    <span class="inline-block bg-gray-200 text-gray-800 px-4 py-2 rounded-full">
+                        <i class="fas fa-th-large mr-2"></i> Ver Todos los Proyectos
+                    </span>
+                </a>
+                
+                <a href="proyecto-siguiente.html" class="flex items-center text-olive">
+                    <span>Proyecto Siguiente</span>
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox">
+        <button class="lightbox-close">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="lightbox-content">
+            <img src="" alt="" class="lightbox-image">
+        </div>
+        <div class="lightbox-nav">
+            <button class="lightbox-prev">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="lightbox-next">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div>
+                    <img src="https://via.placeholder.com/150x50?text=Habitta" alt="Habitta Logo" class="h-10 mb-6">
+                    <p class="text-gray-400 mb-4">
+                        Co-creamos espacios con alma, fusionando estética, funcionalidad y tu propósito vital.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-pinterest-p"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="heading-font text-lg font-bold mb-6">Servicios</h3>
+                    <ul class="space-y-3">
+                        <li><a href="servicio-diseno.html" class="text-gray-400 hover:text-white transition">Diseño Interior</a></li>
+                        <li><a href="servicio-remodelacion.html" class="text-gray-400 hover:text-white transition">Remodelación</a></li>
+                        <li><a href="servicio-construccion.html" class="text-olive hover:text-white transition">Construcción</a></li>
+                        <li><a href="servicios.html" class="text-gray-400 hover:text-white transition">Acabados</a></li>
+                        <li><a href="servicios.html" class="text-gray-400 hover:text-white transition">Proyectos VIS</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="heading-font text-lg font-bold mb-6">Empresa</h3>
+                    <ul class="space-y-3">
+                        <li><a href="nosotros.html" class="text-gray-400 hover:text-white transition">Nosotros</a></li>
+                        <li><a href="proyectos.html" class="text-gray-400 hover:text-white transition">Proyectos</a></li>
+                        <li><a href="blog.html" class="text-gray-400 hover:text-white transition">Blog</a></li>
+                        <li><a href="testimonios.html" class="text-gray-400 hover:text-white transition">Testimonios</a></li>
+                        <li><a href="contacto.html" class="text-gray-400 hover:text-white transition">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="heading-font text-lg font-bold mb-6">Contacto</h3>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-olive"></i>
+                            <span>Calle 123 #45-67, Bogotá, Colombia</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-3 text-olive"></i>
+                            <a href="tel:+573001234567" class="hover:text-white transition">+57 300 123 4567</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-olive"></i>
+                            <a href="mailto:hola@habitta.co" class="hover:text-white transition">hola@habitta.co</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-clock mr-3 text-olive"></i>
+                            <span>Lun-Vie: 9am - 6pm</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm mb-4 md:mb-0">
+                    &copy; 2023 Habitta. Todos los derechos reservados.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-500 hover:text-white text-sm transition">Política de Privacidad</a>
+                    <a href="#" class="text-gray-500 hover:text-white text-sm transition">Términos y Condiciones</a>
+                    <a href="#" class="text-gray-500 hover:text-white text-sm transition">Mapa del Sitio</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        const openMenu = document.getElementById('openMenu');
+        const closeMenu = document.getElementById('closeMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        openMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Before & After Slider
+        const slider = document.querySelector('.before-after-slider');
+        const beforeImage = slider.querySelector('.before-image');
+        const sliderHandle = slider.querySelector('.slider-handle');
+        
+        let isDragging = false;
+        
+        sliderHandle.addEventListener('mousedown', () => {
+            isDragging = true;
+        });
+        
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+        
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            
+            const sliderRect = slider.getBoundingClientRect();
+            let x = e.clientX - sliderRect.left;
+            
+            // Constrain x to slider boundaries
+            x = Math.max(0, Math.min(x, sliderRect.width));
+            
+            const percent = (x / sliderRect.width) * 100;
+            
+            beforeImage.style.width = `${percent}%`;
+            sliderHandle.style.left = `${percent}%`;
+        });
+        
+        // Touch support for slider
+        sliderHandle.addEventListener('touchstart', () => {
+            isDragging = true;
+        });
+        
+        document.addEventListener('touchend', () => {
+            isDragging = false;
+        });
+        
+        document.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            
+            const touch = e.touches[0];
+            const sliderRect = slider.getBoundingClientRect();
+            let x = touch.clientX - sliderRect.left;
+            
+            // Constrain x to slider boundaries
+            x = Math.max(0, Math.min(x, sliderRect.width));
+            
+            const percent = (x / sliderRect.width) * 100;
+            
+            beforeImage.style.width = `${percent}%`;
+            sliderHandle.style.left = `${percent}%`;
+        });
+        
+        // Lightbox Gallery
+        const galleryImages = document.querySelectorAll('.gallery-image');
+        const lightbox = document.querySelector('.lightbox');
+        const lightboxImage = document.querySelector('.lightbox-image');
+        const lightboxClose = document.querySelector('.lightbox-close');
+        const lightboxPrev = document.querySelector('.lightbox-prev');
+        const lightboxNext = document.querySelector('.lightbox-next');
+        
+        let currentImageIndex = 0;
+        const images = Array.from(galleryImages).map(img => img.src);
+        
+        galleryImages.forEach((img, index) => {
+            img.addEventListener('click', () => {
+                currentImageIndex = index;
+                lightboxImage.src = images[currentImageIndex];
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        lightboxClose.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        lightboxPrev.addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            lightboxImage.src = images[currentImageIndex];
+        });
+        
+        lightboxNext.addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            lightboxImage.src = images[currentImageIndex];
+        });
+        
+        // Keyboard navigation for lightbox
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            
+            if (e.key === 'Escape') {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+            
+            if (e.key === 'ArrowLeft') {
+                currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+                lightboxImage.src = images[currentImageIndex];
+            }
+            
+            if (e.key === 'ArrowRight') {
+                currentImageIndex = (currentImageIndex + 1) % images.length;
+                lightboxImage.src = images[currentImageIndex];
+            }
+        });
+        
+        // Add shadow to header on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-lg');
+            } else {
+                header.classList.remove('shadow-lg');
+            }
+        });
+    </script>
+</body>
+</html>
