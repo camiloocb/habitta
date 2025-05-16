@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Servicio experto de acabados para apartamentos VIS, VIP y obra gris en Colombia. Habitta transforma tu nuevo hogar con estilo y funcionalidad. ¡Cotiza ahora!">
+    <meta name="keywords" content="Acabados apartamentos Colombia, acabados VIS Bogotá, terminar apartamento obra gris Medellín, kit acabados VIS, enchapes cocinas baños, pisos para apartamentos, carpintería apartamentos modernos, iluminación LED apartamentos, diseño de acabados, Habitta acabados">
+    <title>Acabados Apartamentos VIS, VIP y Obra Gris Colombia | Habitta</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .heading-font {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero-overlay {
+            background: rgba(0, 0, 0, 0.3);
+            background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.2) 100%);
+        }
+        
+        .text-olive {
+            color: #6b8e23;
+        }
+        
+        .bg-olive {
+            background-color: #6b8e23;
+        }
+        
+        .border-olive {
+            border-color: #6b8e23;
+        }
+        
+        .hover-bg-olive:hover {
+            background-color: #5a7a1e;
+        }
+        
+        .text-terracota {
+            color: #e2725b;
+        }
+        
+        .bg-terracota {
+            background-color: #e2725b;
+        }
+        
+        .hover-bg-terracota:hover {
+            background-color: #d1624b;
+        }
+        
+        .text-taupe {
+            color: #b8a99a;
+        }
+        
+        .bg-taupe {
+            background-color: #b8a99a;
+        }
+        
+        .before-after-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .before-after-slider {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 75%;
+        }
+        
+        .before-after-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .before-after-handle {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: white;
+            left: 50%;
+            transform: translateX(-50%);
+            cursor: ew-resize;
+            z-index: 10;
+        }
+        
+        .before-after-handle:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+        
+        .before-after-handle:before {
+            content: '\f07e';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(90deg);
+            color: #6b8e23;
+            font-size: 16px;
+        }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .accordion-content.active {
+            max-height: 500px;
+        }
+        
+        .material-card {
+            transition: all 0.3s ease;
+        }
+        
+        .material-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .process-step {
+            position: relative;
+            padding-left: 80px;
+            margin-bottom: 40px;
+        }
+        
+        .process-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 60px;
+            height: 60px;
+            background-color: #6b8e23;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .process-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .project-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .project-image {
+            height: 250px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .project-details {
+            padding: 20px;
+            background-color: white;
+        }
+        
+        .menu-open {
+            transform: translateX(0);
+        }
+        
+        .menu-closed {
+            transform: translateX(100%);
+        }
+        
+        .transition-slow {
+            transition: all 0.5s ease;
+        }
+        
+        @media (max-width: 768px) {
+            .process-step {
+                padding-left: 60px;
+            }
+            
+            .process-number {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+            
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 z-50 bg-white w-full h-full menu-closed transition-slow">
+        <div class="container mx-auto px-6 py-8">
+            <div class="flex justify-between items-center mb-12">
+                <img src="https://via.placeholder.com/150x50?text=Habitta" alt="Habitta Logo" class="h-10">
+                <button id="closeMenu" class="text-gray-800 text-2xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <nav class="flex flex-col space-y-6">
+                <a href="index.html" class="text-gray-800 text-xl font-medium">Inicio</a>
+                <a href="nosotros.html" class="text-gray-800 text-xl font-medium">Nosotros</a>
+                <a href="servicios.html" class="text-olive text-xl font-medium">Servicios</a>
+                <a href="proyectos.html" class="text-gray-800 text-xl font-medium">Proyectos</a>
+                <a href="blog.html" class="text-gray-800 text-xl font-medium">Blog</a>
+                <a href="contacto.html" class="text-gray-800 text-xl font-medium">Contacto</a>
+            </nav>
+            <div class="mt-12">
+                <a href="contacto.html" class="inline-block bg-olive text-white px-6 py-3 rounded-full font-medium hover-bg-olive">Contacto</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-40 bg-white shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="flex items-center">
+                    <img src="https://via.placeholder.com/150x50?text=Habitta" alt="Habitta Logo" class="h-10">
+                </a>
+                
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-800 hover:text-olive transition">Inicio</a>
+                    <a href="nosotros.html" class="text-gray-800 hover:text-olive transition">Nosotros</a>
+                    <a href="servicios.html" class="text-olive font-medium">Servicios</a>
+                    <a href="proyectos.html" class="text-gray-800 hover:text-olive transition">Proyectos</a>
+                    <a href="blog.html" class="text-gray-800 hover:text-olive transition">Blog</a>
+                    <a href="contacto.html" class="text-gray-800 hover:text-olive transition">Contacto</a>
+                </nav>
+                
+                <div class="hidden md:block">
+                    <a href="contacto.html" class="bg-olive text-white px-6 py-2 rounded-full font-medium hover-bg-olive transition">Contacto</a>
+                </div>
+                
+                <button id="openMenu" class="md:hidden text-gray-800 text-xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative h-96 flex items-center">
+        <div class="absolute inset-0 hero-overlay z-10"></div>
+        <img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646554?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" 
+             alt="Acabados para apartamentos" 
+             class="absolute inset-0 w-full h-full object-cover">
+        
+        <div class="container mx-auto px-6 relative z-20">
+            <h1 class="heading-font text-4xl md:text-5xl font-bold text-white mb-4">
+                Acabados que Transforman: Tu Apartamento VIS, VIP u Obra Gris con el Sello Habitta
+            </h1>
+            <p class="text-xl text-white max-w-2xl">
+                Recibiste las llaves de tu nuevo apartamento y es momento de imprimirle tu esencia. En Habitta, te acompañamos a seleccionar e instalar cada detalle para convertirlo en el hogar que sueñas, adaptándonos a tu estilo y presupuesto.
+            </p>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="py-16 md:py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Invierte en Acabados que Reflejen Quién Eres y Mejoren Tu Calidad de Vida
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Los acabados son la piel de tu hogar, la expresión más visible de tu estilo y personalidad. Con Habitta, cada detalle cuenta tu historia.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Benefit 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-start">
+                        <div class="bg-olive text-white p-4 rounded-full w-16 h-16 flex items-center justify-center mr-6">
+                            <i class="fas fa-palette text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">
+                                Personalización Total
+                            </h3>
+                            <p class="text-gray-600">
+                                Un hogar a tu imagen. Desde la selección de pisos hasta los detalles de iluminación, cada elemento refleja tus gustos y necesidades.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Benefit 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-start">
+                        <div class="bg-olive text-white p-4 rounded-full w-16 h-16 flex items-center justify-center mr-6">
+                            <i class="fas fa-couch text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">
+                                Funcionalidad y Confort
+                            </h3>
+                            <p class="text-gray-600">
+                                Cada rincón diseñado para tu comodidad. Acabados que no solo lucen bien, sino que mejoran tu experiencia diaria en el hogar.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Benefit 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-start">
+                        <div class="bg-olive text-white p-4 rounded-full w-16 h-16 flex items-center justify-center mr-6">
+                            <i class="fas fa-shield-alt text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">
+                                Calidad que Perdura
+                            </h3>
+                            <p class="text-gray-600">
+                                Materiales de primera y mano de obra experta. Acabados que mantendrán su belleza y funcionalidad por años.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Benefit 4 -->
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-start">
+                        <div class="bg-olive text-white p-4 rounded-full w-16 h-16 flex items-center justify-center mr-6">
+                            <i class="fas fa-coins text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">
+                                Optimización Inteligente
+                            </h3>
+                            <p class="text-gray-600">
+                                Sabemos sacar el máximo provecho a tu presupuesto, especialmente en proyectos VIS, sin sacrificar estilo ni durabilidad.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Benefit 5 -->
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-start">
+                        <div class="bg-olive text-white p-4 rounded-full w-16 h-16 flex items-center justify-center mr-6">
+                            <i class="fas fa-chart-line text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">
+                                Valorización de tu Propiedad
+                            </h3>
+                            <p class="text-gray-600">
+                                Acabados profesionales aumentan significativamente el valor de mercado de tu apartamento, una inversión que se aprecia con el tiempo.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Benefit 6 -->
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-start">
+                        <div class="bg-olive text-white p-4 rounded-full w-16 h-16 flex items-center justify-center mr-6">
+                            <i class="fas fa-hands-helping text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">
+                                Acompañamiento Experto
+                            </h3>
+                            <p class="text-gray-600">
+                                Te guiamos en cada decisión, desde la selección de materiales hasta la instalación final, evitando errores costosos.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section class="py-16 md:py-24">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Tu Apartamento, Tus Reglas: Soluciones de Acabados para VIS, VIP y Obra Gris
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Adaptamos nuestro servicio a las características y necesidades específicas de cada tipo de proyecto
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Solution 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" 
+                             alt="Acabados para VIS" 
+                             class="absolute inset-0 w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                            <h3 class="heading-font text-2xl font-bold text-white">Acabados para VIS</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">
+                            Soluciones inteligentes que maximizan el valor dentro de presupuestos específicos, sin sacrificar estilo ni durabilidad.
+                        </p>
+                        <ul class="text-gray-600 text-sm space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-olive mr-2 mt-1"></i>
+                                <span>Kits de acabados personalizables</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-olive mr-2 mt-1"></i>
+                                <span>Optimización de espacios pequeños</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-olive mr-2 mt-1"></i>
+                                <span>Materiales duraderos y fáciles de mantener</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-olive mr-2 mt-1"></i>
+                                <span>Soluciones creativas para presupuestos ajustados</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Solution 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1600566752225-5376dfd9a182?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" 
+                             alt="Obra Gris" 
+                             class="absolute inset-0 w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                            <h3 class="heading-font text-2xl font-bold text-white">Obra Gris</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">
+                            Libertad total para crear desde cero. Instalamos todos los elementos necesarios para convertir la estructura en un hogar.
+                        </p>
+                        <ul class="text-gray-600 text-sm space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-olive mr-2 mt-1"></i>
+                                <span>Selección e instalación de todos los acabados</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-olive mr-2 mt-1"></i>
+                                <span>Diseño de iluminación integral</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-olive mr-2 mt-1"></i>
+                                <span>Carpintería a medida para cada espacio</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-olive mr-2 mt-1"></i>
+                                <span>Coordinación de todas las especialidades</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Solution 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" 
+                             alt="Acabados VIP" 
+                             class="absolute inset-0 w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                            <h3 class="heading-font text-2xl font-bold text-white">Acabados VIP</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">
+                            Materiales premium y diseños exclusivos para quienes buscan un estándar superior en su hogar.
+                        </p>
+                        <ul class="text-gray-600 text-sm space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-olive mr-2 mt-1"></i>
+                                <span>Materiales de alta gama y diseño exclusivo</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-olive mr-2 mt-1"></i>
+                                <span>Cocinas y baños tipo spa</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-olive mr-2 mt-1"></i>
+                                <span>Sistemas de iluminación inteligente</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-olive mr-2 mt-1"></i>
+                                <span>Acabados artesanales y detalles personalizados</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Materials Section -->
+    <section class="py-16 md:py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Un Universo de Posibilidades para Cada Detalle de Tu Nuevo Hogar
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Desde paquetes de acabados optimizados hasta la selección individual de cada elemento según tu visión
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Material 1 -->
+                <div class="material-card bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="bg-gray-100 p-4 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-border-style text-3xl text-olive"></i>
+                    </div>
+                    <h3 class="heading-font font-bold text-gray-800 mb-2">Pisos</h3>
+                    <p class="text-gray-600 text-sm">
+                        Porcelanatos, cerámicos, vinílicos, laminados, madera y más. Selección para cada espacio según uso y estilo.
+                    </p>
+                </div>
+                
+                <!-- Material 2 -->
+                <div class="material-card bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="bg-gray-100 p-4 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-tile text-3xl text-olive"></i>
+                    </div>
+                    <h3 class="heading-font font-bold text-gray-800 mb-2">Enchapes</h3>
+                    <p class="text-gray-600 text-sm">
+                        Para cocinas, baños y áreas húmedas. Desde opciones económicas hasta diseños exclusivos.
+                    </p>
+                </div>
+                
+                <!-- Material 3 -->
+                <div class="material-card bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="bg-gray-100 p-4 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-paint-roller text-3xl text-olive"></i>
+                    </div>
+                    <h3 class="heading-font font-bold text-gray-800 mb-2">Pintura</h3>
+                    <p class="text-gray-600 text-sm">
+                        Pinturas ecológicas, estucos decorativos, texturas y papeles de colgadura para personalizar tus paredes.
+                    </p>
+                </div>
+                
+                <!-- Material 4 -->
+                <div class="material-card bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="bg-gray-100 p-4 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-door-open text-3xl text-olive"></i>
+                    </div>
+                    <h3 class="heading-font font-bold text-gray-800 mb-2">Carpintería</h3>
+                    <p class="text-gray-600 text-sm">
+                        Puertas, clósets, cocinas y baños a medida. MDF, melamina o madera maciza según tu preferencia.
+                    </p>
+                </div>
+                
+                <!-- Material 5 -->
+                <div class="material-card bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="bg-gray-100 p-4 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-lightbulb text-3xl text-olive"></i>
+                    </div>
+                    <h3 class="heading-font font-bold text-gray-800 mb-2">Iluminación</h3>
+                    <p class="text-gray-600 text-sm">
+                        Diseño de puntos de luz, selección e instalación de luminarias LED, sistemas inteligentes y decorativos.
+                    </p>
+                </div>
+                
+                <!-- Material 6 -->
+                <div class="material-card bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="bg-gray-100 p-4 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-faucet text-3xl text-olive"></i>
+                    </div>
+                    <h3 class="heading-font font-bold text-gray-800 mb-2">Grifería</h3>
+                    <p class="text-gray-600 text-sm">
+                        Grifos, duchas y accesorios de baño y cocina. Desde estándar hasta líneas premium con tecnología ahorradora.
+                    </p>
+                </div>
+                
+                <!-- Material 7 -->
+                <div class="material-card bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="bg-gray-100 p-4 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-toilet text-3xl text-olive"></i>
+                    </div>
+                    <h3 class="heading-font font-bold text-gray-800 mb-2">Sanitarios</h3>
+                    <p class="text-gray-600 text-sm">
+                        Inodoros, lavamanos, duchas y accesorios. Variedad de diseños y tecnologías para cada necesidad.
+                    </p>
+                </div>
+                
+                <!-- Material 8 -->
+                <div class="material-card bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="bg-gray-100 p-4 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-border-all text-3xl text-olive"></i>
+                    </div>
+                    <h3 class="heading-font font-bold text-gray-800 mb-2">Cielos Rasos</h3>
+                    <p class="text-gray-600 text-sm">
+                        Drywall, PVC, madera o yeso. Soluciones prácticas y estéticas para techos, con opciones de iluminación empotrada.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="py-16 md:py-24">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Así Hacemos Realidad Tu Visión: Un Proceso Claro y Colaborativo
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Desde el primer contacto hasta la entrega final, trabajamos con transparencia y comunicación constante
+                </p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <!-- Step 1 -->
+                <div class="process-step">
+                    <div class="process-number">1</div>
+                    <div class="process-content">
+                        <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">
+                            Consulta Inicial y Visita Técnica
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            Conocemos tus gustos, necesidades y presupuesto. Evaluamos el estado actual del apartamento y tomamos medidas precisas.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Entrevista de necesidades</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Toma de medidas</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Evaluación técnica</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="process-step">
+                    <div class="process-number">2</div>
+                    <div class="process-content">
+                        <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">
+                            Propuesta de Diseño y Selección
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            Presentamos opciones de materiales, estilos y colores. Creamos moodboards y una cotización detallada y transparente.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Moodboards visuales</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Selección de materiales</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Cotización detallada</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="process-step">
+                    <div class="process-number">3</div>
+                    <div class="process-content">
+                        <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">
+                            Planificación y Cronograma
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            Organizamos la logística, tiempos de entrega de materiales y secuencia de instalación para minimizar molestias.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Programación de trabajos</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Coordinación de especialistas</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Entrega de materiales</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Step 4 -->
+                <div class="process-step">
+                    <div class="process-number">4</div>
+                    <div class="process-content">
+                        <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">
+                            Ejecución Profesional
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            Instalación por personal calificado con supervisión constante. Mantenemos comunicación periódica sobre avances.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Instalación profesional</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Control de calidad</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Reportes de avance</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Step 5 -->
+                <div class="process-step">
+                    <div class="process-number">5</div>
+                    <div class="process-content">
+                        <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">
+                            Entrega Impecable
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            Revisión conjunta de cada detalle, limpieza profesional y entrega formal con garantías y manuales.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Revisión final</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Limpieza profesional</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Documentación</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before & After Section -->
+    <section class="py-16 md:py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Transformaciones Reales: El Impacto de Acabados Pensados para Ti
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Mira cómo hemos convertido apartamentos en obra gris o con acabados básicos en hogares con alma
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <!-- Project 1 -->
+                <div>
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-4">Apartamento VIS en Bogotá</h3>
+                    <div class="before-after-container">
+                        <div class="before-after-slider">
+                            <img src="https://images.unsplash.com/photo-1600607687937-ce8a6c25118c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1752&q=80" 
+                                 alt="Antes" 
+                                 class="before-after-image">
+                            <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" 
+                                 alt="Después" 
+                                 class="before-after-image" style="width: 50%;">
+                            <div class="before-after-handle"></div>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex justify-between text-sm text-gray-600">
+                        <span>Antes: Obra Gris</span>
+                        <span>Después: Acabados Habitta</span>
+                    </div>
+                    <p class="mt-4 text-gray-600">
+                        Este apartamento VIS de 65m² fue transformado con un kit de acabados optimizado que incluyó pisos vinílicos, enchapes para cocina y baño, pintura de calidad y carpintería básica.
+                    </p>
+                </div>
+                
+                <!-- Project 2 -->
+                <div>
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-4">Apartamento VIP en Medellín</h3>
+                    <div class="before-after-container">
+                        <div class="before-after-slider">
+                            <img src="https://images.unsplash.com/photo-1600566753086-5fde8f4e29ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" 
+                                 alt="Antes" 
+                                 class="before-after-image">
+                            <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" 
+                                 alt="Después" 
+                                 class="before-after-image" style="width: 50%;">
+                            <div class="before-after-handle"></div>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex justify-between text-sm text-gray-600">
+                        <span>Antes: Entrega constructora</span>
+                        <span>Después: Acabados premium</span>
+                    </div>
+                    <p class="mt-4 text-gray-600">
+                        Renovación completa de un apartamento de 120m² con porcelanato de alta gama, cocina italiana, baños tipo spa con detalles en mármol y sistema de iluminación inteligente.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <a href="proyectos.html" class="inline-block bg-olive text-white px-8 py-3 rounded-full font-medium hover-bg-olive transition">
+                    Ver Más Proyectos de Acabados
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 md:py-24 bg-terracota text-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold mb-4">
+                    Lo Que Dicen Nuestros Clientes
+                </h2>
+                <p class="text-xl max-w-3xl mx-auto">
+                    Experiencias reales de propietarios que confiaron en Habitta para los acabados de sus apartamentos
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white bg-opacity-10 p-8 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-star text-yellow-300 mr-1"></i>
+                        <i class="fas fa-star text-yellow-300 mr-1"></i>
+                        <i class="fas fa-star text-yellow-300 mr-1"></i>
+                        <i class="fas fa-star text-yellow-300 mr-1"></i>
+                        <i class="fas fa-star text-yellow-300"></i>
+                    </div>
+                    <p class="italic mb-6">
+                        "Compré mi primer apartamento VIS y no sabía por dónde empezar con los acabados. Habitta me guió en cada paso, optimizando mi presupuesto sin sacrificar calidad. ¡Mi apartamento quedó mejor que muchos VIP!"
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=776&q=80" 
+                             alt="Cliente satisfecho" 
+                             class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <p class="font-medium">María Fernanda López</p>
+                            <p class="text-sm text-white text-opacity-70">Apartamento VIS en Bogotá</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-white bg-opacity-10 p-8 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-star text-yellow-300 mr-1"></i>
+                        <i class="fas fa-star text-yellow-300 mr-1"></i>
+                        <i class="fas fa-star text-yellow-300 mr-1"></i>
+                        <i class="fas fa-star text-yellow-300 mr-1"></i>
+                        <i class="fas fa-star text-yellow-300"></i>
+                    </div>
+                    <p class="italic mb-6">
+                        "Recibimos nuestro apartamento en obra gris y la transformación con Habitta fue increíble. Su equipo manejó todo: desde la selección de materiales hasta la instalación. Cumplieron con los tiempos y el presupuesto."
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://images.unsplash.com/photo-1560259937-5d1f38aa8a6a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
+                             alt="Cliente satisfecho" 
+                             class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <p class="font-medium">Carlos Andrés Ramírez</p>
+                            <p class="text-sm text-white text-opacity-70">Obra Gris en Medellín</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-white bg-opacity-10 p-8 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-star text-yellow-300 mr-1"></i>
+                        <i class="fas fa-star text-yellow-300 mr-1"></i>
+                        <i class="fas fa-star text-yellow-300 mr-1"></i>
+                        <i class="fas fa-star text-yellow-300 mr-1"></i>
+                        <i class="fas fa-star text-yellow-300"></i>
+                    </div>
+                    <p class="italic mb-6">
+                        "Para nuestro apartamento VIP buscábamos algo exclusivo. Habitta entendió perfectamente nuestro estilo y nos sorprendió con soluciones innovadoras. La calidad de los acabados superó todas nuestras expectativas."
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
+                             alt="Cliente satisfecho" 
+                             class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <p class="font-medium">Laura y Felipe Gómez</p>
+                            <p class="text-sm text-white text-opacity-70">Apartamento VIP en Cali</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 md:py-24">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Todo lo que Quieres Saber Sobre Nuestros Servicios de Acabados
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Respuestas a las preguntas más frecuentes de nuestros clientes
+                </p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <!-- FAQ Item 1 -->
+                <div class="mb-6 border-b border-gray-200 pb-6">
+                    <button class="accordion-toggle flex justify-between items-center w-full text-left">
+                        <h3 class="heading-font text-xl font-bold text-gray-800">
+                            ¿Cuánto tiempo toma instalar los acabados de un apartamento?
+                        </h3>
+                        <i class="fas fa-chevron-down text-olive transition-transform transform"></i>
+                    </button>
+                    <div class="accordion-content mt-4">
+                        <p class="text-gray-600">
+                            El tiempo varía según el tipo de apartamento y alcance del proyecto. En promedio: apartamentos VIS (2-3 semanas), obra gris (4-6 semanas), VIP (6-8 semanas). Trabajamos por etapas para que puedas habitar pronto.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="mb-6 border-b border-gray-200 pb-6">
+                    <button class="accordion-toggle flex justify-between items-center w-full text-left">
+                        <h3 class="heading-font text-xl font-bold text-gray-800">
+                            ¿Qué son los "kits de acabados" y puedo personalizarlos?
+                        </h3>
+                        <i class="fas fa-chevron-down text-olive transition-transform transform"></i>
+                    </button>
+                    <div class="accordion-content mt-4">
+                        <p class="text-gray-600">
+                            Nuestros kits son paquetes prediseñados que combinan materiales de calidad a precios accesibles, especialmente para VIS. Ofrecemos varios estilos (moderno, clásico, minimalista) y permitimos cierta personalización dentro de cada kit. También puedes optar por selección totalmente personalizada.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="mb-6 border-b border-gray-200 pb-6">
+                    <button class="accordion-toggle flex justify-between items-center w-full text-left">
+                        <h3 class="heading-font text-xl font-bold text-gray-800">
+                            ¿Qué garantía tienen los materiales y la instalación?
+                        </h3>
+                        <i class="fas fa-chevron-down text-olive transition-transform transform"></i>
+                    </button>
+                    <div class="accordion-content mt-4">
+                        <p class="text-gray-600">
+                            Todos los materiales incluyen sus garantías originales (1-10 años según tipo). Nuestra instalación tiene garantía de 2 años contra defectos. Documentamos todas las garantías en el manual de entrega.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="mb-6 border-b border-gray-200 pb-6">
+                    <button class="accordion-toggle flex justify-between items-center w-full text-left">
+                        <h3 class="heading-font text-xl font-bold text-gray-800">
+                            ¿Cómo se elabora el presupuesto para los acabados y es flexible?
+                        </h3>
+                        <i class="fas fa-chevron-down text-olive transition-transform transform"></i>
+                    </button>
+                    <div class="accordion-content mt-4">
+                        <p class="text-gray-600">
+                            El presupuesto se basa en tus prioridades, metros cuadrados y materiales seleccionados. Es totalmente flexible: puedes ajustar partidas para redistribuir el costo. Te mostramos opciones en diferentes rangos de precio para cada elemento.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 5 -->
+                <div class="mb-6 border-b border-gray-200 pb-6">
+                    <button class="accordion-toggle flex justify-between items-center w-full text-left">
+                        <h3 class="heading-font text-xl font-bold text-gray-800">
+                            ¿Puedo suministrar mis propios materiales si ya los tengo?
+                        </h3>
+                        <i class="fas fa-chevron-down text-olive transition-transform transform"></i>
+                    </button>
+                    <div class="accordion-content mt-4">
+                        <p class="text-gray-600">
+                            Sí, podemos trabajar con materiales que ya hayas adquirido. Evaluamos su idoneidad y te asesoramos sobre cantidades faltantes. Aplicamos un descuento en la mano de obra por materiales propios.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 6 -->
+                <div class="mb-6">
+                    <button class="accordion-toggle flex justify-between items-center w-full text-left">
+                        <h3 class="heading-font text-xl font-bold text-gray-800">
+                            ¿Qué incluye exactamente un servicio de acabados para un apartamento VIS?
+                        </h3>
+                        <i class="fas fa-chevron-down text-olive transition-transform transform"></i>
+                    </button>
+                    <div class="accordion-content mt-4">
+                        <p class="text-gray-600">
+                            Nuestro paquete básico VIS incluye: instalación de pisos, enchapes para cocina y baño, pintura interior, carpintería básica (puertas interiores, clósets estándar), grifería y sanitarios. Puedes añadir elementos adicionales según tu presupuesto.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 md:py-24 bg-olive text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="heading-font text-3xl md:text-4xl font-bold mb-6">
+                ¿Listo para Estrenar un Apartamento con Acabados Que Hablen de Ti?
+            </h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">
+                Tu nuevo comienzo merece acabados excepcionales. Agenda una asesoría gratuita y recibe una cotización personalizada.
+            </p>
+            
+            <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-8 text-left text-gray-800">
+                <h3 class="heading-font text-xl font-bold mb-6 text-center">
+                    Solicita tu Cotización para Acabados
+                </h3>
+                <form>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-gray-700 text-sm font-medium mb-2">Nombre completo</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-terracota focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700 text-sm font-medium mb-2">Correo electrónico</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-terracota focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-gray-700 text-sm font-medium mb-2">Teléfono</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-terracota focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="apartment-type" class="block text-gray-700 text-sm font-medium mb-2">Tipo de apartamento</label>
+                            <select id="apartment-type" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-terracota focus:border-transparent">
+                                <option value="">Selecciona una opción</option>
+                                <option value="vis">VIS</option>
+                                <option value="vip">VIP</option>
+                                <option value="obra-gris">Obra Gris</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="location" class="block text-gray-700 text-sm font-medium mb-2">Ubicación del apartamento</label>
+                            <input type="text" id="location" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-terracota focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="area" class="block text-gray-700 text-sm font-medium mb-2">Área aproximada (m²)</label>
+                            <input type="number" id="area" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-terracota focus:border-transparent">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="priority-areas" class="block text-gray-700 text-sm font-medium mb-2">¿Qué áreas son prioritarias para ti?</label>
+                            <div class="flex flex-wrap gap-3">
+                                <label class="inline-flex items-center">
+                                    <input type="checkbox" class="text-terracota rounded border-gray-300">
+                                    <span class="ml-2">Cocina</span>
+                                </label>
+                                <label class="inline-flex items-center">
+                                    <input type="checkbox" class="text-terracota rounded border-gray-300">
+                                    <span class="ml-2">Baños</span>
+                                </label>
+                                <label class="inline-flex items-center">
+                                    <input type="checkbox" class="text-terracota rounded border-gray-300">
+                                    <span class="ml-2">Pisos</span>
+                                </label>
+                                <label class="inline-flex items-center">
+                                    <input type="checkbox" class="text-terracota rounded border-gray-300">
+                                    <span class="ml-2">Pintura</span>
+                                </label>
+                                <label class="inline-flex items-center">
+                                    <input type="checkbox" class="text-terracota rounded border-gray-300">
+                                    <span class="ml-2">Clósets</span>
+                                </label>
+                                <label class="inline-flex items-center">
+                                    <input type="checkbox" class="text-terracota rounded border-gray-300">
+                                    <span class="ml-2">Iluminación</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="budget" class="block text-gray-700 text-sm font-medium mb-2">Presupuesto estimado</label>
+                            <select id="budget" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-terracota focus:border-transparent">
+                                <option value="">Selecciona un rango</option>
+                                <option value="10-20">$10 - $20 millones COP</option>
+                                <option value="20-40">$20 - $40 millones COP</option>
+                                <option value="40-80">$40 - $80 millones COP</option>
+                                <option value="80+">Más de $80 millones COP</option>
+                                <option value="unsure">No estoy seguro</option>
+                            </select>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="message" class="block text-gray-700 text-sm font-medium mb-2">Describe tu proyecto y necesidades específicas</label>
+                            <textarea id="message" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-terracota focus:border-transparent"></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full mt-6 bg-terracota text-white px-6 py-3 rounded-lg font-medium hover-bg-terracota transition">
+                        Cotizar los Acabados de Mi Apartamento
+                    </button>
+                </form>
+            </div>
+            
+            <div class="mt-12 flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8">
+                <div class="flex items-center">
+                    <i class="fas fa-phone-alt text-xl mr-3"></i>
+                    <a href="tel:+573001234567" class="text-white hover:underline">+57 300 123 4567</a>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-envelope text-xl mr-3"></i>
+                    <a href="mailto:acabados@habitta.co" class="text-white hover:underline">acabados@habitta.co</a>
+                </div>
+                <div class="flex items-center">
+                    <i class="fab fa-whatsapp text-xl mr-3"></i>
+                    <a href="https://wa.me/573001234567" class="text-white hover:underline">Escríbenos por WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div>
+                    <img src="https://via.placeholder.com/150x50?text=Habitta" alt="Habitta Logo" class="h-10 mb-6">
+                    <p class="text-gray-400 mb-4">
+                        Co-creamos espacios con alma, fusionando estética, funcionalidad y tu propósito vital.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-pinterest-p"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="heading-font text-lg font-bold mb-6">Servicios</h3>
+                    <ul class="space-y-3">
+                        <li><a href="servicio-diseno.html" class="text-gray-400 hover:text-white transition">Diseño Interior</a></li>
+                        <li><a href="servicio-remodelacion.html" class="text-gray-400 hover:text-white transition">Remodelación</a></li>
+                        <li><a href="servicio-construccion.html" class="text-gray-400 hover:text-white transition">Construcción</a></li>
+                        <li><a href="servicio-acabados.html" class="text-olive hover:text-white transition">Acabados</a></li>
+                        <li><a href="servicios.html" class="text-gray-400 hover:text-white transition">Proyectos VIS</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="heading-font text-lg font-bold mb-6">Empresa</h3>
+                    <ul class="space-y-3">
+                        <li><a href="nosotros.html" class="text-gray-400 hover:text-white transition">Nosotros</a></li>
+                        <li><a href="proyectos.html" class="text-gray-400 hover:text-white transition">Proyectos</a></li>
+                        <li><a href="blog.html" class="text-gray-400 hover:text-white transition">Blog</a></li>
+                        <li><a href="testimonios.html" class="text-gray-400 hover:text-white transition">Testimonios</a></li>
+                        <li><a href="contacto.html" class="text-gray-400 hover:text-white transition">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="heading-font text-lg font-bold mb-6">Contacto</h3>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-olive"></i>
+                            <span>Calle 123 #45-67, Bogotá, Colombia</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-3 text-olive"></i>
+                            <a href="tel:+573001234567" class="hover:text-white transition">+57 300 123 4567</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-olive"></i>
+                            <a href="mailto:hola@habitta.co" class="hover:text-white transition">hola@habitta.co</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-clock mr-3 text-olive"></i>
+                            <span>Lun-Vie: 9am - 6pm</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm mb-4 md:mb-0">
+                    &copy; 2023 Habitta. Todos los derechos reservados.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-500 hover:text-white text-sm transition">Política de Privacidad</a>
+                    <a href="#" class="text-gray-500 hover:text-white text-sm transition">Términos y Condiciones</a>
+                    <a href="#" class="text-gray-500 hover:text-white text-sm transition">Mapa del Sitio</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        const openMenu = document.getElementById('openMenu');
+        const closeMenu = document.getElementById('closeMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        openMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('menu-closed');
+            mobileMenu.classList.add('menu-open');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('menu-open');
+            mobileMenu.classList.add('menu-closed');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // FAQ Accordion
+        const accordionToggles = document.querySelectorAll('.accordion-toggle');
+        
+        accordionToggles.forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                const icon = this.querySelector('i');
+                
+                content.classList.toggle('active');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+        
+        // Before & After Slider
+        const slider = document.querySelector('.before-after-slider');
+        const handle = document.querySelector('.before-after-handle');
+        
+        if (slider && handle) {
+            let isDragging = false;
+            
+            handle.addEventListener('mousedown', () => {
+                isDragging = true;
+            });
+            
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+            
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                
+                const sliderRect = slider.getBoundingClientRect();
+                const x = e.clientX - sliderRect.left;
+                const percentage = (x / sliderRect.width) * 100;
+                
+                if (percentage >= 0 && percentage <= 100) {
+                    const afterImage = slider.querySelector('.before-after-image:last-child');
+                    afterImage.style.width = `${percentage}%`;
+                    handle.style.left = `${percentage}%`;
+                }
+            });
+            
+            // Touch events for mobile
+            handle.addEventListener('touchstart', () => {
+                isDragging = true;
+            });
+            
+            document.addEventListener('touchend', () => {
+                isDragging = false;
+            });
+            
+            document.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                
+                const sliderRect = slider.getBoundingClientRect();
+                const x = e.touches[0].clientX - sliderRect.left;
+                const percentage = (x / sliderRect.width) * 100;
+                
+                if (percentage >= 0 && percentage <= 100) {
+                    const afterImage = slider.querySelector('.before-after-image:last-child');
+                    afterImage.style.width = `${percentage}%`;
+                    handle.style.left = `${percentage}%`;
+                }
+            });
+        }
+        
+        // Add shadow to header on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-lg');
+            } else {
+                header.classList.remove('shadow-lg');
+            }
+        });
+    </script>
+</body>
+</html>
