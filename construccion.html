@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Habitta: expertos en construcción de obra nueva en Colombia. Edificamos casas, edificios y locales comerciales con calidad, transparencia y gestión profesional. Cotiza tu proyecto.">
+    <meta name="keywords" content="Construcción obra nueva Colombia, constructora de casas Bogotá, construcción edificios Medellín, edificación locales comerciales, gestión de obras, proyectos de construcción Colombia, constructor Habitta, obra nueva calidad, construcción viviendas unifamiliares, proyectos comerciales Colombia">
+    <title>Construcción Obra Nueva Colombia | Casas y Edificios | Habitta</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .heading-font {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero-overlay {
+            background: rgba(0, 0, 0, 0.3);
+            background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.2) 100%);
+        }
+        
+        .text-olive {
+            color: #6b8e23;
+        }
+        
+        .bg-olive {
+            background-color: #6b8e23;
+        }
+        
+        .border-olive {
+            border-color: #6b8e23;
+        }
+        
+        .hover-bg-olive:hover {
+            background-color: #5a7a1e;
+        }
+        
+        .text-terracota {
+            color: #e2725b;
+        }
+        
+        .bg-terracota {
+            background-color: #e2725b;
+        }
+        
+        .hover-bg-terracota:hover {
+            background-color: #d1624b;
+        }
+        
+        .text-taupe {
+            color: #b8a99a;
+        }
+        
+        .bg-taupe {
+            background-color: #b8a99a;
+        }
+        
+        .process-step:hover .step-icon {
+            transform: scale(1.1);
+            background-color: #6b8e23;
+            color: white;
+        }
+        
+        .step-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-item:not(:last-child):after {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 32px;
+            height: calc(100% - 32px);
+            width: 2px;
+            background-color: #6b8e23;
+        }
+        
+        .menu-open {
+            transform: translateX(0);
+        }
+        
+        .menu-closed {
+            transform: translateX(100%);
+        }
+        
+        .transition-slow {
+            transition: all 0.5s ease;
+        }
+        
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        
+        .project-overlay {
+            transition: all 0.3s ease;
+            background: rgba(107, 142, 35, 0.9);
+        }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .accordion-content.active {
+            max-height: 500px;
+        }
+        
+        .construction-phase {
+            position: relative;
+            padding-left: 80px;
+            margin-bottom: 40px;
+        }
+        
+        .phase-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 60px;
+            height: 60px;
+            background-color: #6b8e23;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .phase-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .project-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .project-image {
+            height: 250px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .project-details {
+            padding: 20px;
+            background-color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .construction-phase {
+                padding-left: 60px;
+            }
+            
+            .phase-number {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+            
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 z-50 bg-white w-full h-full menu-closed transition-slow">
+        <div class="container mx-auto px-6 py-8">
+            <div class="flex justify-between items-center mb-12">
+                <img src="https://via.placeholder.com/150x50?text=Habitta" alt="Habitta Logo" class="h-10">
+                <button id="closeMenu" class="text-gray-800 text-2xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <nav class="flex flex-col space-y-6">
+                <a href="index.html" class="text-gray-800 text-xl font-medium">Inicio</a>
+                <a href="nosotros.html" class="text-gray-800 text-xl font-medium">Nosotros</a>
+                <a href="servicios.html" class="text-olive text-xl font-medium">Servicios</a>
+                <a href="proyectos.html" class="text-gray-800 text-xl font-medium">Proyectos</a>
+                <a href="blog.html" class="text-gray-800 text-xl font-medium">Blog</a>
+                <a href="contacto.html" class="text-gray-800 text-xl font-medium">Contacto</a>
+            </nav>
+            <div class="mt-12">
+                <a href="contacto.html" class="inline-block bg-olive text-white px-6 py-3 rounded-full font-medium hover-bg-olive">Contacto</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-40 bg-white shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="flex items-center">
+                    <img src="https://via.placeholder.com/150x50?text=Habitta" alt="Habitta Logo" class="h-10">
+                </a>
+                
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-800 hover:text-olive transition">Inicio</a>
+                    <a href="nosotros.html" class="text-gray-800 hover:text-olive transition">Nosotros</a>
+                    <a href="servicios.html" class="text-olive font-medium">Servicios</a>
+                    <a href="proyectos.html" class="text-gray-800 hover:text-olive transition">Proyectos</a>
+                    <a href="blog.html" class="text-gray-800 hover:text-olive transition">Blog</a>
+                    <a href="contacto.html" class="text-gray-800 hover:text-olive transition">Contacto</a>
+                </nav>
+                
+                <div class="hidden md:block">
+                    <a href="contacto.html" class="bg-olive text-white px-6 py-2 rounded-full font-medium hover-bg-olive transition">Contacto</a>
+                </div>
+                
+                <button id="openMenu" class="md:hidden text-gray-800 text-xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative h-96 flex items-center">
+        <div class="absolute inset-0 hero-overlay z-10"></div>
+        <img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" 
+             alt="Construcción de obra nueva" 
+             class="absolute inset-0 w-full h-full object-cover">
+        
+        <div class="container mx-auto px-6 relative z-20">
+            <h1 class="heading-font text-4xl md:text-5xl font-bold text-white mb-4">
+                Habitta: Construyendo Tu Futuro, Estructura por Estructura en Colombia
+            </h1>
+            <p class="text-xl text-white max-w-2xl">
+                Materializamos grandes proyectos y sueños con máxima seriedad, experticia técnica y un enfoque en la entrega de valor duradero. Desde la primera piedra hasta el último detalle, construimos con propósito.
+            </p>
+        </div>
+    </section>
+
+    <!-- Types of Projects Section -->
+    <section class="py-16 md:py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Nuestra Experiencia Constructiva al Servicio de Tu Visión: Residencial y Comercial
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Especializados en proyectos que van desde viviendas familiares hasta espacios comerciales funcionales, cada construcción Habitta lleva nuestro sello de calidad y compromiso.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Project Type 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-md text-center">
+                    <div class="bg-olive text-white p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-home text-2xl"></i>
+                    </div>
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">
+                        Viviendas Unifamiliares
+                    </h3>
+                    <p class="text-gray-600 mb-4">
+                        Casas personalizadas diseñadas para adaptarse a tu estilo de vida, desde modernas residencias urbanas hasta acogedoras casas campestres.
+                    </p>
+                    <ul class="text-left text-gray-600 text-sm space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-olive mr-2 mt-1"></i>
+                            <span>Desde 80m² hasta 500m²</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-olive mr-2 mt-1"></i>
+                            <span>Materiales de primera calidad</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-olive mr-2 mt-1"></i>
+                            <span>Diseños personalizados o planos existentes</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Project Type 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-md text-center">
+                    <div class="bg-olive text-white p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-building text-2xl"></i>
+                    </div>
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">
+                        Edificios Multifamiliares
+                    </h3>
+                    <p class="text-gray-600 mb-4">
+                        Construcción de pequeños edificios de apartamentos con atención al detalle en cada unidad y áreas comunes funcionales.
+                    </p>
+                    <ul class="text-left text-gray-600 text-sm space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-olive mr-2 mt-1"></i>
+                            <span>Hasta 5 pisos</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-olive mr-2 mt-1"></i>
+                            <span>Optimización de espacios</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-olive mr-2 mt-1"></i>
+                            <span>Eficiencia en costos compartidos</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Project Type 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-md text-center">
+                    <div class="bg-olive text-white p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-store text-2xl"></i>
+                    </div>
+                    <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">
+                        Proyectos Comerciales
+                    </h3>
+                    <p class="text-gray-600 mb-4">
+                        Locales comerciales, oficinas corporativas y espacios de trabajo diseñados para potenciar tu negocio y ofrecer comodidad a clientes y empleados.
+                    </p>
+                    <ul class="text-left text-gray-600 text-sm space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-olive mr-2 mt-1"></i>
+                            <span>Diseños funcionales para cada giro comercial</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-olive mr-2 mt-1"></i>
+                            <span>Cumplimiento de normativas específicas</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-olive mr-2 mt-1"></i>
+                            <span>Optimización para alta circulación</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Commitment Section -->
+    <section class="py-16 md:py-24">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Construimos con Estándares de Excelencia: Los Pilares de Cada Obra Habitta
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Nuestro compromiso inquebrantable con la calidad, seguridad y eficiencia se refleja en cada proyecto que emprendemos.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Commitment 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-start">
+                        <div class="bg-olive text-white p-4 rounded-full w-16 h-16 flex items-center justify-center mr-6">
+                            <i class="fas fa-clipboard-check text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">
+                                Selección Rigurosa de Materiales
+                            </h3>
+                            <p class="text-gray-600">
+                                Trabajamos exclusivamente con proveedores certificados que cumplen nuestros estándares de calidad. Cada material es evaluado por durabilidad, desempeño y relación calidad-precio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Commitment 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-start">
+                        <div class="bg-olive text-white p-4 rounded-full w-16 h-16 flex items-center justify-center mr-6">
+                            <i class="fas fa-hard-hat text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">
+                                Seguridad en Obra como Prioridad
+                            </h3>
+                            <p class="text-gray-600">
+                                Implementamos protocolos estrictos de seguridad y salud en el trabajo, cumpliendo y superando las normativas colombianas. Nuestro récord de cero accidentes graves nos respalda.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Commitment 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-start">
+                        <div class="bg-olive text-white p-4 rounded-full w-16 h-16 flex items-center justify-center mr-6">
+                            <i class="fas fa-chart-line text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">
+                                Gestión Eficiente de Recursos
+                            </h3>
+                            <p class="text-gray-600">
+                                Planificación detallada que optimiza tiempos, materiales y mano de obra. Comunicación transparente sobre avances y uso del presupuesto en cada etapa.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Commitment 4 -->
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-start">
+                        <div class="bg-olive text-white p-4 rounded-full w-16 h-16 flex items-center justify-center mr-6">
+                            <i class="fas fa-file-contract text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">
+                                Cumplimiento Normativo Integral
+                            </h3>
+                            <p class="text-gray-600">
+                                Nos encargamos de toda la gestión de permisos y licencias, asegurando que tu proyecto cumpla con todas las regulaciones locales y nacionales.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Commitment 5 -->
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-start">
+                        <div class="bg-olive text-white p-4 rounded-full w-16 h-16 flex items-center justify-center mr-6">
+                            <i class="fas fa-users text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">
+                                Equipo Técnico Calificado
+                            </h3>
+                            <p class="text-gray-600">
+                                Ingenieros civiles, arquitectos y maestros de obra con amplia experiencia y constante capacitación. Supervisión profesional en cada fase del proyecto.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Commitment 6 -->
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-start">
+                        <div class="bg-olive text-white p-4 rounded-full w-16 h-16 flex items-center justify-center mr-6">
+                            <i class="fas fa-handshake text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">
+                                Garantías y Postventa
+                            </h3>
+                            <p class="text-gray-600">
+                                Estructuras con garantía de 10 años. Acabados con garantía de 2 años. Soporte post-entrega para asegurar tu completa satisfacción.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Construction Process Section -->
+    <section class="py-16 md:py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Tu Proyecto en Marcha: Un Recorrido Transparente por las Fases de Construcción
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Nuestro proceso constructivo metódico y bien planificado garantiza resultados de calidad en cada etapa.
+                </p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <!-- Phase 1 -->
+                <div class="construction-phase">
+                    <div class="phase-number">1</div>
+                    <div class="phase-content">
+                        <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">
+                            Planificación y Preparación Pre-Constructiva
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            Análisis exhaustivo de planos arquitectónicos y estructurales. Desarrollo de ingeniería de detalle. Obtención de permisos y licencias. Programación detallada de obra y movilización de equipos.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Estudio de suelos</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Permisos municipales</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Planificación logística</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Phase 2 -->
+                <div class="construction-phase">
+                    <div class="phase-number">2</div>
+                    <div class="phase-content">
+                        <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">
+                            Cimentación y Estructura
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            Excavación, preparación del terreno y construcción de cimientos. Erección de estructura principal con concreto armado o acero estructural según diseño. Control de calidad en cada elemento estructural.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Cimentación profunda/superficial</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Columnas y vigas</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Losas de entrepiso</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Phase 3 -->
+                <div class="construction-phase">
+                    <div class="phase-number">3</div>
+                    <div class="phase-content">
+                        <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">
+                            Obra Gruesa e Instalaciones Mayores
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            Mampostería y cerramientos. Instalación de redes eléctricas principales, hidrosanitarias y de gas. Construcción de cubiertas y elementos de fachada. Control de avance y calidad intermedia.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Muros de carga</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Instalaciones embutidas</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Techos y cubiertas</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Phase 4 -->
+                <div class="construction-phase">
+                    <div class="phase-number">4</div>
+                    <div class="phase-content">
+                        <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">
+                            Obra Blanca y Acabados
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            Aplicación de estucos y pinturas. Instalación de pisos y revestimientos. Colocación de carpinterías metálicas y de madera. Instalación de aparatos sanitarios y eléctricos. Detalles finales de iluminación y herrajes.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Acabados interiores</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Instalaciones visibles</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Pintura final</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Phase 5 -->
+                <div class="construction-phase">
+                    <div class="phase-number">5</div>
+                    <div class="phase-content">
+                        <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">
+                            Pruebas, Controles de Calidad y Limpieza Final
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            Pruebas hidráulicas, eléctricas y de gas. Revisión exhaustiva de cada detalle. Limpieza profesional de todos los espacios. Preparación de documentación técnica y manuales de uso.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Pruebas de funcionamiento</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Lista de chequeo</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Limpieza profunda</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Phase 6 -->
+                <div class="construction-phase">
+                    <div class="phase-number">6</div>
+                    <div class="phase-content">
+                        <h3 class="heading-font text-xl font-bold text-gray-800 mb-3">
+                            Entrega Formal del Proyecto
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            Recorrido final con el cliente. Entrega de llaves, garantías y documentación completa. Capacitación en mantenimiento básico. Seguimiento post-entrega para resolver cualquier inquietud.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Acta de entrega</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Garantías escritas</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Manuales técnicos</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-16 md:py-24">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Construimos Más que Edificaciones: Construimos Confianza, Solidez y Futuro
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Razones por las que cientos de clientes han confiado sus proyectos de obra nueva a Habitta
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="mb-8">
+                        <h3 class="heading-font text-xl font-bold text-gray-800 mb-3 flex items-center">
+                            <i class="fas fa-medal text-olive mr-3"></i>
+                            Experiencia Comprobada
+                        </h3>
+                        <p class="text-gray-600">
+                            Más de 15 años construyendo en Colombia nos han dado el conocimiento para anticipar desafíos y ofrecer soluciones eficientes. Hemos entregado más de 120 proyectos de construcción con satisfacción comprobada.
+                        </p>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <h3 class="heading-font text-xl font-bold text-gray-800 mb-3 flex items-center">
+                            <i class="fas fa-comments text-olive mr-3"></i>
+                            Comunicación Clara y Constante
+                        </h3>
+                        <p class="text-gray-600">
+                            Informes semanales de avance, acceso a plataforma de seguimiento en línea y disponibilidad para resolver inquietudes. Sabemos que una buena comunicación es clave para tu tranquilidad.
+                        </p>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <h3 class="heading-font text-xl font-bold text-gray-800 mb-3 flex items-center">
+                            <i class="fas fa-chess-knight text-olive mr-3"></i>
+                            Enfoque Estratégico
+                        </h3>
+                        <p class="text-gray-600">
+                            No solo construimos, sino que asesoramos para optimizar tu inversión. Análisis de materiales, métodos constructivos y alternativas que generan ahorros sin comprometer calidad.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-100 p-8 rounded-lg">
+                    <div class="bg-white p-8 rounded-lg shadow-md">
+                        <h3 class="heading-font text-xl font-bold text-gray-800 mb-4 text-center">
+                            Nuestros Números Hablan por Nosotros
+                        </h3>
+                        
+                        <div class="grid grid-cols-2 gap-6 text-center">
+                            <div>
+                                <div class="text-4xl font-bold text-olive mb-2">15+</div>
+                                <div class="text-gray-600">Años de experiencia</div>
+                            </div>
+                            <div>
+                                <div class="text-4xl font-bold text-olive mb-2">120+</div>
+                                <div class="text-gray-600">Proyectos completados</div>
+                            </div>
+                            <div>
+                                <div class="text-4xl font-bold text-olive mb-2">98%</div>
+                                <div class="text-gray-600">Clientes satisfechos</div>
+                            </div>
+                            <div>
+                                <div class="text-4xl font-bold text-olive mb-2">0</div>
+                                <div class="text-gray-600">Accidentes graves</div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="heading-font font-bold text-gray-800 mb-3">Testimonio Destacado</h4>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <p class="italic text-gray-600 mb-3">
+                                    "Habitta construyó nuestra casa familiar en Chía. Cumplieron con todos los plazos, el presupuesto fue transparente y la calidad superó nuestras expectativas. Dos años después, todo sigue perfecto."
+                                </p>
+                                <div class="flex items-center">
+                                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=776&q=80" 
+                                         alt="Cliente satisfecho" 
+                                         class="w-12 h-12 rounded-full object-cover mr-4">
+                                    <div>
+                                        <p class="font-medium">María Fernanda López</p>
+                                        <p class="text-sm text-gray-500">Casa en Chía, Cundinamarca</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Gallery Section -->
+    <section class="py-16 md:py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Nuestra Obra, Tu Mejor Referencia: Proyectos Construidos por Habitta
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Ejemplos recientes de nuestro trabajo en construcción de obra nueva
+                </p>
+            </div>
+            
+            <div class="project-grid">
+                <!-- Project 1 -->
+                <div class="project-item">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" 
+                         alt="Casa moderna en Bogotá" 
+                         class="project-image">
+                    <div class="project-details">
+                        <h3 class="heading-font font-bold text-gray-800 mb-2">Casa Moderna - Bogotá</h3>
+                        <p class="text-gray-600 text-sm mb-3">Vivienda unifamiliar de 280m² con diseño contemporáneo y amplios ventanales.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">2 niveles</span>
+                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">Concreto armado</span>
+                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">8 meses</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-item">
+                    <img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" 
+                         alt="Edificio de apartamentos" 
+                         class="project-image">
+                    <div class="project-details">
+                        <h3 class="heading-font font-bold text-gray-800 mb-2">Edificio Altos del Norte - Medellín</h3>
+                        <p class="text-gray-600 text-sm mb-3">Edificio de 4 pisos con 12 apartamentos de 65m² cada uno.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">4 niveles</span>
+                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">Estructura sismorresistente</span>
+                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">14 meses</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-item">
+                    <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" 
+                         alt="Local comercial" 
+                         class="project-image">
+                    <div class="project-details">
+                        <h3 class="heading-font font-bold text-gray-800 mb-2">Local Comercial - Cali</h3>
+                        <p class="text-gray-600 text-sm mb-3">Espacio comercial de 150m² para franquicia de alimentos.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">Acero estructural</span>
+                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">Normativa comercial</span>
+                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">5 meses</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="proyectos.html" class="inline-block bg-olive text-white px-8 py-3 rounded-full font-medium hover-bg-olive transition">
+                    Ver Más Proyectos de Construcción
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 md:py-24">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Información Clave Antes de Iniciar la Construcción de Tu Sueño
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Respuestas a las preguntas más frecuentes sobre nuestros servicios de construcción de obra nueva
+                </p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <!-- FAQ Item 1 -->
+                <div class="mb-6 border-b border-gray-200 pb-6">
+                    <button class="accordion-toggle flex justify-between items-center w-full text-left">
+                        <h3 class="heading-font text-xl font-bold text-gray-800">
+                            ¿Qué información necesitan para cotizar un proyecto de construcción?
+                        </h3>
+                        <i class="fas fa-chevron-down text-olive transition-transform transform"></i>
+                    </button>
+                    <div class="accordion-content mt-4">
+                        <p class="text-gray-600">
+                            Para una cotización preliminar necesitamos: tipo de proyecto (casa, edificio, local), ubicación del terreno, metros cuadrados aproximados de construcción, número de niveles, planos arquitectónicos (si los tienes) y nivel de acabados deseado. Con esta información podemos darte un rango de costo por m². Para una cotización detallada requerimos una visita técnica al terreno.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="mb-6 border-b border-gray-200 pb-6">
+                    <button class="accordion-toggle flex justify-between items-center w-full text-left">
+                        <h3 class="heading-font text-xl font-bold text-gray-800">
+                            ¿Cómo es el proceso de contratación y pago?
+                        </h3>
+                        <i class="fas fa-chevron-down text-olive transition-transform transform"></i>
+                    </button>
+                    <div class="accordion-content mt-4">
+                        <p class="text-gray-600">
+                            Trabajamos con un contrato claro que detalla alcance, tiempos, garantías y forma de pago. Los pagos se realizan por hitos (etapas de avance) previa verificación y aprobación. Normalmente estructuramos los pagos así: 10% al inicio, 25% en cimentación, 25% en obra gruesa, 25% en obra blanca y 15% al finalizar. Ajustamos según las necesidades específicas del proyecto.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="mb-6 border-b border-gray-200 pb-6">
+                    <button class="accordion-toggle flex justify-between items-center w-full text-left">
+                        <h3 class="heading-font text-xl font-bold text-gray-800">
+                            ¿Qué tipo de garantías ofrecen sobre la estructura y los acabados?
+                        </h3>
+                        <i class="fas fa-chevron-down text-olive transition-transform transform"></i>
+                    </button>
+                    <div class="accordion-content mt-4">
+                        <p class="text-gray-600">
+                            Ofrecemos garantía de 10 años en la estructura principal, 5 años en cubiertas e impermeabilización, y 2 años en instalaciones eléctricas, hidrosanitarias y acabados. Todos los materiales tienen sus propias garantías de fábrica que te hacemos llegar. Documentamos todo por escrito en el manual de entrega.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="mb-6 border-b border-gray-200 pb-6">
+                    <button class="accordion-toggle flex justify-between items-center w-full text-left">
+                        <h3 class="heading-font text-xl font-bold text-gray-800">
+                            ¿Habitta se encarga de todos los permisos de construcción?
+                        </h3>
+                        <i class="fas fa-chevron-down text-olive transition-transform transform"></i>
+                    </button>
+                    <div class="accordion-content mt-4">
+                        <p class="text-gray-600">
+                            Sí, gestionamos integralmente todos los trámites y permisos requeridos: licencia de construcción, permisos ambientales (si aplican), conexiones a servicios públicos, y cualquier otro requerimiento municipal. Solo necesitamos que nos proporciones los documentos personales necesarios (como copia de la escritura del terreno) y firmes las solicitudes correspondientes.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 5 -->
+                <div class="mb-6 border-b border-gray-200 pb-6">
+                    <button class="accordion-toggle flex justify-between items-center w-full text-left">
+                        <h3 class="heading-font text-xl font-bold text-gray-800">
+                            ¿Cuál es el tiempo estimado promedio para construir una vivienda o local?
+                        </h3>
+                        <i class="fas fa-chevron-down text-olive transition-transform transform"></i>
+                    </button>
+                    <div class="accordion-content mt-4">
+                        <p class="text-gray-600">
+                            Los tiempos varían según la complejidad, pero como referencia: una casa de 150m² en un piso toma aproximadamente 6-8 meses; un edificio de 3 niveles con 8 apartamentos, 12-14 meses; un local comercial estándar de 100m², 4-5 meses. Estos plazos incluyen todos los acabados básicos. Factores como condiciones climáticas, disponibilidad de materiales o cambios durante la obra pueden afectar estos tiempos.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 6 -->
+                <div class="mb-6">
+                    <button class="accordion-toggle flex justify-between items-center w-full text-left">
+                        <h3 class="heading-font text-xl font-bold text-gray-800">
+                            ¿Pueden construir sobre planos arquitectónicos de otro profesional?
+                        </h3>
+                        <i class="fas fa-chevron-down text-olive transition-transform transform"></i>
+                    </button>
+                    <div class="accordion-content mt-4">
+                        <p class="text-gray-600">
+                            Absolutamente. Trabajamos con planos de terceros previa revisión técnica para garantizar su constructibilidad. Realizamos una ingeniería de detalle que optimiza los procesos constructivos sin alterar el diseño arquitectónico. Si encontramos aspectos mejorables, los señalamos oportunamente para decisión del cliente y arquitecto original.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 md:py-24 bg-terracota text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="heading-font text-3xl md:text-4xl font-bold mb-6">
+                ¿Tienes un Terreno y una Visión Clara? ¡Materialicemos Tu Proyecto!
+            </h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">
+                Construye tu futuro con la solidez y experiencia de Habitta. Agenda una consulta para evaluar tu proyecto de obra nueva.
+            </p>
+            
+            <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-8 text-left text-gray-800">
+                <h3 class="heading-font text-xl font-bold mb-6 text-center">
+                    Solicita tu Cotización para Obra Nueva
+                </h3>
+                <form>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-gray-700 text-sm font-medium mb-2">Nombre completo</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-olive focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700 text-sm font-medium mb-2">Correo electrónico</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-olive focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-gray-700 text-sm font-medium mb-2">Teléfono</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-olive focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="project-type" class="block text-gray-700 text-sm font-medium mb-2">Tipo de proyecto</label>
+                            <select id="project-type" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-olive focus:border-transparent">
+                                <option value="">Selecciona una opción</option>
+                                <option value="house">Casa Unifamiliar</option>
+                                <option value="building">Edificio Multifamiliar</option>
+                                <option value="commercial">Local Comercial</option>
+                                <option value="office">Oficinas</option>
+                                <option value="other">Otro</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="location" class="block text-gray-700 text-sm font-medium mb-2">Ubicación del terreno</label>
+                            <input type="text" id="location" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-olive focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="area" class="block text-gray-700 text-sm font-medium mb-2">Área aproximada (m²)</label>
+                            <input type="number" id="area" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-olive focus:border-transparent">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="plans" class="block text-gray-700 text-sm font-medium mb-2">¿Cuentas con planos arquitectónicos?</label>
+                            <div class="flex space-x-4">
+                                <label class="inline-flex items-center">
+                                    <input type="radio" name="plans" value="yes" class="text-olive">
+                                    <span class="ml-2">Sí</span>
+                                </label>
+                                <label class="inline-flex items-center">
+                                    <input type="radio" name="plans" value="no" class="text-olive">
+                                    <span class="ml-2">No</span>
+                                </label>
+                                <label class="inline-flex items-center">
+                                    <input type="radio" name="plans" value="process" class="text-olive">
+                                    <span class="ml-2">En proceso</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="budget" class="block text-gray-700 text-sm font-medium mb-2">Presupuesto estimado</label>
+                            <select id="budget" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-olive focus:border-transparent">
+                                <option value="">Selecciona un rango</option>
+                                <option value="50-100">$50 - $100 millones COP</option>
+                                <option value="100-200">$100 - $200 millones COP</option>
+                                <option value="200-500">$200 - $500 millones COP</option>
+                                <option value="500-1000">$500 - $1000 millones COP</option>
+                                <option value="1000+">Más de $1000 millones COP</option>
+                                <option value="unsure">No estoy seguro</option>
+                            </select>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="message" class="block text-gray-700 text-sm font-medium mb-2">Describe tu proyecto y necesidades específicas</label>
+                            <textarea id="message" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-olive focus:border-transparent"></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full mt-6 bg-olive text-white px-6 py-3 rounded-lg font-medium hover-bg-olive transition">
+                        Solicitar Cotización para Obra Nueva
+                    </button>
+                </form>
+            </div>
+            
+            <div class="mt-12 flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8">
+                <div class="flex items-center">
+                    <i class="fas fa-phone-alt text-xl mr-3"></i>
+                    <a href="tel:+573001234567" class="text-white hover:underline">+57 300 123 4567</a>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-envelope text-xl mr-3"></i>
+                    <a href="mailto:construccion@habitta.co" class="text-white hover:underline">construccion@habitta.co</a>
+                </div>
+                <div class="flex items-center">
+                    <i class="fab fa-whatsapp text-xl mr-3"></i>
+                    <a href="https://wa.me/573001234567" class="text-white hover:underline">Escríbenos por WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div>
+                    <img src="https://via.placeholder.com/150x50?text=Habitta" alt="Habitta Logo" class="h-10 mb-6">
+                    <p class="text-gray-400 mb-4">
+                        Co-creamos espacios con alma, fusionando estética, funcionalidad y tu propósito vital.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-pinterest-p"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="heading-font text-lg font-bold mb-6">Servicios</h3>
+                    <ul class="space-y-3">
+                        <li><a href="servicio-diseno.html" class="text-gray-400 hover:text-white transition">Diseño Interior</a></li>
+                        <li><a href="servicio-remodelacion.html" class="text-gray-400 hover:text-white transition">Remodelación</a></li>
+                        <li><a href="servicio-construccion.html" class="text-olive hover:text-white transition">Construcción</a></li>
+                        <li><a href="servicios.html" class="text-gray-400 hover:text-white transition">Acabados</a></li>
+                        <li><a href="servicios.html" class="text-gray-400 hover:text-white transition">Proyectos VIS</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="heading-font text-lg font-bold mb-6">Empresa</h3>
+                    <ul class="space-y-3">
+                        <li><a href="nosotros.html" class="text-gray-400 hover:text-white transition">Nosotros</a></li>
+                        <li><a href="proyectos.html" class="text-gray-400 hover:text-white transition">Proyectos</a></li>
+                        <li><a href="blog.html" class="text-gray-400 hover:text-white transition">Blog</a></li>
+                        <li><a href="testimonios.html" class="text-gray-400 hover:text-white transition">Testimonios</a></li>
+                        <li><a href="contacto.html" class="text-gray-400 hover:text-white transition">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="heading-font text-lg font-bold mb-6">Contacto</h3>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-olive"></i>
+                            <span>Calle 123 #45-67, Bogotá, Colombia</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-3 text-olive"></i>
+                            <a href="tel:+573001234567" class="hover:text-white transition">+57 300 123 4567</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-olive"></i>
+                            <a href="mailto:hola@habitta.co" class="hover:text-white transition">hola@habitta.co</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-clock mr-3 text-olive"></i>
+                            <span>Lun-Vie: 9am - 6pm</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm mb-4 md:mb-0">
+                    &copy; 2023 Habitta. Todos los derechos reservados.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-500 hover:text-white text-sm transition">Política de Privacidad</a>
+                    <a href="#" class="text-gray-500 hover:text-white text-sm transition">Términos y Condiciones</a>
+                    <a href="#" class="text-gray-500 hover:text-white text-sm transition">Mapa del Sitio</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        const openMenu = document.getElementById('openMenu');
+        const closeMenu = document.getElementById('closeMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        openMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('menu-closed');
+            mobileMenu.classList.add('menu-open');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('menu-open');
+            mobileMenu.classList.add('menu-closed');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // FAQ Accordion
+        const accordionToggles = document.querySelectorAll('.accordion-toggle');
+        
+        accordionToggles.forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                const icon = this.querySelector('i');
+                
+                content.classList.toggle('active');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+        
+        // Add shadow to header on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-lg');
+            } else {
+                header.classList.remove('shadow-lg');
+            }
+        });
+    </script>
+</body>
+</html>
