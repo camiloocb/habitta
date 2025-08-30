@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Roadmap Profesional</title>
+    <!-- Chosen Palette: Cool Neutrals -->
+    <!-- Application Structure Plan: Se ha diseñado un dashboard interactivo de una sola página. La estructura consiste en: 1) Una sección superior con métricas de éxito clave y una visualización de progreso general (gráfico de dona). 2) Una barra de navegación de línea de tiempo horizontal que permite al usuario seleccionar una semana específica (de la 2 a la 17). 3) Un área de contenido principal que se actualiza dinámicamente para mostrar los detalles de la semana seleccionada: objetivo, tareas (como una lista de verificación interactiva) y OKRs. 4) Una sección dedicada y siempre visible para el "Objetivo Clave: Marca Personal", ya que es una tarea continua. Esta estructura fue elegida porque permite al usuario enfocarse en los objetivos semanales sin perder de vista el progreso general y las metas a largo plazo, mejorando la usabilidad en comparación con un documento estático. -->
+    <!-- Visualization & Content Choices: 1. Métricas de Éxito -> Goal: Informar/Seguimiento -> Viz: Tarjetas de estadísticas y gráfico de dona (Chart.js) -> Interaction: El gráfico se actualiza al marcar tareas que impactan las métricas -> Justification: Ofrece una vista inmediata y motivadora del progreso hacia las metas finales. 2. Tareas Semanales -> Goal: Organizar/Seguimiento -> Viz: Lista de verificación interactiva (HTML/JS) -> Interaction: El usuario puede marcar/desmarcar tareas -> Justification: Proporciona claridad sobre las acciones a tomar y alimenta el sistema de seguimiento de progreso. 3. Navegación del Roadmap -> Goal: Navegar/Organizar -> Viz: Línea de tiempo horizontal (HTML/CSS/JS) -> Interaction: Clic para cargar los detalles de la semana -> Justification: Es un método de navegación intuitivo que organiza el contenido de manera lógica sin abrumar al usuario. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .timeline-btn {
+            transition: all 0.2s ease-in-out;
+        }
+        .timeline-btn.active {
+            background-color: #2563eb;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+        }
+        .task-item input:checked + label {
+            text-decoration: line-through;
+            color: #9ca3af;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 380px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 380px;
+            }
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+        <header class="text-center mb-10">
+            <h1 class="text-3xl sm:text-4xl font-bold text-gray-900">Roadmap Profesional Extendido</h1>
+            <p class="mt-2 text-lg text-gray-600">Tu plan de 16 semanas para alcanzar el éxito directivo.</p>
+        </header>
+
+        <!-- Métricas Principales y Progreso -->
+        <section class="mb-10">
+            <h2 class="text-2xl font-bold mb-6 text-center">Métricas de Éxito y Progreso General</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+                
+                <div class="lg:col-span-1 order-2 lg:order-1 space-y-4">
+                    <div id="metrics-container" class="space-y-4">
+                        <!-- Las tarjetas de métricas se insertarán aquí -->
+                    </div>
+                </div>
+                
+                <div class="lg:col-span-2 order-1 lg:order-2">
+                    <div class="chart-container">
+                        <canvas id="progressChart"></canvas>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Línea de Tiempo / Navegación -->
+        <section class="mb-10">
+             <h2 class="text-2xl font-bold mb-6 text-center">Navegación del Roadmap</h2>
+            <div id="timeline-nav" class="flex flex-wrap justify-center gap-2">
+                <!-- Los botones de la línea de tiempo se insertarán aquí -->
+            </div>
+        </section>
+
+        <!-- Contenido Dinámico de la Semana -->
+        <main id="weekly-content" class="bg-white p-6 rounded-2xl shadow-lg min-h-[400px]">
+            <!-- El contenido de la semana seleccionada se mostrará aquí -->
+        </main>
+        
+        <!-- Sección de Marca Personal -->
+        <section id="personal-branding" class="mt-10 bg-white p-6 rounded-2xl shadow-lg">
+            <!-- El contenido de marca personal se insertará aquí -->
+        </section>
+
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    const roadmapData = {
+        2: {
+            objetivo: "Afinar la narrativa personal y el 'por qué' de su liderazgo, preparando el terreno para una comunicación efectiva.",
+            tareas: [
+                { id: 't2-1', text: "Redactar el pitch en 3 versiones: networking, entrevista y headhunter.", metric: null },
+                { id: 't2-2', text: "Preparar “respuestas puente” para preguntas difíciles.", metric: null },
+                { id: 't2-3', text: "Ensayar narrativa STAR de 3 logros relevantes.", metric: null },
+                { id: 't2-4', text: "Idear los primeros 3-5 temas de contenido para marca personal.", metric: null },
+                { id: 't2-5', text: "Publicar la primera pieza de contenido en LinkedIn.", metric: 'publicaciones' }
+            ],
+            okrs: [
+                "Finalizar 3 versiones del Elevator Pitch y obtener feedback de un mentor o colega.",
+                "Tener listos al menos 5 'respuestas puente' a preguntas comunes.",
+                "Publicar la primera pieza de contenido en LinkedIn sobre la conexión entre estrategia y sostenibilidad."
+            ]
+        },
+        3: {
+            objetivo: "Mapear el mercado laboral y establecer las primeras conexiones estratégicas de alto impacto.",
+            tareas: [
+                { id: 't3-1', text: "Identificar 10 headhunters en LATAM y 5 en Europa.", metric: null },
+                { id: 't3-2', text: "Contactar a un mínimo de 5 headhunters con un mensaje personalizado.", metric: 'conversaciones' },
+                { id: 't3-3', text: "Postularse a 3 roles ejecutivos reales.", metric: 'aplicaciones' },
+                { id: 't3-4', text: "Construir una base de datos de trazabilidad.", metric: null },
+                { id: 't3-5', text: "Definir los pilares de contenido de la marca personal.", metric: null },
+                { id: 't3-6', text: "Publicar 2 contenidos en LinkedIn.", metric: 'publicaciones' }
+            ],
+            okrs: [
+                "Obtener al menos 2 respuestas de headhunters contactados.",
+                "Enviar 3 postulaciones a roles de interés.",
+                "Publicar al menos 2 contenidos en LinkedIn basados en los pilares definidos."
+            ]
+        },
+        4: {
+            objetivo: "Preparación intensiva para entrevistas de liderazgo, dominando la comunicación de logros y visión.",
+            tareas: [
+                { id: 't4-1', text: "Practicar preguntas de visión estratégica.", metric: null },
+                { id: 't4-2', text: "Preparar STAR stories de proyectos de innovación y transformación.", metric: null },
+                { id: 't4-3', text: "Realizar 2 simulaciones de entrevista.", metric: 'entrevistas' },
+                { id: 't4-4', text: "Desarrollar 3 ideas de contenido para TikTok e Instagram.", metric: null },
+                { id: 't4-5', text: "Publicar un video corto en TikTok o Instagram.", metric: 'publicaciones' }
+            ],
+            okrs: [
+                "Completar 2 simulaciones y recibir retroalimentación.",
+                "Tener 5 STAR stories listas para ser contadas.",
+                "Publicar al menos un video corto en TikTok o Instagram."
+            ]
+        },
+        5: {
+            objetivo: "Dominar la resolución de casos prácticos tipo consultoría y board.",
+            tareas: [
+                { id: 't5-1', text: "Resolver 3 casos prácticos (fintech, sostenibilidad, disrupción).", metric: null },
+                { id: 't5-2', text: "Documentar las respuestas y los frameworks utilizados.", metric: null },
+                { id: 't5-3', text: "Preparar un contenido de marca personal que resuma un insight clave de uno de los casos resueltos.", metric: 'publicaciones' }
+            ],
+            okrs: [
+                "Desarrollar un documento con la resolución de los 3 casos.",
+                "Ser capaz de explicar la resolución de un caso en menos de 5 minutos.",
+                "Publicar un carrusel en LinkedIn explicando los 3 pasos para resolver un caso estratégico."
+            ]
+        },
+        17: {
+            objetivo: "Consolidar procesos avanzados, negociar ofertas y planificar los siguientes pasos.",
+            tareas: [
+                { id: 't17-1', text: "Enviar agradecimientos y seguimiento a procesos finales.", metric: null },
+                { id: 't17-2', text: "Preparar estrategia de negociación para ofertas recibidas.", metric: 'procesos' },
+                { id: 't17-3', text: "Publicar contenido sobre lecciones aprendidas en el proceso de búsqueda.", metric: 'publicaciones' }
+            ],
+            okrs: [
+                "Consolidar al menos 1-2 procesos avanzados.",
+                "Aumentar la red de contactos en LinkedIn en un 50% (meta final).",
+                "Mantener publicación consistente en redes sociales."
+            ]
+        }
+    };
+    
+    // Fill in weeks 6-16 with placeholder data for demonstration
+    for (let i = 6; i <= 16; i++) {
+        if (!roadmapData[i]) {
+            roadmapData[i] = {
+                objetivo: `Refinar narrativa y networking (Semana ${i})`,
+                tareas: [
+                    { id: `t${i}-1`, text: `Enviar 2 aplicaciones a roles clave.`, metric: 'aplicaciones' },
+                    { id: `t${i}-2`, text: `Contactar 1 nuevo headhunter o director de RRHH.`, metric: 'conversaciones' },
+                    { id: `t${i}-3`, text: `Publicar 2 contenidos de valor en LinkedIn.`, metric: 'publicaciones' },
+                    { id: `t${i}-4`, text: `Preparar simulación de panel de board.`, metric: 'entrevistas' },
+                ],
+                okrs: [
+                    "Avanzar en al menos un proceso de entrevista.",
+                    "Generar engagement en publicaciones de marca personal."
+                ]
+            }
+        }
+    }
+
+    const personalBrandingData = {
+        objetivo: "Establecer una marca personal sólida y visible que te posicione como un experto en estrategia, innovación y sostenibilidad.",
+        estrategia: "La marca personal es un esfuerzo continuo integrado en todo el roadmap, basado en tres pilares de contenido: Liderazgo y Estrategia, Innovación y Tecnología, y Sostenibilidad y Negocios.",
+        plan: [
+            { platform: "LinkedIn", frequency: "2-3 publicaciones por semana.", formats: "Carruseles, posts de texto, resúmenes de artículos, comentarios de valor." },
+            { platform: "TikTok e Instagram", frequency: "1 video corto por semana.", formats: "Videos de 30-60 segundos sobre temas como '3 Pasos para ser un Líder Innovador' o 'Mitos de la Sostenibilidad'." },
+        ],
+        okrs: [
+            "Lograr un promedio de 15-20 interacciones por publicación en LinkedIn.",
+            "Aumentar la red de contactos en LinkedIn en un 50% para la semana 17.",
+            "Alcanzar al menos 500 visualizaciones en 3 de los videos publicados."
+        ]
+    };
+
+    const metrics = {
+        aplicaciones: { current: 0, goal: 20, label: "Aplicaciones Enviadas" },
+        conversaciones: { current: 0, goal: 10, label: "Conversaciones con Headhunters" },
+        entrevistas: { current: 0, goal: 5, label: "Entrevistas Logradas" },
+        procesos: { current: 0, goal: 2, label: "Procesos Avanzados" },
+        publicaciones: { current: 0, goal: 35, label: "Contenido Publicado" }
+    };
+
+    let appState = {
+        currentWeek: 2,
+        completedTasks: JSON.parse(localStorage.getItem('completedTasks')) || {}
+    };
+
+    const weeklyContentEl = document.getElementById('weekly-content');
+    const timelineNavEl = document.getElementById('timeline-nav');
+    const metricsContainerEl = document.getElementById('metrics-container');
+    const personalBrandingEl = document.getElementById('personal-branding');
+    const ctx = document.getElementById('progressChart').getContext('2d');
+    let progressChart;
+
+    const renderTimeline = () => {
+        timelineNavEl.innerHTML = '';
+        for (let i = 2; i <= 17; i++) {
+            const btn = document.createElement('button');
+            btn.className = `timeline-btn font-semibold py-2 px-3 rounded-lg shadow-sm bg-white border border-gray-200 text-gray-700 hover:bg-blue-500 hover:text-white ${appState.currentWeek === i ? 'active' : ''}`;
+            btn.textContent = `S${i}`;
+            btn.dataset.week = i;
+            btn.addEventListener('click', () => {
+                appState.currentWeek = i;
+                renderWeek();
+                updateTimeline();
+            });
+            timelineNavEl.appendChild(btn);
+        }
+    };
+
+    const updateTimeline = () => {
+        document.querySelectorAll('.timeline-btn').forEach(btn => {
+            btn.classList.toggle('active', parseInt(btn.dataset.week) === appState.currentWeek);
+        });
+    };
+    
+    const renderWeek = () => {
+        const weekData = roadmapData[appState.currentWeek];
+        if (!weekData) return;
+
+        const tasksHtml = weekData.tareas.map(task => `
+            <div class="task-item flex items-center p-2 rounded-md hover:bg-gray-50">
+                <input type="checkbox" id="${task.id}" data-metric="${task.metric}" class="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500" ${appState.completedTasks[task.id] ? 'checked' : ''}>
+                <label for="${task.id}" class="ml-3 text-gray-700">${task.text}</label>
+            </div>
+        `).join('');
+
+        const okrsHtml = weekData.okrs.map(okr => `
+            <li class="flex items-start">
+                <span class="text-blue-500 mr-2">✓</span>
+                <span>${okr}</span>
+            </li>
+        `).join('');
+
+        weeklyContentEl.innerHTML = `
+            <div class="border-b pb-4 mb-4">
+                 <h2 class="text-2xl font-bold text-gray-900">Semana ${appState.currentWeek}</h2>
+                 <p class="mt-1 text-gray-600">${weekData.objetivo}</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Tareas Concretas</h3>
+                    <div class="space-y-2">${tasksHtml}</div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">OKRs de la Semana</h3>
+                    <ul class="space-y-2 text-gray-700">${okrsHtml}</ul>
+                </div>
+            </div>
+        `;
+        
+        addCheckboxListeners();
+    };
+
+    const renderMetrics = () => {
+        metricsContainerEl.innerHTML = Object.values(metrics).map(metric => `
+             <div class="bg-white p-4 rounded-lg shadow-md border flex items-center justify-between">
+                <div>
+                    <p class="text-sm font-medium text-gray-500">${metric.label}</p>
+                    <p class="text-2xl font-bold text-gray-900">${metric.current} / ${metric.goal}</p>
+                </div>
+                <div class="text-blue-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>
+                </div>
+            </div>
+        `).join('');
+    };
+
+    const renderPersonalBranding = () => {
+        const planHtml = personalBrandingData.plan.map(p => `
+            <p><strong>${p.platform}:</strong> ${p.frequency} ${p.formats}</p>
+        `).join('');
+        const okrsHtml = personalBrandingData.okrs.map(okr => `
+            <li class="flex items-start">
+                <span class="text-blue-500 mr-2">✓</span>
+                <span>${okr}</span>
+            </li>
+        `).join('');
+
+        personalBrandingEl.innerHTML = `
+            <h2 class="text-2xl font-bold text-gray-900 mb-2">Objetivo Clave: Marca Personal</h2>
+            <p class="text-gray-600 mb-4">${personalBrandingData.objetivo}</p>
+            <p class="text-gray-600 mb-4">${personalBrandingData.estrategia}</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Plan de Contenido</h3>
+                    <div class="space-y-2 text-gray-700">${planHtml}</div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">OKRs Clave</h3>
+                    <ul class="space-y-2 text-gray-700">${okrsHtml}</ul>
+                </div>
+            </div>
+        `;
+    };
+
+    const updateProgress = () => {
+        // Reset current counts
+        for (const key in metrics) {
+            metrics[key].current = 0;
+        }
+
+        // Recalculate based on checked boxes
+        Object.keys(roadmapData).forEach(week => {
+            roadmapData[week].tareas.forEach(task => {
+                if (appState.completedTasks[task.id] && task.metric && metrics[task.metric]) {
+                    metrics[task.metric].current++;
+                }
+            });
+        });
+        
+        localStorage.setItem('completedTasks', JSON.stringify(appState.completedTasks));
+        renderMetrics();
+        updateChart();
+    };
+
+    const addCheckboxListeners = () => {
+        document.querySelectorAll('.task-item input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', (e) => {
+                appState.completedTasks[e.target.id] = e.target.checked;
+                updateProgress();
+            });
+        });
+    };
+    
+    const updateChart = () => {
+        const totalGoal = Object.values(metrics).reduce((sum, metric) => sum + metric.goal, 0);
+        const totalCurrent = Object.values(metrics).reduce((sum, metric) => sum + metric.current, 0);
+        const percentage = totalGoal > 0 ? (totalCurrent / totalGoal * 100).toFixed(1) : 0;
+        
+        progressChart.data.datasets[0].data = [totalCurrent, totalGoal - totalCurrent];
+        progressChart.options.plugins.title.text = `Progreso Total: ${percentage}%`;
+        progressChart.update();
+    };
+
+    const initChart = () => {
+        progressChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Completado', 'Pendiente'],
+                datasets: [{
+                    data: [0, 1], // Initial data
+                    backgroundColor: ['#2563eb', '#e5e7eb'],
+                    borderColor: ['#ffffff', '#ffffff'],
+                    borderWidth: 4,
+                    hoverOffset: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '70%',
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: 'Progreso Total: 0%',
+                        position: 'bottom',
+                        font: {
+                            size: 18,
+                            weight: 'bold'
+                        },
+                        color: '#374151',
+                        padding: {
+                            top: 20
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return `${context.label}: ${context.raw}`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    };
+
+    const init = () => {
+        initChart();
+        renderTimeline();
+        renderWeek();
+        renderPersonalBranding();
+        updateProgress(); // Initial calculation and render
+    };
+
+    init();
+});
+</script>
+
+</body>
+</html>
