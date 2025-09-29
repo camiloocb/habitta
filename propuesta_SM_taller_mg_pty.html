@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta Visual: Estrategia de Crecimiento Digital</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100" style="background-color: #f7fafc;">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-5xl">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-black" style="color: #073B4C;">Estrategia de Crecimiento Digital</h1>
+            <p class="text-lg md:text-xl mt-2" style="color: #118AB2;">Para Taller de Mecánica – Ciudad de Panamá</p>
+            <p class="text-md font-bold mt-1" style="color: #073B4C;">Presentado por: High Insight</p>
+        </header>
+
+        <section class="text-center bg-white rounded-lg shadow-lg p-8 mb-12">
+            <h2 class="text-2xl font-bold mb-4" style="color: #073B4C;">Objetivo Principal: De 0 a</h2>
+            <div class="text-7xl md:text-8xl font-black" style="color: #06D6A0;">
+                $10,000
+            </div>
+            <p class="text-2xl font-bold mt-2" style="color: #073B4C;">en Ingresos Digitales Mensuales</p>
+            <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Nuestra estrategia está diseñada para construir una sólida presencia en línea y convertirla en un motor de ingresos constante y escalable para su taller.</p>
+        </section>
+
+        <section id="fase1" class="mb-12">
+            <div class="text-center mb-8">
+                <span class="text-sm font-bold uppercase tracking-wider px-3 py-1 rounded-full" style="background-color: #FFD166; color: #073B4C;">Fase 1</span>
+                <h2 class="text-3xl md:text-4xl font-bold mt-2" style="color: #073B4C;">Construcción de Activos Digitales</h2>
+                <p class="text-lg mt-2 text-gray-600">En solo 1 mes, estableceremos la base fundamental para el éxito digital.</p>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    
+                    <div class="flex flex-col items-center p-4 rounded-lg" style="background-color: #f0f9ff;">
+                        <div class="text-4xl mb-3">📍</div>
+                        <h3 class="text-xl font-bold mb-2" style="color: #118AB2;">Google My Business</h3>
+                        <p class="text-gray-600">Verificación, optimización completa y estrategia para obtener las primeras 10 reseñas de clientes.</p>
+                    </div>
+
+                    <div class="flex flex-col items-center p-4 rounded-lg" style="background-color: #f0f9ff;">
+                        <div class="text-4xl mb-3">🌐</div>
+                        <h3 class="text-xl font-bold mb-2" style="color: #118AB2;">Página Web One Page</h3>
+                        <p class="text-gray-600">Diseño moderno y responsivo con secciones clave, botón de WhatsApp y mapa integrado.</p>
+                    </div>
+
+                    <div class="flex flex-col items-center p-4 rounded-lg" style="background-color: #f0f9ff;">
+                        <div class="text-4xl mb-3">📱</div>
+                        <h3 class="text-xl font-bold mb-2" style="color: #118AB2;">Redes Sociales</h3>
+                        <p class="text-gray-600">Creación y optimización de perfiles en Facebook, Instagram y TikTok para conectar con su audiencia.</p>
+                    </div>
+                </div>
+                <div class="mt-8 text-center">
+                    <p class="text-xl font-bold" style="color: #073B4C;">Inversión Única Fase 1: <span class="text-3xl font-black" style="color: #118AB2;">$500</span></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="fase2" class="mb-12">
+            <div class="text-center mb-8">
+                <span class="text-sm font-bold uppercase tracking-wider px-3 py-1 rounded-full" style="background-color: #06D6A0; color: #073B4C;">Fase 2</span>
+                <h2 class="text-3xl md:text-4xl font-bold mt-2" style="color: #073B4C;">Estrategia de Crecimiento Mensual</h2>
+                <p class="text-lg mt-2 text-gray-600">Impulsamos el crecimiento continuo a través de contenido y publicidad inteligente.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col">
+                    <h3 class="text-xl font-bold text-center mb-4" style="color: #073B4C;">Inversión Mensual Inicial</h3>
+                    <p class="text-center text-gray-600 mb-4">La inversión se divide en la gestión experta y el presupuesto publicitario, ambos diseñados para maximizar el retorno.</p>
+                    <div class="chart-container flex-grow">
+                        <canvas id="investmentChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col">
+                    <h3 class="text-xl font-bold text-center mb-4" style="color: #073B4C;">Pilares de Contenido Semanal</h3>
+                     <p class="text-center text-gray-600 mb-4">Creamos una mezcla de contenido balanceada (4-5 publicaciones/semana) para educar, generar confianza y atraer clientes.</p>
+                    <div class="chart-container flex-grow">
+                        <canvas id="contentChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 bg-white rounded-lg shadow-lg p-8">
+                <h3 class="text-xl font-bold text-center mb-6" style="color: #073B4C;">Entregables Mensuales Detallados</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+                    <div class="p-4 rounded-lg" style="background-color: #f0f9ff;">
+                        <h4 class="font-bold text-lg mb-2 flex items-center" style="color: #118AB2;">
+                            <span class="text-2xl mr-2">📅</span> Estrategia de Contenido
+                        </h4>
+                        <ul class="list-disc list-inside text-gray-700 space-y-1">
+                            <li>Planeación mensual (4-5 posts/semana).</li>
+                            <li>Contenido educativo, social proof, promocional y de engagement.</li>
+                            <li>Edición de video y diseño gráfico.</li>
+                        </ul>
+                    </div>
+                    <div class="p-4 rounded-lg" style="background-color: #f0f9ff;">
+                        <h4 class="font-bold text-lg mb-2 flex items-center" style="color: #118AB2;">
+                            <span class="text-2xl mr-2">🎯</span> Gestión de Pauta Digital
+                        </h4>
+                        <ul class="list-disc list-inside text-gray-700 space-y-1">
+                            <li>Configuración y segmentación avanzada.</li>
+                            <li>Campañas de tráfico a WhatsApp y web.</li>
+                            <li>Retargeting para clientes potenciales.</li>
+                            <li>Reportes de rendimiento mensuales.</li>
+                        </ul>
+                    </div>
+                    <div class="p-4 rounded-lg" style="background-color: #f0f9ff;">
+                        <h4 class="font-bold text-lg mb-2 flex items-center" style="color: #118AB2;">
+                            <span class="text-2xl mr-2">🚀</span> Gestión y Optimización
+                        </h4>
+                        <ul class="list-disc list-inside text-gray-700 space-y-1">
+                            <li>Publicación de contenidos en redes.</li>
+                            <li>Historias y dinamización de comunidad.</li>
+                            <li>Análisis de métricas y KPIs.</li>
+                            <li>Ajuste de estrategia mensual.</li>
+                        </ul>
+                      <p class="text-xl font-bold" style="color: #073B4C;">Inversión Menusal: <span class="text-3xl font-black" style="color: #118AB2;">$250</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="text-center pt-8 border-t-2" style="border-color: #118AB2;">
+             <p class="text-xl font-bold" style="color: #073B4C;">¿Listo para acelerar su negocio?</p>
+             <p class="text-gray-600 mt-2">Contacte a High Insight para iniciar su transformación digital.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const tooltipTitleCallback = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                              return label.join(' ');
+                            } else {
+                              return label;
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        const chartColors = {
+            blue: '#118AB2',
+            green: '#06D6A0',
+            yellow: '#FFD166',
+            red: '#FF6B6B',
+            darkBlue: '#073B4C'
+        };
+
+        const wrapLabel = (label, maxWidth = 16) => {
+            const words = label.split(' ');
+            let lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                if ((currentLine + ' ' + word).trim().length > maxWidth) {
+                    lines.push(currentLine.trim());
+                    currentLine = word;
+                } else {
+                    currentLine = (currentLine + ' ' + word).trim();
+                }
+            });
+            if (currentLine) lines.push(currentLine.trim());
+            return lines;
+        };
+
+        const investmentCtx = document.getElementById('investmentChart').getContext('2d');
+        new Chart(investmentCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Fee de Gestión ($250)', 'Pauta Publicitaria ($75 Promedio)'],
+                datasets: [{
+                    label: 'Inversión Mensual',
+                    data: [250, 75],
+                    backgroundColor: [chartColors.blue, chartColors.green],
+                    borderColor: '#ffffff',
+                    borderWidth: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    ...tooltipTitleCallback.plugins,
+                    legend: {
+                        position: 'bottom',
+                    }
+                },
+                cutout: '60%'
+            }
+        });
+
+        const contentCtx = document.getElementById('contentChart').getContext('2d');
+        const contentLabels = ['Contenido Educativo', 'Prueba Social (Testimonios)', 'Contenido Promocional', 'Interacción (Engagement)'].map(label => wrapLabel(label));
+        new Chart(contentCtx, {
+            type: 'bar',
+            data: {
+                labels: contentLabels,
+                datasets: [{
+                    label: 'Frecuencia de Publicaciones',
+                    data: [25, 25, 25, 25],
+                    backgroundColor: [chartColors.blue, chartColors.green, chartColors.yellow, chartColors.red],
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%'
+                            }
+                        },
+                        grid: {
+                           display: false
+                        }
+                    },
+                    y: {
+                        grid: {
+                           display: false
+                        }
+                    }
+                },
+                plugins: {
+                    ...tooltipTitleCallback.plugins,
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+        
+        const growthCtx = document.getElementById('growthChart').getContext('2d');
+        new Chart(growthCtx, {
+            type: 'line',
+            data: {
+                labels: ['Mes 1', 'Mes 2', 'Mes 3', 'Mes 4', 'Mes 5', 'Mes 6', 'Mes 7', 'Mes 8', 'Mes 9', 'Mes 10', 'Mes 11', 'Mes 12'],
+                datasets: [{
+                    label: 'Ingresos Mensuales (USD)',
+                    data: [150, 500, 1200, 2200, 3500, 4800, 6000, 7100, 8000, 8800, 9500, 10000],
+                    backgroundColor: 'rgba(6, 214, 160, 0.2)',
+                    borderColor: chartColors.green,
+                    tension: 0.4,
+                    fill: true,
+                    pointBackgroundColor: chartColors.green,
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: chartColors.green,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                 scales: {
+                    y: {
+                        beginAtZero: true,
+                         ticks: {
+                            callback: function(value) {
+                                return '$' + value.toLocaleString();
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                     ...tooltipTitleCallback.plugins,
+                    legend: {
+                         display: true,
+                         position: 'top'
+                    }
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>
+
