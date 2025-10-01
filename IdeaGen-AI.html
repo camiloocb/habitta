@@ -250,7 +250,14 @@
             const question1 = document.getElementById('question1').value;
             const question2 = document.getElementById('question2').value;
 
-            const apiKey = ""; 
+            // IMPORTANTE: Reemplaza "AQUÍ_PEGA_TU_API_KEY" con tu clave real de Google AI Studio.
+            const apiKey = "AIzaSyAwcskauJJdlwimyW7woSBLeeyZ3Fn0YtM"; 
+            
+            if (apiKey === "AQUÍ_PEGA_TU_API_KEY") {
+                displayError("La clave de API no ha sido configurada. Por favor, edita el archivo HTML y añade tu clave.");
+                return;
+            }
+
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
 
             const userPrompt = `
@@ -390,4 +397,5 @@
 
 </body>
 </html>
+
 
