@@ -264,17 +264,15 @@
 
                 **Información Estratégica Adicional:**
                 - **Que tono quieres usar, como quieres que te perciban tus seguidores:** ${question1}
-                - **Qué tendencias actuales impactan tu industria o sobre que vertical puntual quieres enfocar sobre lo que hblaras esta semana:** ${question2}
+                - **Qué tendencias actuales impactan tu industria o sobre que vertical puntual quieres enfocar sobre lo que hablaras esta semana:** ${question2}
 
-                **Instrucciones:**
-                - Genera exactamente 9 ideas en total.
-                - Distribuye las ideas de manera equitativa entre los 3 pilares.
-                - Para cada idea, proporciona:
-                    1. Un título atractivo y optimizado para ${socialNetwork}.
-                    2. Un formato de contenido ideal para ${socialNetwork} (Ej: Reel, Carrusel, Hilo, Post de texto, Documento PDF, etc.).
-                    3. Una pequeña guía paso a paso (2-3 puntos) sobre cómo crear ese contenido de forma efectiva, escrita en un solo string con saltos de línea, importante que estas recomendaciones sean enfocadas en SEO
-                - Asegúrate de que las ideas aborden directamente en SEO y en su ICP (Reclutadores o  gente interesada en su perfil).
-                - El resultado debe ser un objeto JSON válido que se ajuste al esquema proporcionado.
+                **Instrucciones MUY IMPORTANTES:**
+                1.  Genera exactamente 9 ideas en total.
+                2.  Distribuye las ideas de manera equitativa entre los 3 pilares.
+                3.  Para cada idea, proporciona los campos "pillar_number", "title", "format", y "guide".
+                4.  La "guide" debe ser una pequeña guía paso a paso (2-3 puntos) sobre cómo crear el contenido de forma efectiva con enfoque en SEO, escrita en un solo string usando '\\n' para los saltos de línea.
+                5.  Asegúrate de que las ideas aborden directamente el SEO y el ICP (Ideal Customer Profile, como reclutadores o gente interesada en el perfil).
+                6.  El resultado DEBE SER ÚNICAMENTE el objeto JSON que se ajuste al esquema proporcionado, sin texto introductorio, explicaciones, ni \`\`\`.
             `;
             
             const payload = {
@@ -310,19 +308,29 @@
                     body: JSON.stringify(payload)
                 });
 
+                const result = await response.json();
+
                 if (!response.ok) {
-                    throw new Error(`API request failed with status ${response.status}`);
+                    console.error("API Error Response:", JSON.stringify(result, null, 2));
+                    throw new Error(`API request failed with status ${response.status}: ${result.error?.message || 'Unknown error'}`);
                 }
 
-                const result = await response.json();
-                const jsonText = result.candidates[0].content.parts[0].text;
+                const jsonText = result.candidates?.[0]?.content?.parts?.[0]?.text;
+                
+                if (!jsonText) {
+                    console.error("No text found in API response:", JSON.stringify(result, null, 2));
+                    throw new Error("La respuesta de la IA no contiene el texto esperado.");
+                }
+
+                console.log("Raw text from Gemini:", jsonText);
+                
                 const parsedData = JSON.parse(jsonText);
                 
                 displayContentGrid(parsedData.ideas, [pillar1, pillar2, pillar3]);
 
             } catch (error) {
-                console.error("Error calling Gemini API:", error);
-                displayError();
+                console.error("Detailed Error in generateContentWithGemini:", error);
+                displayError(error.message);
             }
         }
 
@@ -361,10 +369,16 @@
             outputSection.scrollIntoView();
         }
 
-        function displayError() {
+        function displayError(errorMessage = "Por favor, inténtalo de nuevo más tarde.") {
             const outputSection = document.getElementById('output-section');
+            const outputGridHeader = document.getElementById('output-grid-header');
             const outputGridContent = document.getElementById('output-grid-content');
-            outputGridContent.innerHTML = `<p class="text-red-400 text-center col-span-full">Hubo un error al generar las ideas. Por favor, inténtalo de nuevo más tarde.</p>`;
+            outputGridHeader.innerHTML = '';
+            outputGridContent.innerHTML = `<div class="text-red-400 text-center col-span-full bg-red-900/20 p-4 rounded-lg">
+                <p class="font-bold">Hubo un error al generar las ideas.</p>
+                <p class="text-sm mt-2">Detalle: ${errorMessage}</p>
+                <p class="text-xs mt-4 text-gray-400">Abre la consola de desarrollador (F12) para ver más información técnica.</p>
+            </div>`;
             document.getElementById('step-3').style.display = 'none';
             outputSection.classList.remove('hidden');
             outputSection.scrollIntoView();
