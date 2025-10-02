@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía: De 0 a 10.000 Seguidores con Conversión</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- Palette: Vibrant & Professional -->
+    <!-- Narrative Plan: 
+        1. Hero Section: Title and hook.
+        2. The Core Mindset: Visualize the 80/15/5 Content Triangle using a Donut Chart and a custom HTML/CSS pyramid.
+        3. Platform Deep Dive: Present each social network's strategy in distinct cards, using tables for clarity.
+        4. Strategic Comparison: Use a Radar Chart to compare platform strengths and a Bar Chart for primary content focus.
+        5. Action Plan: A clear, step-by-step flowchart made with HTML/CSS.
+        This flow guides the user from high-level strategy to specific, actionable steps.
+    -->
+    <!-- Visualization Choices:
+        - Content Triangle (80/15/5): Goal: Inform. Visualization: Donut Chart. Justification: Ideal for showing parts of a whole. Library: Chart.js/Canvas. NO SVG.
+        - Content Pyramid: Goal: Organize. Visualization: HTML/CSS Pyramid. Justification: Visually represents the hierarchical structure of the content strategy. Method: Styled HTML. NO SVG.
+        - Platform Strengths: Goal: Compare. Visualization: Radar Chart. Justification: Perfect for comparing multiple platforms across multiple qualitative metrics. Library: Chart.js/Canvas. NO SVG.
+        - Initial Growth Content: Goal: Compare/Rank. Visualization: Horizontal Bar Chart. Justification: Best for comparing the effectiveness of different content types. Library: Chart.js/Canvas. NO SVG.
+        - 5-Step Action Plan: Goal: Organize. Visualization: Flowchart. Justification: Clearly shows a sequential process. Method: Styled HTML with flexbox. NO SVG, NO MERMAID JS.
+    -->
+    <!-- NO SVG and NO MERMAID JS were used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .pyramid-level {
+            clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            padding-bottom: 1rem;
+        }
+        .pyramid-top { height: 60px; width: 120px; background-color: #bc5090; }
+        .pyramid-mid { height: 80px; width: 240px; background-color: #58508d; }
+        .pyramid-base { height: 100px; width: 360px; background-color: #003f5c; }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-black text-gray-900 mb-2">De 0 a 10.000: La Guía Visual de Conversión</h1>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Una estrategia visual para construir una máquina de crecimiento real en redes sociales, no solo una métrica de vanidad.</p>
+        </header>
+
+        <section id="mindset" class="mb-16">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold mb-2">🧠 La Mentalidad Clave: El Triángulo del Contenido</h2>
+                <p class="max-w-2xl mx-auto text-gray-600">Para empezar de cero, tu contenido debe seguir una estructura piramidal. La base es el alcance masivo para atraer, mientras que la cima se enfoca en la conversión de una audiencia que ya confía en ti.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-xl font-bold text-center mb-4">Distribución Estratégica del Contenido</h3>
+                    <p class="text-center text-gray-600 mb-4">Esta gráfica muestra la proporción ideal de tu esfuerzo al iniciar. La gran mayoría de tu contenido debe estar enfocado en aportar valor y ser descubierto.</p>
+                    <div class="chart-container">
+                        <canvas id="contentTriangleChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center justify-center h-full">
+                    <h3 class="text-xl font-bold text-center mb-4">La Pirámide de la Conversión</h3>
+                     <p class="text-center text-gray-600 mb-6">Visualiza tu estrategia como una pirámide. Cada nivel construye sobre el anterior, llevando a un desconocido desde el descubrimiento hasta la conversión.</p>
+                    <div class="flex flex-col items-center space-y-[-1px]">
+                        <div class="pyramid-level pyramid-top"><span>5% Venta</span></div>
+                        <div class="pyramid-level pyramid-mid"><span>15% Comunidad</span></div>
+                        <div class="pyramid-level pyramid-base"><span>80% Alcance y Valor</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="platforms" class="mb-16">
+            <div class="text-center mb-10">
+                 <h2 class="text-3xl font-bold mb-2">📊 Análisis Profundo por Plataforma</h2>
+                <p class="max-w-2xl mx-auto text-gray-600">Cada red social tiene su propio lenguaje y algoritmo. Entender para qué sirve cada una es crucial para dirigir tus esfuerzos y maximizar la conversión.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-2xl font-bold mb-4">📸 Instagram: La Vitrina de tu Marca</h3>
+                    <p class="mb-4 text-gray-600">Ideal para construir una comunidad leal y visualmente atractiva. Perfecta para educar, inspirar y crear relaciones cercanas.</p>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-left">
+                            <thead class="bg-gray-100 text-gray-700 uppercase"><tr><th class="p-3">Contenido</th><th class="p-3">Objetivo</th></tr></thead>
+                            <tbody>
+                                <tr class="border-b"><td class="p-3 font-bold">Reels</td><td class="p-3">Tráfico al perfil y descubrimiento masivo.</td></tr>
+                                <tr class="border-b"><td class="p-3 font-bold">Carruseles</td><td class="p-3">Nutrición de leads y posicionamiento como experto.</td></tr>
+                                <tr><td class="p-3 font-bold">Historias</td><td class="p-3">Generar confianza y facilitar ventas rápidas.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-2xl font-bold mb-4">🎵 TikTok: El Cohete del Alcance</h3>
+                    <p class="mb-4 text-gray-600">Para viralidad y descubrimiento masivo. Su algoritmo democrático no discrimina por número de seguidores, ideal para empezar.</p>
+                     <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-left">
+                           <thead class="bg-gray-100 text-gray-700 uppercase"><tr><th class="p-3">Contenido</th><th class="p-3">Objetivo</th></tr></thead>
+                            <tbody>
+                                <tr class="border-b"><td class="p-3 font-bold">Videos Cortos</td><td class="p-3">Reconocimiento de marca masivo e indirecto.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-2xl font-bold mb-4">💼 LinkedIn: El Generador de Autoridad B2B</h3>
+                    <p class="mb-4 text-gray-600">Para posicionarte como experto, generar leads de alto valor y hacer networking profesional en un entorno B2B.</p>
+                     <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-left">
+                            <thead class="bg-gray-100 text-gray-700 uppercase"><tr><th class="p-3">Contenido</th><th class="p-3">Objetivo</th></tr></thead>
+                            <tbody>
+                                <tr class="border-b"><td class="p-3 font-bold">Post de Texto</td><td class="p-3">Iniciar conversaciones de negocio por MD.</td></tr>
+                                <tr><td class="p-3 font-bold">Carruseles (PDF)</td><td class="p-3">Demostrar autoridad y capturar leads cualificados.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-2xl font-bold mb-4">💬 X (Twitter): El Pulso del Momento</h3>
+                    <p class="mb-4 text-gray-600">Para conversaciones en tiempo real, networking y, crucialmente, para dirigir tráfico a tu web, blog o newsletter.</p>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-left">
+                            <thead class="bg-gray-100 text-gray-700 uppercase"><tr><th class="p-3">Contenido</th><th class="p-3">Objetivo</th></tr></thead>
+                            <tbody>
+                                <tr class="border-b"><td class="p-3 font-bold">Hilos (Threads)</td><td class="p-3">Captura masiva de suscriptores con contenido de valor.</td></tr>
+                                <tr><td class="p-3 font-bold">Respuestas</td><td class="p-3">Crecimiento inicial de seguidores y visibilidad.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="comparison" class="mb-16">
+             <div class="text-center mb-10">
+                 <h2 class="text-3xl font-bold mb-2">⚖️ Comparativa Estratégica</h2>
+                <p class="max-w-2xl mx-auto text-gray-600">No todas las plataformas sirven para lo mismo. Estas visualizaciones te ayudarán a decidir dónde enfocar tu energía según tus objetivos de negocio.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-xl font-bold text-center mb-4">Fortalezas de Cada Plataforma</h3>
+                    <p class="text-center text-gray-600 mb-4">Este radar muestra la especialización de cada red. TikTok domina el alcance, mientras que LinkedIn es inigualable para leads B2B.</p>
+                    <div class="chart-container">
+                        <canvas id="platformStrengthsChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-xl font-bold text-center mb-4">Contenido Clave para Crecimiento Inicial</h3>
+                    <p class="text-center text-gray-600 mb-4">Si estás empezando, estos son los formatos que te darán mayor tracción. Los Reels y Videos Cortos son tus mejores aliados para el descubrimiento.</p>
+                    <div class="chart-container h-96 md:h-[450px]">
+                        <canvas id="growthContentChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="action-plan">
+             <div class="text-center mb-10">
+                 <h2 class="text-3xl font-bold mb-2">🔥 Tu Plan de Acción en 5 Pasos</h2>
+                <p class="max-w-2xl mx-auto text-gray-600">La teoría es importante, pero la ejecución lo es todo. Sigue estos cinco pasos para pasar de cero a un crecimiento real y sostenible.</p>
+            </div>
+            <div class="bg-white rounded-xl shadow-lg p-8">
+                <div class="flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0 md:space-x-4">
+                    <div class="text-center flex-1">
+                        <div class="text-4xl mb-2">🎯</div>
+                        <h4 class="font-bold">1. Elige UNA Plataforma</h4>
+                        <p class="text-sm text-gray-600">No intentes dominarlas todas. Enfócate y sé el mejor en una.</p>
+                    </div>
+                    <div class="text-gray-300 font-bold text-2xl hidden md:block">→</div>
+                    <div class="text-center flex-1">
+                        <div class="text-4xl mb-2">✍️</div>
+                        <h4 class="font-bold">2. Optimiza tu Biografía</h4>
+                        <p class="text-sm text-gray-600">Responde: ¿Quién eres? ¿A quién ayudas? ¿Qué deben hacer?</p>
+                    </div>
+                    <div class="text-gray-300 font-bold text-2xl hidden md:block">→</div>
+                    <div class="text-center flex-1">
+                        <div class="text-4xl mb-2">🔄</div>
+                        <h4 class="font-bold">3. Aplica el Ciclo 90/10</h4>
+                        <p class="text-sm text-gray-600">90 días, 90% valor, 0% venta. Construye confianza primero.</p>
+                    </div>
+                     <div class="text-gray-300 font-bold text-2xl hidden md:block">→</div>
+                    <div class="text-center flex-1">
+                        <div class="text-4xl mb-2">🏗️</div>
+                        <h4 class="font-bold">4. Define Pilares de Contenido</h4>
+                        <p class="text-sm text-gray-600">Elige 3-5 temas y conviértete en el experto de referencia.</p>
+                    </div>
+                     <div class="text-gray-300 font-bold text-2xl hidden md:block">→</div>
+                    <div class="text-center flex-1">
+                        <div class="text-4xl mb-2">💬</div>
+                        <h4 class="font-bold">5. Interactúa como Humano</h4>
+                        <p class="text-sm text-gray-600">Responde a todos. Comenta en otras cuentas. Sé social.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        const vibrantColors = {
+            blue: '#003f5c',
+            purple: '#58508d',
+            pink: '#bc5090',
+            orange: '#ff6361',
+            yellow: '#ffa600'
+        };
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+        
+        const processLabel = (label, maxLength = 16) => {
+            if (label.length <= maxLength) return label;
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + ' ' + word).trim().length > maxLength) {
+                    lines.push(currentLine.trim());
+                    currentLine = word;
+                } else {
+                    currentLine = (currentLine + ' ' + word).trim();
+                }
+            }
+            if (currentLine) lines.push(currentLine.trim());
+            return lines;
+        };
+
+        const commonChartOptions = {
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#4a5568',
+                        font: {
+                            family: "'Inter', sans-serif"
+                        }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    }
+                }
+            }
+        };
+
+        new Chart(document.getElementById('contentTriangleChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Alcance y Valor', 'Comunidad y Confianza', 'Venta Directa'],
+                datasets: [{
+                    label: 'Distribución de Contenido',
+                    data: [80, 15, 5],
+                    backgroundColor: [vibrantColors.blue, vibrantColors.purple, vibrantColors.pink],
+                    borderColor: '#ffffff',
+                    borderWidth: 4
+                }]
+            },
+            options: { ...commonChartOptions }
+        });
+
+        new Chart(document.getElementById('platformStrengthsChart'), {
+            type: 'radar',
+            data: {
+                labels: [processLabel('Alcance Orgánico'), processLabel('Construcción de Comunidad'), processLabel('Generación de Leads B2B'), processLabel('Tráfico Web Directo'), processLabel('Potencial Viral')],
+                datasets: [
+                    {
+                        label: 'Instagram',
+                        data: [7, 9, 5, 6, 8],
+                        backgroundColor: 'rgba(188, 80, 144, 0.2)',
+                        borderColor: vibrantColors.pink,
+                        pointBackgroundColor: vibrantColors.pink
+                    },
+                    {
+                        label: 'TikTok',
+                        data: [10, 6, 2, 3, 10],
+                        backgroundColor: 'rgba(255, 99, 97, 0.2)',
+                        borderColor: vibrantColors.orange,
+                         pointBackgroundColor: vibrantColors.orange
+                    },
+                     {
+                        label: 'LinkedIn',
+                        data: [5, 7, 10, 8, 4],
+                        backgroundColor: 'rgba(88, 80, 141, 0.2)',
+                        borderColor: vibrantColors.purple,
+                         pointBackgroundColor: vibrantColors.purple
+                    }
+                ]
+            },
+            options: {
+                ...commonChartOptions,
+                scales: {
+                    r: {
+                        angleLines: { color: '#e2e8f0' },
+                        grid: { color: '#e2e8f0' },
+                        pointLabels: {
+                             color: '#4a5568',
+                             font: { size: 12, family: "'Inter', sans-serif" }
+                        },
+                        ticks: {
+                            backdropColor: 'rgba(255, 255, 255, 0.75)',
+                            color: '#4a5568'
+                        }
+                    }
+                }
+            }
+        });
+
+        new Chart(document.getElementById('growthContentChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Reels (IG)', 'Videos Cortos (TT)', 'Hilos (X)', 'Carruseles (LI)', 'Respuestas (X)'],
+                datasets: [{
+                    label: 'Impacto en Crecimiento Inicial',
+                    data: [95, 92, 80, 75, 65],
+                    backgroundColor: [vibrantColors.orange, vibrantColors.pink, vibrantColors.blue, vibrantColors.purple, vibrantColors.yellow],
+                    borderRadius: 4,
+                    borderWidth: 0,
+                }]
+            },
+            options: {
+                ...commonChartOptions,
+                indexAxis: 'y',
+                scales: {
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: '#4a5568' }
+                    },
+                    y: {
+                        grid: { display: true, color: '#f7fafc' },
+                        ticks: { color: '#4a5568' }
+                    }
+                },
+                plugins: {
+                    legend: { display: false }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
